@@ -6,6 +6,9 @@
   "directories": {
     "test": "test"
   },
+  "engines": {
+    "node": ">=4.0.0"
+  },
   "scripts": {
     "test": "grunt test",
     "test-client": "grunt karma",
@@ -26,5 +29,6 @@
   "dependencies": {
     "eslint": "^3.4.0",
     "eslint-config-hackreactor": "github:hackreactor-labs/eslint-config-hackreactor",
+    "express": "^4.14.0"
   }
 }
