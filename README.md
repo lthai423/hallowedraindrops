@@ -1,12 +1,12 @@
-# Project Name
+# CodeDrops
 
-> Pithy project description
+> Dropping code to other coders
 
 ## Team
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
+  - __Product Owner__: Lawrence Thai
+  - __Scrum Master__: Christopher Wong
+  - __Development Team Members__: Brian Zhou, Lawrence Thai, Christopher Wong
 
 ## Table of Contents
 
@@ -24,9 +24,7 @@
 
 ## Requirements
 
-- Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
+- Node 4.0
 - etc
 - etc
 
