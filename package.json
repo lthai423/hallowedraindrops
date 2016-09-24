@@ -1,0 +1,30 @@
+{
+  "name": "hallowedraindrops",
+  "version": "0.0.1",
+  "description": "Real time coding collaboration",
+  "main": "server/server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "grunt test",
+    "test-client": "grunt karma",
+    "start": "grunt start",
+    "lint": "grunt eslint",
+    "post-install": "curl -s https://raw.githubusercontent.com/hackreactor-labs/pomander/master/bin/install | bash"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hallowedraindrops/hallowedraindrops.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://hallowedraindrops.atlassian.net/secure/RapidBoard.jspa?rapidView=1&view=planning&selectedIssue=HAL-19&epics=visible"
+  },
+  "homepage": "https://github.com/hallowedraindrops/hallowedraindrops#readme",
+  "dependencies": {
+    "eslint": "^3.4.0",
+    "eslint-config-hackreactor": "github:hackreactor-labs/eslint-config-hackreactor",
+  }
+}
