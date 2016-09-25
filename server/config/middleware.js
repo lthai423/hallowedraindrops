@@ -8,4 +8,7 @@ module.exports = (app, express) => {
 
   //Reads information from forms ands puts it in a body object
   app.use(bodyParser.json());
+
+  // serves static files
+  app.use(express.static(__dirname + '/../../client'));
 };
