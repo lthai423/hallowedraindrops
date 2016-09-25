@@ -1,6 +1,6 @@
 //This sets up the web server
-const express = require(express);
-const app = express.express();
+const express = require('express');
+const app = express();
 
 //use middleware
 require('./config/middleware.js')(app, express);
