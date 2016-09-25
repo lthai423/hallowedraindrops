@@ -1,6 +1,6 @@
 // Routes received by the server
 
-module.exports = {
+module.exports = (app) => {
 
 
 
