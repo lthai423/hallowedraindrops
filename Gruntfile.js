@@ -1,11 +1,6 @@
 module.exports = function(grunt) {
 
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
-
-    // concat: {
-    // },
-
 
     mochaTest: {
       test: {
@@ -40,9 +35,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-nodemon');
 
-  // grunt.registerTask('start', function (target) {
-  //   grunt.task.run([ 'nodemon' ]);
-  // });
 
   ////////////////////////////////////////////////////
   // Main grunt tasks
