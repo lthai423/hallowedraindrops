@@ -18,7 +18,7 @@ module.exports = function(grunt) {
 
     nodemon: {
       dev: {
-        script: 'server.js'
+        script: 'server/server.js'
       }
     },
     
@@ -40,9 +40,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-nodemon');
 
-  grunt.registerTask('server-dev', function (target) {
-    grunt.task.run([ 'nodemon' ]);
-  });
+  // grunt.registerTask('start', function (target) {
+  //   grunt.task.run([ 'nodemon' ]);
+  // });
 
   ////////////////////////////////////////////////////
   // Main grunt tasks
@@ -50,6 +50,10 @@ module.exports = function(grunt) {
 
   grunt.registerTask('test', [
     'mochaTest'
+  ]);
+
+  grunt.registerTask('start', [
+    'nodemon'
   ]);
 
   grunt.registerTask('build', [
