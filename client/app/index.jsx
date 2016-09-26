@@ -6,7 +6,8 @@ class App extends React.Component {
   constructor(props) {
   	super(props);
   	this.state = {
-  		text: '' // text is going to be the code the user inputs
+  	  text: '', // text is going to be the code the user inputs
+  	  editor: ''
   	}
   }
 
@@ -16,7 +17,7 @@ class App extends React.Component {
   }
 
   getText() {
-  	var code = editor.getValue();
+  	var code = this.state.editor.getValue();
   	console.log('value for code is: ', code);
   	this.setState({
   	  text : code
@@ -27,6 +28,12 @@ class App extends React.Component {
   	var editor = ace.edit("editor");
   	editor.setTheme("ace/theme/monokai");
   	editor.getSession().setMode("ace/mode/javascript");
+  	editor.resize();
+
+  	this.setState({
+  		editor: editor
+  	});
+
   }
 
 
