@@ -5,6 +5,9 @@ const app = express();
 //use middleware
 require('./config/middleware.js')(app, express);
 
+// serve static files
+app.use(express.static(__dirname + '../client'));
+
 // routes
 require('./config/routes.js')(app);
 
