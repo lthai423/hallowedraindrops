@@ -15,7 +15,8 @@
     "start": "grunt start",
     "lint": "grunt eslint",
     "post-install": "curl -s https://raw.githubusercontent.com/hackreactor-labs/pomander/master/bin/install | bash",
-    "wpdev": "webpack -d --watch"
+    "dev": "webpack -d --watch",
+    "build" : "webpack -p"
   },
   "repository": {
     "type": "git",
