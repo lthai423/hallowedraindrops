@@ -19,6 +19,8 @@ class App extends React.Component {
   	  this.editorSetup();
   	  resolve();
   	}).then(() => {
+      this.setupSocket();
+    }).then(() => {
   	  this.state.editor.setValue(this.state.text);
   	}).catch((err) => {
   		console.log('error occurred', err);
@@ -34,6 +36,11 @@ class App extends React.Component {
   	this.setState({
   	  text : code
   	})
+  }
+
+  setupSocket() {
+    console.log('setting up socket.io...');
+    var socket = io();
   }
 
   editorSetup () {
