@@ -38,6 +38,24 @@ class App extends React.Component {
   	})
   }
 
+  // sendCode will take the code on the 'text' state
+  // and will be processed on the server
+  sendCode() {
+    // var myHeaders = new Headers();
+    var myInit = {
+      method: 'POST',
+      body: this.state.text
+    }
+    fetch('api/runcode', myInit)
+    .then((resp)=> {
+      console.log('response received is ', resp);
+    })
+    .catch((err) => {
+      console.log('error has occurred in index.jsx for sendcode');
+      throw err;
+    });
+  }
+
   setupSocket() {
     console.log('setting up socket.io...');
     var socket = io();
@@ -75,6 +93,7 @@ class App extends React.Component {
   	return (
   	  <div>
   	  	<button onClick={this.getText.bind(this)}>get code</button>
+        <button onClick={this.sendCode.bind(this)}>process code</button>
   	    <div>
   	    <div id="editor" onKeyDown={this.setupSocket.bind(this)}></div>
   	    </div>
