@@ -46,7 +46,7 @@ class App extends React.Component {
       method: 'POST',
       body: this.state.text
     }
-    fetch('api/runcode', myInit)
+    fetch('/api/runcode', myInit)
     .then((resp)=> {
       console.log('response received is ', resp);
     })
