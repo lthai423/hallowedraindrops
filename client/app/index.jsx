@@ -1,19 +1,31 @@
 import React from 'react';
 import { render } from 'react-dom';
 
+var Promise = require('bluebird');
+
 class App extends React.Component {
 
   constructor(props) {
   	super(props);
   	this.state = {
-  	  text: '', // text is going to be the code the user inputs
-  	  editor: ''
+  	  text: 'hello world', // text is going to be the code the user inputs
+  	  editor: '' // editor is added as a state since it'll be used elsewhere
   	}
   }
 
   componentDidMount() {
-  	console.log('entered into here');
-	this.editorSetup();
+
+  	var editorPromise = new Promise((resolve, reject) => {
+  	  this.editorSetup();
+  	  resolve();
+  	}).then(() => {
+  	  this.state.editor.setValue(this.state.text);
+  	}).catch((err) => {
+  		console.log('error occurred', err);
+  		throw err;
+  	})
+
+	var toBeEnteredText = this.state.text;
   }
 
   getText() {
@@ -33,7 +45,6 @@ class App extends React.Component {
   	this.setState({
   		editor: editor
   	});
-
   }
 
 
