@@ -41,6 +41,21 @@ class App extends React.Component {
   setupSocket() {
     console.log('setting up socket.io...');
     var socket = io();
+    this.getText();
+    socket.emit('text change', this.state.text);
+
+    socket.on('alter text', (msg) => {
+      console.log('RECEIVED CHANGES', msg);
+      this.setState({
+        text: msg
+      });
+    });
+
+  //    $('form').submit(function(){
+  //   socket.emit('chat message', $('#m').val());
+  //   $('#m').val('');
+  //   return false;
+  // });
   }
 
   editorSetup () {
@@ -54,13 +69,14 @@ class App extends React.Component {
   	});
   }
 
-
+  // react keyboard events: 
+  // onkeydown / onkeypress / onkeyup
   render () {
   	return (
   	  <div>
   	  	<button onClick={this.getText.bind(this)}>get code</button>
   	    <div>
-  	    <div id="editor"></div>
+  	    <div id="editor" onKeyDown={this.setupSocket.bind(this)}></div>
   	    </div>
   	  </div>
   	)
