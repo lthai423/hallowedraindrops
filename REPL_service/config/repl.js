@@ -5,6 +5,12 @@ const net = require('net');
 var connections = 0;
 
 module.exports = {
+  /**
+    * @name runCode
+    * @desc Runs the javascript code in a REPL instance, requested from POST to api
+    * @param {code, callback} code is the request javascript code, callback returns the output data
+    * @returns {nothing}
+    */
   runCode: (code, callback) => {
 
     // net.createServer((socket) => {
@@ -30,7 +36,6 @@ module.exports = {
         console.log('Received "exit" event from repl!');
         fs.readFile(__dirname + '/output.txt', 'utf8', (err, data) => {
           if (err) throw err;
-          console.log('Reading data from output file: ', data);
           callback(data);
         });
       });
