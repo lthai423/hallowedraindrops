@@ -29,7 +29,7 @@ describe('Server Side Specifications', function() {
 	  	jamesBond.calledOnce.should.equal(true);
   	});
   	
-    it('should be called more than once', function() {
+    it('should be called twice', function() {
 	  	jamesBond = sinon.spy();
 	  	licensesToKill.start(jamesBond);
 	  	licensesToKill.start(jamesBond);
