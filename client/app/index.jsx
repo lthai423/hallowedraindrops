@@ -10,42 +10,36 @@ class App extends React.Component {
   	this.state = {
   	  text: 'hello world', // text is going to be the code the user inputs
   	}
-    //returns an editor
   }
 
   componentDidMount() {
 
     this.editor = this.editorSetup();
     this.socket = this.setupSocket();
-
     this.editor.setValue(this.state.text);
   }
 
   getText() {
   	var code = this.editor.getValue();
-  	console.log('value for code is: ', code);
   	this.setState({
   	  text : code
   	});
-    console.log('text value is: ', this.state.text)
   }
 
   // sendCode will take the code on the 'text' state
   // and will be processed on the server
   sendCode() {
-    // var myHeaders = new Headers();
-    var myInit = {
+    $.ajax({
       method: 'POST',
-      body: {code: this.state.text}
-    }
-    fetch('api/replservice/runcode', myInit)
-    .then((resp)=> {
-      $('.response').append(resp);
-      console.log('response received is ', resp);
-    })
-    .catch((err) => {
-      console.log('error has occurred in index.jsx for sendcode');
-      throw err;
+      url: 'http://127.0.0.1:8080/api/replservice/runcode',
+      data: {code: this.state.text},
+      success: (data) => {
+        console.log('data value is: ', data);
+        $('.response').append(data);
+      },
+      error: (err) => {
+        console.log('error is: ', err);
+      }
     });
   }
 
@@ -53,7 +47,6 @@ class App extends React.Component {
   // there is a problem here... where we are transmitting every key
   setupSocket() {
     var socket = io();
-
     var text = this.editor.getValue();
     this.setState({
       text: text
