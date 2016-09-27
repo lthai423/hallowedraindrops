@@ -1,4 +1,5 @@
 // Routes received by the server
+var runCode = require('./repl.js').runCode;
 
 module.exports = (app) => {
 
@@ -11,9 +12,8 @@ app.route('/api/repl')
   .post((req, res) => {
     var code = req.body;
     runCode(code.code, (data) => {
-      console.log(data);
+      res.send(data);
     });
-    res.send('POSTING that REPL Server');
   });
 
 };
