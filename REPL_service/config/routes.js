@@ -10,7 +10,9 @@ app.route('/api/repl')
   })
   .post((req, res) => {
     var code = req.body;
-    console.log(code);
+    runCode(code.code, (data) => {
+      console.log(data);
+    });
     res.send('POSTING that REPL Server');
   });
 

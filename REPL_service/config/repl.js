@@ -32,12 +32,21 @@ module.exports = {
 
     // };
     // process.stdout.pipe(result);
-    var server = repl.start({input: input, output:output});
-    console.log(result);
-    server.on ('exit', () => {
-      console.log('Received "exit" event from repl!');
-      process.exit();
-      });
-  }
+    fs.writeFile(__dirname + '/input.txt', code, (err) => {
+      if (err) throw err;
 
+      var output = fs.createWriteStream(__dirname + '/output.txt');
+      var input = fs.createReadStream(__dirname + '/input.txt');
+      var server = repl.start({input: input, output:output});
+
+      server.on ('exit', () => {
+        console.log('Received "exit" event from repl!');
+        fs.readFile(__dirname + '/output.txt', 'utf8', (err, data) => {
+          if (err) throw err;
+          console.log('Reading data from output file: ', data);
+          callback(data);
+        });
+      });
+  });
+  }
 };
