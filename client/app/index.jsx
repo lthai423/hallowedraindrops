@@ -9,28 +9,20 @@ class App extends React.Component {
   	super(props);
   	this.state = {
   	  text: 'hello world', // text is going to be the code the user inputs
-  	  editor: '' // editor is added as a state since it'll be used elsewhere
   	}
+    //returns an editor
   }
 
   componentDidMount() {
 
-  	var editorPromise = new Promise((resolve, reject) => {
-  	  this.editorSetup();
-  	  resolve();
-  	}).then(() => {
-      this.setupSocket();
-    }).then(() => {
-  	  this.state.editor.setValue(this.state.text);
-  	}).catch((err) => {
-  		console.log('error occurred', err);
-  		throw err;
-  	})
-	var toBeEnteredText = this.state.text;
+    this.editor = this.editorSetup();
+    this.socket = this.setupSocket();
+
+    this.editor.setValue(this.state.text);
   }
 
   getText() {
-  	var code = this.state.editor.getValue();
+  	var code = this.editor.getValue();
   	console.log('value for code is: ', code);
   	this.setState({
   	  text : code
@@ -44,10 +36,11 @@ class App extends React.Component {
     // var myHeaders = new Headers();
     var myInit = {
       method: 'POST',
-      body: this.state.text
+      body: {code: this.state.text}
     }
-    fetch('/api/runcode', myInit)
+    fetch('api/replservice/runcode', myInit)
     .then((resp)=> {
+      
       console.log('response received is ', resp);
     })
     .catch((err) => {
@@ -59,33 +52,20 @@ class App extends React.Component {
   // setupSocket will emit the events when the keydown event occurs
   // there is a problem here... where we are transmitting every key
   setupSocket() {
-    console.log('setting up socket.io...');
     var socket = io();
-    // this.getText(); //
 
-    var text = this.state.editor.getValue();
+    var text = this.editor.getValue();
     this.setState({
       text: text
     })
     
-    socket.emit('text change', this.state.text);
-
     socket.on('alter text', (msg) => {
-      console.log('RECEIVED CHANGES', msg);
       this.setState({
         text: msg
       });
-      setTimeout(() => {
-        this.state.editor.setValue(msg);
-      }, 1000);
-      // this.state.editor.setValue(msg);
+      this.editor.setValue(this.state.text, 1);
     });
-
-  //    $('form').submit(function(){
-  //   socket.emit('chat message', $('#m').val());
-  //   $('#m').val('');
-  //   return false;
-  // });
+    return socket;
   }
 
   // editorSetup will place in the settings for our editor
@@ -96,20 +76,32 @@ class App extends React.Component {
   	editor.getSession().setMode("ace/mode/javascript");
   	editor.resize();
 
-  	this.setState({
-  		editor: editor
-  	});
+    var socket = io();
+
+  	return editor;
+  }
+
+  handleKeyPress () {
+    console.log('keypress is called');
+    var text = this.editor.getValue();
+    this.setState({
+      text: text
+    })
+
+    this.socket.emit('text change', text);
+
   }
 
   // react keyboard events: 
   // onkeydown / onkeypress / onkeyup
+  // onKeyDown={this.setupSocket.bind(this)}
   render () {
   	return (
   	  <div>
   	  	<button onClick={this.getText.bind(this)}>get code</button>
         <button onClick={this.sendCode.bind(this)}>process code</button>
   	    <div>
-  	    <div id="editor" onKeyDown={this.setupSocket.bind(this)}></div>
+  	    <div id="editor" onKeyUp={this.handleKeyPress.bind(this)}></div>
   	    </div>
   	  </div>
   	)
