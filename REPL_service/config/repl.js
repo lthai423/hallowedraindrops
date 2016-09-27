@@ -19,19 +19,6 @@ module.exports = {
     // }).listen(5001, () => {
     //   console.log('TCP server listening on 5001');
     // });
-    var result = '';
-    process.stdout.on('data', (data) => {
-      result += data.toString();
-    });
-    process.stdout.on('end', () => {
-      callback(result);
-    });
-    var output = fs.createWriteStream(__dirname + '/test.txt');
-    var input = fs.createReadStream(__dirname + '/input.txt');
-    // var myEval = (cmd, context) => {
-
-    // };
-    // process.stdout.pipe(result);
     fs.writeFile(__dirname + '/input.txt', code, (err) => {
       if (err) throw err;
 
