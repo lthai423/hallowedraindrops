@@ -26,7 +26,6 @@ class App extends React.Component {
   		console.log('error occurred', err);
   		throw err;
   	})
-
 	var toBeEnteredText = this.state.text;
   }
 
@@ -35,7 +34,8 @@ class App extends React.Component {
   	console.log('value for code is: ', code);
   	this.setState({
   	  text : code
-  	})
+  	});
+    console.log('text value is: ', this.state.text)
   }
 
   // sendCode will take the code on the 'text' state
@@ -56,10 +56,17 @@ class App extends React.Component {
     });
   }
 
+  // setupSocket will emit the events when the keydown event occurs
+  // there is a problem here... where we are transmitting every key
   setupSocket() {
     console.log('setting up socket.io...');
     var socket = io();
-    this.getText();
+    // this.getText(); //
+
+    var text = this.state.editor.getValue();
+    this.setState({
+      text: text
+    })   
     socket.emit('text change', this.state.text);
 
     socket.on('alter text', (msg) => {
@@ -67,6 +74,10 @@ class App extends React.Component {
       this.setState({
         text: msg
       });
+      setTimeout(() => {
+        this.state.editor.setValue(msg);
+      }, 1000);
+      // this.state.editor.setValue(msg);
     });
 
   //    $('form').submit(function(){
@@ -76,6 +87,8 @@ class App extends React.Component {
   // });
   }
 
+  // editorSetup will place in the settings for our editor
+  // i.e. themes, language, etc.
   editorSetup () {
   	var editor = ace.edit("editor");
   	editor.setTheme("ace/theme/monokai");
