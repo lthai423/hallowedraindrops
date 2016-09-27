@@ -16,6 +16,32 @@ app.use('/api/replservice', replRouter);
 
 // set port up
 var port = process.argv[2] || 8080;
-app.listen(port, function () {
-  console.log('Web Server listening on port ' + port +' !');
+
+// *** below code block was used for express server
+// app.listen(port, function () {
+//   console.log('Web Server listening on port ' + port +' !');
+// });
+
+
+
+// ** below code block is used for the server setup
+// for socket.io
+// link: http://stackoverflow.com/questions/27393705/socketio-get-http-localhost3000-socket-io-eio-3transport-pollingt-1418187
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+server.listen(port, () => {
+	console.log('socket on 8080');
 });
+io.on('connection', (socket) => {
+  console.log('a user has connected');
+
+  socket.on('text change', (msg) => {
+  	console.log('msg value is: ', msg);
+  	io.emit('alter text', msg);
+  })
+
+  socket.on('disconnect', () => {
+  	console.log('a user has disconnected');
+  });
+});
+// end for socket
