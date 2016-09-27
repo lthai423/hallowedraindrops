@@ -35,12 +35,13 @@ class App extends React.Component {
       data: {code: this.state.text},
       success: (data) => {
         console.log('data value is: ', data);
-        $('.response').append(data);
-      },
+        this.socket.emit('append result', data);
+        // $('.response').append(data);
+      }.bind(this),
       error: (err) => {
         console.log('error is: ', err);
       }
-    });
+    }.bind(this));
   }
 
   // setupSocket will emit the events when the keydown event occurs
@@ -58,6 +59,12 @@ class App extends React.Component {
       });
       this.editor.setValue(this.state.text, 1);
     });
+
+    socket.on('alter result', (msg) => {
+      console.log('going to append this: ', msg);
+      $('.response').append(msg);
+    })
+
     return socket;
   }
 
