@@ -63,15 +63,44 @@ class App extends React.Component {
     var socket = io();
     // this.getText(); //
 
-    var text = this.state.editor.getValue();
-    this.setState({
-      text: text
-    })
+    var textPromise = new Promise((resolve, reject) => {
+      var text = this.state.editor.getValue();
+      console.log('value for text prior:', text);
+      this.setState({
+        text: text
+      });
+
+      resolve(text);
+    }).then((val) => {
+      // check to see if promise worked
+      console.log('state.text value is: ', this.state.text);
+      console.log('val value is: ', val);
+
+      socket.emit('text change', this.state.text);
+
+      socket.on('alter text', (msg) => {
+        this.setState({
+          text: msg
+        });
+        setTimeout(() => {
+          this.state.editor.setValue(msg);
+        }, 1000);
+        // this.state.editor.setValue(msg);
+      });
+    });
+
+
+    // // console.log('text value is: ', text);
+    // this.setState({
+    //   text: text
+    // });
+    // console.log('state.text value is: ', this.state.text);
+
+
     
     socket.emit('text change', this.state.text);
 
     socket.on('alter text', (msg) => {
-      console.log('RECEIVED CHANGES', msg);
       this.setState({
         text: msg
       });
