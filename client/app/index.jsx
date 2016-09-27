@@ -40,7 +40,7 @@ class App extends React.Component {
     }
     fetch('api/replservice/runcode', myInit)
     .then((resp)=> {
-      
+      $('.response').append(resp);
       console.log('response received is ', resp);
     })
     .catch((err) => {
@@ -89,7 +89,6 @@ class App extends React.Component {
     })
 
     this.socket.emit('text change', text);
-
   }
 
   // react keyboard events: 
@@ -100,6 +99,9 @@ class App extends React.Component {
   	  <div>
   	  	<button onClick={this.getText.bind(this)}>get code</button>
         <button onClick={this.sendCode.bind(this)}>process code</button>
+        <div>
+          Response is: <p className="response"></p>
+        </div>
   	    <div>
   	    <div id="editor" onKeyUp={this.handleKeyPress.bind(this)}></div>
   	    </div>
