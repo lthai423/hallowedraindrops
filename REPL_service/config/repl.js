@@ -1,6 +1,5 @@
 // Running Code in REPL
 const repl = require('repl');
-const fs = require('fs');
 const net = require('net');
 const stream = require('stream');
 
