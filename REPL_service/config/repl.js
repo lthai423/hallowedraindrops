@@ -1,7 +1,8 @@
 // Running Code in REPL
 const repl = require('repl');
-const fs = require('fs');
 const net = require('net');
+const stream = require('stream');
+
 var connections = 0;
 
 module.exports = {
@@ -25,20 +26,40 @@ module.exports = {
     // }).listen(5001, () => {
     //   console.log('TCP server listening on 5001');
     // });
-    fs.writeFile(__dirname + '/input.txt', code, (err) => {
-      if (err) throw err;
 
-      var output = fs.createWriteStream(__dirname + '/output.txt');
-      var input = fs.createReadStream(__dirname + '/input.txt');
-      var server = repl.start({input: input, output:output});
+    /**
+      * @name input
+      * @desc Push to-be-evaluated code to readable stream, ready by REPL.
+      */
+    var input = new stream.Readable();
+    input._read = function noop() {
+      input.push(code);
+      input.push(null);
+    };
 
-      server.on ('exit', () => {
-        console.log('Received "exit" event from repl!');
-        fs.readFile(__dirname + '/output.txt', 'utf8', (err, data) => {
-          if (err) throw err;
-          callback(data);
-        });
-      });
-  });
+    /**
+      * @name output
+      * @desc Writable stream written by REPL while evaluating input code.
+      */
+    var output = new stream.Writable();
+    var data = '';
+    output._write = function noop(chunk, encoding, callback) {
+        data += chunk;
+        callback();
+    };
+
+    /**
+      * @name repl.start
+      * @desc Sends a Readable stream to the repl server and outputs a writeable stream after eval
+      * @param {input, output} readable and writable streams
+      * @returns {nothing}
+      */
+    var server = repl.start({input: input, output:output});
+
+    // Returns data to the callback once REPL is done with code
+    server.on('exit', () => {
+      console.log('Received "exit" event from repl!');
+      callback(data);
+    });
   }
 };
