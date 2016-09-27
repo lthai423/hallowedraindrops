@@ -66,7 +66,8 @@ class App extends React.Component {
     var text = this.state.editor.getValue();
     this.setState({
       text: text
-    })   
+    })
+    
     socket.emit('text change', this.state.text);
 
     socket.on('alter text', (msg) => {
