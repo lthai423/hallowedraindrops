@@ -38,6 +38,11 @@ io.on('connection', (socket) => {
   socket.on('text change', (msg) => {
   	console.log('msg value is: ', msg);
   	io.emit('alter text', msg);
+  });
+
+  socket.on('append result', (msg) => {
+  	console.log('append result is: ', msg);
+  	io.emit('alter result', msg);
   })
 
   socket.on('disconnect', () => {

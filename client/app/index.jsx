@@ -35,13 +35,14 @@ class App extends React.Component {
       data: {code: this.state.text},
       success: (data) => {
         console.log('data value is: ', data);
+        console.log('value for success is: ', this);
         this.socket.emit('append result', data);
         // $('.response').append(data);
-      }.bind(this),
+      },
       error: (err) => {
         console.log('error is: ', err);
       }
-    }.bind(this));
+    });
   }
 
   // setupSocket will emit the events when the keydown event occurs
