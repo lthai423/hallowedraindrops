@@ -2,6 +2,8 @@
 const repl = require('repl');
 const fs = require('fs');
 const net = require('net');
+const stream = require('stream');
+
 var connections = 0;
 
 module.exports = {
@@ -25,20 +27,29 @@ module.exports = {
     // }).listen(5001, () => {
     //   console.log('TCP server listening on 5001');
     // });
-    fs.writeFile(__dirname + '/input.txt', code, (err) => {
-      if (err) throw err;
 
-      var output = fs.createWriteStream(__dirname + '/output.txt');
-      var input = fs.createReadStream(__dirname + '/input.txt');
-      var server = repl.start({input: input, output:output});
+  var input = new stream.Readable();
+  input._read = function noop() {
+    input.push(code);
+    input.push(null);
+  };
 
-      server.on ('exit', () => {
-        console.log('Received "exit" event from repl!');
-        fs.readFile(__dirname + '/output.txt', 'utf8', (err, data) => {
-          if (err) throw err;
-          callback(data);
-        });
-      });
-  });
+  var output = new stream.Writable();
+  var data = '';
+  output._write = function noop(chunk, encoding, callback) {
+      data += chunk;
+      callback();
+  };
+
+    // input.on('end', () => {
+    //   console.log(output);
+    // setTimeout(() => {callback(data);}, 2000);
+    // });
+    var server = repl.start({input: input, output:output});
+
+    output.on('close', () => {
+      console.log('Received "exit" event from repl!');
+      callback(data);
+    });
   }
 };
