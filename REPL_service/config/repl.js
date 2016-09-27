@@ -28,26 +28,22 @@ module.exports = {
     //   console.log('TCP server listening on 5001');
     // });
 
-  var input = new stream.Readable();
-  input._read = function noop() {
-    input.push(code);
-    input.push(null);
-  };
+    var input = new stream.Readable();
+    input._read = function noop() {
+      input.push(code);
+      input.push(null);
+    };
 
-  var output = new stream.Writable();
-  var data = '';
-  output._write = function noop(chunk, encoding, callback) {
-      data += chunk;
-      callback();
-  };
+    var output = new stream.Writable();
+    var data = '';
+    output._write = function noop(chunk, encoding, callback) {
+        data += chunk;
+        callback();
+    };
 
-    // input.on('end', () => {
-    //   console.log(output);
-    // setTimeout(() => {callback(data);}, 2000);
-    // });
     var server = repl.start({input: input, output:output});
 
-    output.on('close', () => {
+    server.on('exit', () => {
       console.log('Received "exit" event from repl!');
       callback(data);
     });
