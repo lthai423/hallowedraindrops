@@ -1,5 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
+import Editor from './editor';
+import Navigation from './navigation';
+import output from './output';
 
 var Promise = require('bluebird');
 
