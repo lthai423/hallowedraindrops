@@ -16,33 +16,30 @@ describe('Front End Specifications', function() {
     var webTestingPort = 8080;
     var replTestingPort = 3000;
 
-    before(function(done) {
-      webInstance = http.Server(webServer.app);
-      webInstance.listen(testingPort, () => {
-        var replInstance = http.Server(replServer.app);
-        replInstance.listen(replTestingPort, () => {
-          done();
-        });
-      });
-    });
-
-    after(function() {
-      if(webInstance) webInstance.close();
-      if(replInstance) webInstance.close();
-    });
-
   	var licensesToKill = {
 	    start: function (agent) {
         agent.apply(this);
 	    }
   	};
 
-  	beforeEach(function () {
-	    sandbox = sinon.sandbox.create();
+  	beforeEach(function (done) {
+	    // sandbox = sinon.sandbox.create();
+      webInstance = http.Server(webServer.app);
+      webInstance.listen(webTestingPort, () => {
+        // var replInstance = http.Server(replServer.app);
+        // replInstance.listen(replTestingPort, () => {
+        done();
+        // });
+      });
   	});
 
-  	afterEach(function () {
-	    sandbox.restore();
+  	afterEach(function (done) {
+	    // sandbox.restore();
+      // if(replInstance) {
+        // replInstance.close();
+      // }
+      if(webInstance) webInstance.close(done);
+     
   	});
 
   	it('should call once', function() {
