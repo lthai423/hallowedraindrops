@@ -83,11 +83,6 @@ class App extends React.Component {
     editor.getSession().setMode("ace/mode/javascript");
     editor.resize();
 
-    // editor.on('change', function(e) {
-    //   console.log('This changed!, ', e);
-    // });
-    var socket = io();
-
     return editor;
   }
 
