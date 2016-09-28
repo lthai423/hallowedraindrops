@@ -29,9 +29,12 @@ var port = process.argv[2] || 8080;
 // link: http://stackoverflow.com/questions/27393705/socketio-get-http-localhost3000-socket-io-eio-3transport-pollingt-1418187
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
-server.listen(port, () => {
-	console.log('socket on 8080');
-});
+if(!module.parent) {
+  app.listen(port, () => {
+  	console.log('socket on 8080');
+  });
+}
+
 io.on('connection', (socket) => {
   console.log('a user has connected');
 
@@ -43,10 +46,14 @@ io.on('connection', (socket) => {
   socket.on('append result', (msg) => {
   	console.log('append result is: ', msg);
   	io.emit('alter result', msg);
-  })
+  });
 
   socket.on('disconnect', () => {
   	console.log('a user has disconnected');
   });
 });
 // end for socket
+
+module.exports = {
+  app: app
+};
