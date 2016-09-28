@@ -9,7 +9,7 @@ class App extends React.Component {
   	super(props);
   	this.state = {
   	  text: 'hello world', // text is going to be the code the user inputs
-  	}
+  	};
   }
 
   componentDidMount() {
@@ -52,19 +52,22 @@ class App extends React.Component {
     var text = this.editor.getValue();
     this.setState({
       text: text
-    })
-    
+    });
+
     socket.on('alter text', (msg) => {
-      this.setState({
-        text: msg
-      });
-      this.editor.setValue(this.state.text, 1);
+      if (this.state.text !== msg) {
+        console.log('making changes');
+        this.setState({
+          text: msg
+        });
+        this.editor.setValue(this.state.text);
+      }
     });
 
     socket.on('alter result', (msg) => {
       console.log('going to append this: ', msg);
       $('.response').append(msg);
-    })
+    });
 
     return socket;
   }
@@ -77,24 +80,23 @@ class App extends React.Component {
   	editor.getSession().setMode("ace/mode/javascript");
   	editor.resize();
 
+    // editor.on('change', function(e) {
+    //   console.log('This changed!, ', e);
+    // });
     var socket = io();
 
   	return editor;
   }
 
-  handleKeyPress () {
-    console.log('keypress is called');
+  handleKeyPress (e) {
     var text = this.editor.getValue();
     this.setState({
       text: text
-    })
+    });
 
     this.socket.emit('text change', text);
   }
 
-  // react keyboard events: 
-  // onkeydown / onkeypress / onkeyup
-  // onKeyDown={this.setupSocket.bind(this)}
   render () {
   	return (
   	  <div>
