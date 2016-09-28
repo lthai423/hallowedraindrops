@@ -6,29 +6,39 @@ var replServer = require('../REPL_service/REPL_server.js');
 var request = require('request');
 var sinon = require('sinon');
 
-var clientEditor = require('../client/app/editor.jsx');
+//var clientEditor = require('../client/app/editor.jsx');
 
 describe('Front End Specifications', function() {
   describe('Test function', function() {
   	// manually create and restore the sandbox
-  	var sandbox,
-  			jamesBond;
-
+  	var sandbox, jamesBond, webInstance, replInstance;
     // testing port
-    var testingPort = 9000;
+    var webTestingPort = 8080;
+    var replTestingPort = 3000;
+
+    before(function(done) {
+      webInstance = http.Server(webServer.app);
+      webInstance.listen(testingPort, () => {
+        var replInstance = http.Server(replServer.app);
+        replInstance.listen(replTestingPort, () => {
+          done();
+        });
+      });
+    });
+
+    after(function() {
+      if(webInstance) webInstance.close();
+      if(replInstance) webInstance.close();
+    });
 
   	var licensesToKill = {
 	    start: function (agent) {
-	        agent.apply(this);
+        agent.apply(this);
 	    }
   	};
 
   	beforeEach(function () {
 	    sandbox = sinon.sandbox.create();
-      // setup the server
-      webServer.listen(testingPort, () => {
-        console.log('listening on port: ', testingPort);
-      });
   	});
 
   	afterEach(function () {
