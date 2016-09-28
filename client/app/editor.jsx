@@ -4,7 +4,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-var Promise = require('bluebird');
+// var Promise = require('bluebird');
 
 export default class Editor extends React.Component {
 
@@ -15,11 +15,14 @@ export default class Editor extends React.Component {
 		}
 	}
 
-	// componentDidMount() {
+	componentDidMount() {
+		// uncommented for testing
+
+
 	//   this.editor = this.editorSetup();
 	//   this.socket = this.setupSocket();
 	//   this.editor.setValue(this.state.text);
-	// }
+	}
 
 	render () {
 		return (

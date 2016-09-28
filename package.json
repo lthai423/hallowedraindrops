@@ -10,9 +10,8 @@
     "node": ">=4.0.0"
   },
   "scripts": {
-    "bz": "grunt fet",
     "test": "grunt test",
-    "fet": "mocha -w test/helpers/browser.js test/FrontEndSpec.js",
+    "fet": "mocha test/helpers/browser.js test/FrontEndSpec.js",
     "test-client": "grunt karma",
     "start": "grunt start",
     "lint": "grunt eslint",
@@ -54,6 +53,7 @@
     "mocha": "^3.0.2",
     "morgan": "^1.7.0",
     "react": "^15.3.2",
+    "react-addons-test-utils": "^15.3.2",
     "react-dom": "^15.3.2",
     "request": "^2.75.0",
     "request-promise": "^4.1.1",

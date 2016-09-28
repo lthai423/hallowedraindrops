@@ -8,12 +8,6 @@ var Promise = require('bluebird');
 
 export default class Navigation extends React.Component {
 
-	constructor(props) {
-		super(props);
-		this.state = {
-		  text: 'hello world', // text is going to be the code the user inputs
-		}
-	}
 
 	// ????
 	getText() {
