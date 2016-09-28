@@ -60,7 +60,15 @@ class App extends React.Component {
         this.setState({
           text: msg
         });
+        var range = this.editor.getSelectionRange();
+        var pos = this.editor.getCursorPosition();
+        console.log(range);
+        console.log(this.editor);
         this.editor.setValue(this.state.text);
+        // this.editor.clearSelection();
+        this.editor.selection.setRange(range);
+        // this.editor.navigateTo(range.start.row, range.start.colum);
+        // this.editor.moveCursorTo(range.end.row, range.end.column);
       }
     });
 
@@ -75,17 +83,17 @@ class App extends React.Component {
   // editorSetup will place in the settings for our editor
   // i.e. themes, language, etc.
   editorSetup () {
-  	var editor = ace.edit("editor");
-  	editor.setTheme("ace/theme/monokai");
-  	editor.getSession().setMode("ace/mode/javascript");
-  	editor.resize();
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    editor.getSession().setMode("ace/mode/javascript");
+    editor.resize();
 
     // editor.on('change', function(e) {
     //   console.log('This changed!, ', e);
     // });
     var socket = io();
 
-  	return editor;
+    return editor;
   }
 
   handleKeyPress (e) {
