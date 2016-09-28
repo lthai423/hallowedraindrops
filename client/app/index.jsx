@@ -60,10 +60,19 @@ class App extends React.Component {
         this.setState({
           text: msg
         });
+
+        //Get the range of selected text and cursor
+        var pos = this.editor.getCursorPosition();
         var range = this.editor.getSelectionRange();
+
         this.editor.setValue(this.state.text);
+
         //makes sure the selected word stays selected
-        this.editor.selection.setRange(range);
+        if (range.start.row === pos.row && range.start.column === pos.column) {
+          this.editor.selection.setRange(range, true);
+        } else {
+          this.editor.selection.setRange(range);
+        }
       }
     });
 
