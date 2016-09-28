@@ -9,7 +9,8 @@ module.exports = function(grunt) {
         options: {
           reporter: 'spec'
         },
-        src: ['test/**/*.js']
+        // adjusting the 'test' to ONLY be backend for now
+        src: ['test/ServerSpec.js']
       }
     },
 
