@@ -30,7 +30,7 @@ var port = process.argv[2] || 8080;
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 if(!module.parent) {
-  app.listen(port, () => {
+  server.listen(port, () => {
   	console.log('socket on 8080');
   });
 }
