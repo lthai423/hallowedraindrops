@@ -9,7 +9,7 @@ class App extends React.Component {
   	super(props);
   	this.state = {
   	  text: 'hello world', // text is going to be the code the user inputs
-  	}
+  	};
   }
 
   componentDidMount() {
@@ -52,19 +52,34 @@ class App extends React.Component {
     var text = this.editor.getValue();
     this.setState({
       text: text
-    })
-    
+    });
+
     socket.on('alter text', (msg) => {
-      this.setState({
-        text: msg
-      });
-      this.editor.setValue(this.state.text, 1);
+      if (this.state.text !== msg) {
+        console.log('making changes');
+        this.setState({
+          text: msg
+        });
+
+        //Get the range of selected text and cursor
+        var pos = this.editor.getCursorPosition();
+        var range = this.editor.getSelectionRange();
+
+        this.editor.setValue(this.state.text);
+
+        //makes sure the selected word stays selected
+        if (range.start.row === pos.row && range.start.column === pos.column) {
+          this.editor.selection.setRange(range, true);
+        } else {
+          this.editor.selection.setRange(range);
+        }
+      }
     });
 
     socket.on('alter result', (msg) => {
       console.log('going to append this: ', msg);
       $('.response').append(msg);
-    })
+    });
 
     return socket;
   }
@@ -72,29 +87,23 @@ class App extends React.Component {
   // editorSetup will place in the settings for our editor
   // i.e. themes, language, etc.
   editorSetup () {
-  	var editor = ace.edit("editor");
-  	editor.setTheme("ace/theme/monokai");
-  	editor.getSession().setMode("ace/mode/javascript");
-  	editor.resize();
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    editor.getSession().setMode("ace/mode/javascript");
+    editor.resize();
 
-    var socket = io();
-
-  	return editor;
+    return editor;
   }
 
-  handleKeyPress () {
-    console.log('keypress is called');
+  handleKeyPress (e) {
     var text = this.editor.getValue();
     this.setState({
       text: text
-    })
+    });
 
     this.socket.emit('text change', text);
   }
 
-  // react keyboard events: 
-  // onkeydown / onkeypress / onkeyup
-  // onKeyDown={this.setupSocket.bind(this)}
   render () {
   	return (
   	  <div>
