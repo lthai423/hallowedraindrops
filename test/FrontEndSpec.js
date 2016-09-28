@@ -1,4 +1,9 @@
 var should = require('chai').should();
+var expect = require('chai').expect;
+var http = require('http');
+var webServer = require('../server/server.js');
+var replServer = require('../REPL_service/REPL_server.js');
+var request = require('request');
 var sinon = require('sinon');
 
 describe('Server Side Specifications', function() {
