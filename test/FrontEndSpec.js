@@ -6,11 +6,16 @@ var replServer = require('../REPL_service/REPL_server.js');
 var request = require('request');
 var sinon = require('sinon');
 
-describe('Server Side Specifications', function() {
+var editor = require('../client/app/editor.jsx');
+
+describe('Front End Specifications', function() {
   describe('Test function', function() {
   	// manually create and restore the sandbox
   	var sandbox,
   			jamesBond;
+
+    // testing port
+    var testingPort = 9000;
 
   	var licensesToKill = {
 	    start: function (agent) {
@@ -20,7 +25,10 @@ describe('Server Side Specifications', function() {
 
   	beforeEach(function () {
 	    sandbox = sinon.sandbox.create();
-
+      // setup the server
+      webServer.listen(testingPort, () => {
+        console.log('listening on port: ', testingPort);
+      });
   	});
 
   	afterEach(function () {
