@@ -6,7 +6,7 @@ var replServer = require('../REPL_service/REPL_server.js');
 var request = require('request');
 var sinon = require('sinon');
 
-var editor = require('../client/app/editor.jsx');
+var clientEditor = require('../client/app/editor.jsx');
 
 describe('Front End Specifications', function() {
   describe('Test function', function() {
