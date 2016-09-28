@@ -26,18 +26,18 @@ describe('Front End Specifications', function() {
 	    // sandbox = sinon.sandbox.create();
       webInstance = http.Server(webServer.app);
       webInstance.listen(webTestingPort, () => {
-        // var replInstance = http.Server(replServer.app);
-        // replInstance.listen(replTestingPort, () => {
+        replInstance = http.Server(replServer.app);
+        replInstance.listen(replTestingPort, () => {
         done();
-        // });
+        });
       });
   	});
 
   	afterEach(function (done) {
 	    // sandbox.restore();
-      // if(replInstance) {
-        // replInstance.close();
-      // }
+      if(replInstance) {
+        replInstance.close();
+      }
       if(webInstance) webInstance.close(done);
      
   	});
