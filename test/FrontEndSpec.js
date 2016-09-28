@@ -46,3 +46,24 @@ describe('Server Side Specifications', function() {
 
   });
 });
+
+ /* tests:
+ Basic:
+-The editor mounted
+-The socket was created
+-It should render only one code editor
+
+Intermediate:
+-The user typed something and it was reflected in the editor
+-It should load ‘hello world’ upon first load
+-If text was deleted, it should be updated on both
+-If a new line was entered, it should be updated on both
+-If a bad function was written, it should receive an error
+
+Advanced:
+-The user typed something on the editor and it was reflected in both
+*/
+
+//NOTES:
+// we'd also need webpack 
+
