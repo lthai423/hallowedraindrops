@@ -1,3 +1,6 @@
+// a placeholder for our editor file.
+// code in here is only for testing purposes
+
 import React from 'react';
 import { render } from 'react-dom';
 
