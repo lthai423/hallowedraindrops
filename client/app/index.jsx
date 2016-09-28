@@ -61,14 +61,9 @@ class App extends React.Component {
           text: msg
         });
         var range = this.editor.getSelectionRange();
-        var pos = this.editor.getCursorPosition();
-        console.log(range);
-        console.log(this.editor);
         this.editor.setValue(this.state.text);
-        // this.editor.clearSelection();
+        //makes sure the selected word stays selected
         this.editor.selection.setRange(range);
-        // this.editor.navigateTo(range.start.row, range.start.colum);
-        // this.editor.moveCursorTo(range.end.row, range.end.column);
       }
     });
 
