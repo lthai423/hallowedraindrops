@@ -11,6 +11,7 @@
   },
   "scripts": {
     "test": "grunt test",
+    "fet": "mocha test/helpers/browser.js test/FrontEndSpec.js",
     "test-client": "grunt karma",
     "start": "grunt start",
     "lint": "grunt eslint",
@@ -36,8 +37,12 @@
     "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
     "chai": "^3.5.0",
+<<<<<<< HEAD
     "chance": "^1.0.4",
     "ejs": "^2.5.2",
+=======
+    "enzyme": "^2.4.1",
+>>>>>>> 55bef81e6530242ba278de8402df47d8847081c6
     "eslint": "^3.4.0",
     "eslint-config-hackreactor": "github:hackreactor-labs/eslint-config-hackreactor",
     "express": "^4.14.0",
@@ -54,7 +59,12 @@
     "mocha": "^3.0.2",
     "morgan": "^1.7.0",
     "react": "^15.3.2",
+    "react-addons-test-utils": "^15.3.2",
     "react-dom": "^15.3.2",
+<<<<<<< HEAD
+=======
+    "react-router": "^2.8.1",
+>>>>>>> 55bef81e6530242ba278de8402df47d8847081c6
     "request": "^2.75.0",
     "request-promise": "^4.1.1",
     "sinon": "^1.17.6",
@@ -62,6 +72,9 @@
     "webpack": "^1.13.2"
   },
   "devDependencies": {
-    "supertest": "^2.0.0"
+    "grunt-mocha": "^1.0.2",
+    "supertest": "^2.0.0",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.1"
   }
 }
