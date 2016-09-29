@@ -92,11 +92,8 @@ class App extends React.Component {
     editor.getSession().setMode("ace/mode/javascript");
     editor.resize();
 
-<<<<<<< HEAD
   	return editor;
-=======
-    return editor;
->>>>>>> 55bef81e6530242ba278de8402df47d8847081c6
+
   }
 
   handleKeyPress (e) {
