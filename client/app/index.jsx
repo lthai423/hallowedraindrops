@@ -48,7 +48,7 @@ class App extends React.Component {
   // setupSocket will emit the events when the keydown event occurs
   // there is a problem here... where we are transmitting every key
   setupSocket() {
-    var socket = io();
+    var socket = io(window.location.pathname);
     var text = this.editor.getValue();
     this.setState({
       text: text
@@ -92,7 +92,11 @@ class App extends React.Component {
     editor.getSession().setMode("ace/mode/javascript");
     editor.resize();
 
+<<<<<<< HEAD
+  	return editor;
+=======
     return editor;
+>>>>>>> 55bef81e6530242ba278de8402df47d8847081c6
   }
 
   handleKeyPress (e) {
