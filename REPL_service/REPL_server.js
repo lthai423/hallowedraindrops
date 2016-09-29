@@ -10,6 +10,12 @@ require('./config/routes.js')(app);
 
 // set port up
 var port = process.argv[2] || 3000;
-app.listen(port, function () {
-  console.log('Web Server listening on port ' + port +' !');
-});
+if (!module.parent) {
+  app.listen(port, function () {
+    console.log('Web Server listening on port ' + port +' !');
+  });
+}
+
+module.exports = {
+  app: app
+};
