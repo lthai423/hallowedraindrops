@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 
 var Promise = require('bluebird');
 
-class App extends React.Component {
+class App2 extends React.Component {
 
   constructor(props) {
   	super(props);
@@ -48,12 +48,11 @@ class App extends React.Component {
   // setupSocket will emit the events when the keydown event occurs
   // there is a problem here... where we are transmitting every key
   setupSocket() {
-    console.log(window.location.pathname)
-    var socket = io(window.location.pathname); // FIX ME
+    var socket = io('/asdf');
     var text = this.editor.getValue();
     this.setState({
       text: text
-    });
+    })
     
     socket.on('alter text', (msg) => {
       this.setState({
@@ -110,4 +109,4 @@ class App extends React.Component {
   }
 }
 
-render(<App/>, document.getElementById('app'));
+render(<App2/>, document.getElementById('wtf'));
