@@ -48,8 +48,7 @@ class App extends React.Component {
   // setupSocket will emit the events when the keydown event occurs
   // there is a problem here... where we are transmitting every key
   setupSocket() {
-    console.log(window.location.pathname)
-    var socket = io(window.location.pathname); // FIX ME
+    var socket = io(window.location.pathname);
     var text = this.editor.getValue();
     this.setState({
       text: text
