@@ -12,7 +12,7 @@
   "scripts": {
     "test": "grunt test",
     "test-client": "grunt karma",
-    "start": "grunt start &; node REPL_service/REPL_server.js",
+    "start": "grunt start",
     "lint": "grunt eslint",
     "post-install": "curl -s https://raw.githubusercontent.com/hackreactor-labs/pomander/master/bin/install | bash",
     "dev": "webpack -d --watch",
