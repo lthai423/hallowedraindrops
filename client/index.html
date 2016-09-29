@@ -7,10 +7,10 @@
     <h1>Welcome to CodeDrop!</h1>
     <h3>An online Javascript IDE</h3>
     <!-- <a href="/pad.html" class="button">Go to CodeDrop Pad</a> -->
-    <button onclick='testFunc()'>Click me!</button>
+    <button onclick='pad()'>Click me!</button>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
-      function testFunc(){
+      function pad(){
         console.log('was clicked!');
         $.get('/pad/create', function(data){
           window.location = data;
