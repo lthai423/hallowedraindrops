@@ -1,5 +1,11 @@
-// File containing all keys
+module.exports = {
+	github: {
+		GITHUB_CLIENT_ID : "",
+		GITHUB_CLIENT_SECRET : "",
+		GITHUB_CALLBACK_URL : ""
+	},
 
-config_keys = {'API_KEYS': 'API_KEY_INFO_HERE'};
-
-module.exports = config_keys;
+	mongo: {
+		url: ''
+	}
+}
