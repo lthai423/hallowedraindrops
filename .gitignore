@@ -28,5 +28,12 @@ dist/
 node_modules/
 bower_components/
 
+<<<<<<< 870ba3622357b3a019c6fa4ec71de21cb5509788
 # Webpack Bundle File
 client/public
+
+# Text files used for REPL service
+REPL_service/config/*.txt
+
+#Files used for Github Auth
+server/config/env/config.js
