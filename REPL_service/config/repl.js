@@ -2,8 +2,10 @@
 const repl = require('repl');
 const net = require('net');
 const stream = require('stream');
-
+var savedContext = {};
 var connections = 0;
+var cache = {};
+var _ = require('underscore');
 
 module.exports = {
   /**
@@ -12,21 +14,7 @@ module.exports = {
     * @param {code, callback} code is the request javascript code, callback returns the output data
     * @returns {nothing}
     */
-  runCode: (code, callback) => {
-
-    // net.createServer((socket) => {
-    //   connections += 1;
-    //   repl.start({
-    //     prompt: 'Node.js via TCP socket> ',
-    //     input: socket,
-    //     output: socket
-    //   }).on('exit', () => {
-    //     socket.end();
-    //   });
-    // }).listen(5001, () => {
-    //   console.log('TCP server listening on 5001');
-    // });
-
+  runCode: (code, path, callback) => {
     /**
       * @name input
       * @desc Push to-be-evaluated code to readable stream, ready by REPL.
@@ -54,12 +42,22 @@ module.exports = {
       * @param {input, output} readable and writable streams
       * @returns {nothing}
       */
-    var server = repl.start({input: input, output:output});
+    var server = repl.start({input: input, output:output, useGlobal:true});
+
+    function initializeContext(context, path) {
+      _.extend(context, cache[path]);
+    };
 
     // Returns data to the callback once REPL is done with code
+    // Will not respond with data to client-side if callback is removed.
     server.on('exit', () => {
       console.log('Received "exit" event from repl!');
+      cache[path] = server.context;
+      console.log(cache[path]);
       callback(data);
     });
+
+    initializeContext(server.context, path);
+    server.on('reset', initializeContext);
   }
 };

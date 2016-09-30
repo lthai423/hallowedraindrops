@@ -15,7 +15,7 @@ module.exports = (app) => {
       res.send('Getting that REPL SERVER');
     })
     .post((req, res) => {
-      runCode(req.body.code, (data) => {
+      runCode(req.body.code, req.path, (data) => {
         res.send(data);
       });
     });
