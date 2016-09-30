@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
+// random statement for new commit msg
 
 var Promise = require('bluebird');
 
