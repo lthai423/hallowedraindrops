@@ -6,10 +6,10 @@ var Promise = require('bluebird');
 class App extends React.Component {
 
   constructor(props) {
-  	super(props);
-  	this.state = {
-  	  text: 'hello world', // text is going to be the code the user inputs
-  	}
+    super(props);
+    this.state = {
+      text: 'hello world', // text is going to be the code the user inputs
+    }
   }
 
   componentDidMount() {
@@ -20,10 +20,10 @@ class App extends React.Component {
   }
 
   getText() {
-  	var code = this.editor.getValue();
-  	this.setState({
-  	  text : code
-  	});
+    var code = this.editor.getValue();
+    this.setState({
+      text : code
+    });
   }
 
   // sendCode will take the code on the 'text' state
@@ -73,12 +73,12 @@ class App extends React.Component {
   // editorSetup will place in the settings for our editor
   // i.e. themes, language, etc.
   editorSetup () {
-  	var editor = ace.edit("editor");
-  	editor.setTheme("ace/theme/monokai");
-  	editor.getSession().setMode("ace/mode/javascript");
-  	editor.resize();
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    editor.getSession().setMode("ace/mode/javascript");
+    editor.resize();
 
-  	return editor;
+    return editor;
   }
 
   handleKeyPress () {
@@ -95,25 +95,19 @@ class App extends React.Component {
   // onkeydown / onkeypress / onkeyup
   // onKeyDown={this.setupSocket.bind(this)}
   render () {
-  	return (
+    return (
       <div>
-  	  <div>
-  	  	<button onClick={this.getText.bind(this)}>get code</button>
+        <button onClick={this.getText.bind(this)}>get code</button>
         <button onClick={this.sendCode.bind(this)}>process code</button>
-      </div>
-
-	    <div>
-  	    <div id="editor" onKeyDown={this.setupSocket.bind(this)}></div>
         <div>
           Response is: <p className="response"></p>
         </div>
-  	    <div>
-  	    <div id="editor" onKeyUp={this.handleKeyPress.bind(this)}></div>
-  	    </div>
-  	  </div>
+        <div>
+        <div id="editor" onKeyUp={this.handleKeyPress.bind(this)}></div>
+        </div>
       </div>
-  	)
+    )
   }
 }
 
-render(<App/>, document.getElementById('app'))
+render(<App/>, document.getElementById('app'));
