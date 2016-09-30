@@ -96,10 +96,13 @@ class App extends React.Component {
   // onKeyDown={this.setupSocket.bind(this)}
   render () {
   	return (
+      <div>
   	  <div>
   	  	<button onClick={this.getText.bind(this)}>get code</button>
         <button onClick={this.sendCode.bind(this)}>process code</button>
-  	    <div>
+      </div>
+
+	    <div>
   	    <div id="editor" onKeyDown={this.setupSocket.bind(this)}></div>
         <div>
           Response is: <p className="response"></p>
@@ -108,8 +111,9 @@ class App extends React.Component {
   	    <div id="editor" onKeyUp={this.handleKeyPress.bind(this)}></div>
   	    </div>
   	  </div>
+      </div>
   	)
   }
 }
 
-render(<App/>, document.getElementById('app'));
+render(<App/>, document.getElementById('app'))
