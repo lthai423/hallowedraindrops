@@ -60,16 +60,31 @@ class App extends React.Component {
     });
 
     socket.on('alter text', (msg) => {
-      this.setState({
-        text: msg
-      });
-      this.editor.setValue(this.state.text, 1);
+      if(this.state.text !== msg) {
+        console.log('making changes');
+        this.setState({
+          text: msg
+        });
+
+        //Get the range of selected text adn cursor
+        var pos = this.editor.getCursorPosition();
+        var range = this.editor.getSelectionRange();
+
+        this.editor.setValue(this.state.text);
+
+        // make sure the selected word stays highlighted
+        if (range.start.row === pos.row && range.start.column === pos.column) {
+          this.editor.selection.setRange(range, true);  
+        } else {
+          this.editor.selection.setRange(range);
+        }
+      }
     });
 
     socket.on('alter result', (msg) => {
       console.log('going to append this: ', msg);
       $('.response').append(msg);
-    })
+    });
 
     return socket;
   }
@@ -85,12 +100,12 @@ class App extends React.Component {
     return editor;
   }
 
-  handleKeyPress () {
+  handleKeyPress (e) {
     console.log('keypress is called');
     var text = this.editor.getValue();
     this.setState({
       text: text
-    })
+    });
 
     this.socket.emit('text change', text);
   }
