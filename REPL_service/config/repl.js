@@ -40,7 +40,7 @@ module.exports = {
       * @param {input, output} readable and writable streams
       * @returns {nothing}
       */
-    var server = repl.start({input: input, output:output});
+    var server = repl.start({input: input, output:output, terminal: false});
 
     // function initializeContext(context, path) {
     //   _.extend(context, cache[path]);
@@ -50,7 +50,10 @@ module.exports = {
     // Will not respond with data to client-side if callback is removed.
     server.on('exit', () => {
       console.log('Received "exit" event from repl!');
-      callback(data);
+      data = data.replace(/\.\.\.\ /g, '');
+      data = data.replace(/\>\ +/g, ">");
+      console.log(JSON.stringify(data));
+      callback(JSON.stringify(data));
     });
 
     // initializeContext(server.context, path);
