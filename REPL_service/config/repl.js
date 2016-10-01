@@ -18,6 +18,7 @@ module.exports = {
       * @desc Push to-be-evaluated code to readable stream, ready by REPL.
       */
     var input = new stream.Readable();
+    console.log(code);
     input._read = function noop() {
       input.push(code);
       input.push(null);
@@ -34,13 +35,28 @@ module.exports = {
         callback();
     };
 
+    var outputChange = function(line) {
+      return line;
+    };
+
+    var inputChange = function (cmd, context, filename, callback) {
+      // console.log(cmd, filename);
+      // var result;
+      // var first = cmd.slice(0,1);
+      // if (first === '*' || first === '/') {
+
+      // } else {
+      //   result = cmd;
+      // }
+      // callback(null, result);
+    };
     /**
       * @name repl.start
       * @desc Sends a Readable stream to the repl server and outputs a writeable stream after eval
       * @param {input, output} readable and writable streams
       * @returns {nothing}
       */
-    var server = repl.start({input: input, output:output, terminal: false});
+    var server = repl.start({input: input, output:output, terminal: false, ignoreUndefined: true});
 
     // function initializeContext(context, path) {
     //   _.extend(context, cache[path]);
@@ -50,10 +66,10 @@ module.exports = {
     // Will not respond with data to client-side if callback is removed.
     server.on('exit', () => {
       console.log('Received "exit" event from repl!');
-      data = data.replace(/\.\.\.\ /g, '');
-      data = data.replace(/\>\ +/g, ">");
+      data = data.replace(/(\.)+/g, '');
+      data = data.replace(/( \>)+/g, "> ");
       console.log(JSON.stringify(data));
-      callback(JSON.stringify(data));
+      callback(data);
     });
 
     // initializeContext(server.context, path);
