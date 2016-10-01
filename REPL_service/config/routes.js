@@ -16,6 +16,7 @@ module.exports = (app) => {
     })
     .post((req, res) => {
       runCode(req.body.code, req.path, (data) => {
+        console.log('data', data);
         res.send(data);
       });
     });
