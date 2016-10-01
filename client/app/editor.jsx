@@ -6,7 +6,7 @@ import { render } from 'react-dom';
 
 // var Promise = require('bluebird');
 
-export default class Editor extends React.Component {
+class Editor extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -34,4 +34,4 @@ export default class Editor extends React.Component {
 	}
 }
 
-// module.exports = Editor; // 
+export default Editor;

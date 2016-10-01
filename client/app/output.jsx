@@ -6,7 +6,7 @@ import { render } from 'react-dom';
 
 var Promise = require('bluebird');
 
-export default class Output extends React.Component {
+class Output extends React.Component {
 
 	render () {
 		return (
@@ -18,4 +18,4 @@ export default class Output extends React.Component {
 	}
 }
 
-// module.exports = Editor; // 
+export default Output;
