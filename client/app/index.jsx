@@ -38,7 +38,7 @@ class App extends React.Component {
   sendCode() {
     $.ajax({
       method: 'POST',
-      url: 'http://127.0.0.1:8080/api/replservice/runcode',
+      url: 'http://localhost:8080/api/replservice/runcode',
       data: {code: this.state.text},
       success: (data) => {
         console.log('data value is: ', data);
@@ -46,8 +46,8 @@ class App extends React.Component {
         this.socket.emit('append result', data);
         // $('.response').append(data);
       },
-      error: (err) => {
-        console.log('error is: ', err);
+      error: (jqXHR, textStatus, errorThrown) => {
+        console.log(textStatus, errorThrown, jqXHR);
       }
     });
   }
