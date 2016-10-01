@@ -4,15 +4,16 @@ import Editor from './editor.jsx';
 import Navigation from './navigation.jsx';
 import output from './output.jsx';
 
+
 var Promise = require('bluebird');
 
 class App extends React.Component {
 
   constructor(props) {
-  	super(props);
-  	this.state = {
-  	  text: 'hello world', // text is going to be the code the user inputs
-  	};
+    super(props);
+    this.state = {
+      text: 'hello world', // text is going to be the code the user inputs
+    }
   }
 
   componentDidMount() {
@@ -23,10 +24,10 @@ class App extends React.Component {
   }
 
   getText() {
-  	var code = this.editor.getValue();
-  	this.setState({
-  	  text : code
-  	});
+    var code = this.editor.getValue();
+    this.setState({
+      text : code
+    });
   }
 
   // sendCode will take the code on the 'text' state
@@ -51,38 +52,24 @@ class App extends React.Component {
   // setupSocket will emit the events when the keydown event occurs
   // there is a problem here... where we are transmitting every key
   setupSocket() {
-    var socket = io();
+    console.log(window.location.pathname)
+    var socket = io(window.location.pathname); // FIX ME
     var text = this.editor.getValue();
     this.setState({
       text: text
     });
 
     socket.on('alter text', (msg) => {
-      if (this.state.text !== msg) {
-        console.log('making changes');
-        this.setState({
-          text: msg
-        });
-
-        //Get the range of selected text and cursor
-        var pos = this.editor.getCursorPosition();
-        var range = this.editor.getSelectionRange();
-
-        this.editor.setValue(this.state.text);
-
-        //makes sure the selected word stays selected
-        if (range.start.row === pos.row && range.start.column === pos.column) {
-          this.editor.selection.setRange(range, true);
-        } else {
-          this.editor.selection.setRange(range);
-        }
-      }
+      this.setState({
+        text: msg
+      });
+      this.editor.setValue(this.state.text, 1);
     });
 
     socket.on('alter result', (msg) => {
       console.log('going to append this: ', msg);
       $('.response').append(msg);
-    });
+    })
 
     return socket;
   }
@@ -98,28 +85,32 @@ class App extends React.Component {
     return editor;
   }
 
-  handleKeyPress (e) {
+  handleKeyPress () {
+    console.log('keypress is called');
     var text = this.editor.getValue();
     this.setState({
       text: text
-    });
+    })
 
     this.socket.emit('text change', text);
   }
 
+  // react keyboard events:
+  // onkeydown / onkeypress / onkeyup
+  // onKeyDown={this.setupSocket.bind(this)}
   render () {
-  	return (
-  	  <div>
-  	  	<button onClick={this.getText.bind(this)}>get code</button>
+    return (
+      <div>
+        <button onClick={this.getText.bind(this)}>get code</button>
         <button onClick={this.sendCode.bind(this)}>process code</button>
         <div>
           Response is: <p className="response"></p>
         </div>
-  	    <div>
-  	    <div id="editor" onKeyUp={this.handleKeyPress.bind(this)}></div>
-  	    </div>
-  	  </div>
-  	)
+        <div>
+        <div id="editor" onKeyUp={this.handleKeyPress.bind(this)}></div>
+        </div>
+      </div>
+    )
   }
 }
 
