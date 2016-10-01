@@ -68,7 +68,6 @@ module.exports = {
       console.log('Received "exit" event from repl!');
       data = data.replace(/(\.)+/g, '');
       data = data.replace(/( \>)+/g, "> ");
-      console.log(JSON.stringify(data));
       callback(data);
     });
 
