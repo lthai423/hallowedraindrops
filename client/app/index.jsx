@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import Editor from './editor.jsx';
 import Navigation from './navigation.jsx';
 import output from './output.jsx';
+import Sidebar from './challenge.jsx';
 
 
 var Promise = require('bluebird');
@@ -13,6 +14,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       text: 'hello world', // text is going to be the code the user inputs
+      sidebar: false,
+      question: ''
     }
   }
 
@@ -110,12 +113,27 @@ class App extends React.Component {
     this.socket.emit('text change', text);
   }
 
+  sidebar () {
+    this.setState({
+      sidebar: !this.state.sidebar
+    });
+  }
+
+  // getSelection (question) {
+  //   console.log('question passed back up is: ', question);
+    
+  // }
+
   // react keyboard events:
   // onkeydown / onkeypress / onkeyup
   // onKeyDown={this.setupSocket.bind(this)}
   render () {
     return (
       <div>
+        <div>
+          <button onClick={this.sidebar.bind(this, question)}>Toggle Sidebar</button>
+            { this.state.sidebar ? <Sidebar></Sidebar> : null }
+        </div>
         <button onClick={this.getText.bind(this)}>get code</button>
         <button onClick={this.sendCode.bind(this)}>process code</button>
         <div>

@@ -1,80 +1,29 @@
-<!DOCTYPE html>
-<!-- saved from url=(0068)https://jumpstartthemes.com/demo/v/3.0.0/templates/launch/index.html -->
-<html lang="en" class="no-js">
-  <!--<![endif]-->
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Launch - MVP Ready</title>
-    <!-- Google Font: Open Sans -->
-    <link rel="stylesheet" href="./styling/index/launch_files/css">
-    <link rel="stylesheet" href="./styling/index/launch_files/css(1)">
-    <!-- Font Awesome CSS -->
-    <link rel="stylesheet" href="./styling/index/launch_files/font-awesome.min.css">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="./styling/index/launch_files/bootstrap.min.css">
-    <link rel="stylesheet" href="./styling/index/launch_files/jquery.vegas.min.css">
-    <link rel="stylesheet" href="./styling/index/launch_files/mvpready-launch.css">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <link rel="shortcut icon" href="https://jumpstartthemes.com/demo/v/3.0.0/templates/launch/favicon.ico">
+    <meta charset="utf-8">
+    <title>Hallowed Raindrops</title>
   </head>
-  <body class="">
-    <img class="vegas-background" src="./styling/index/launch_files/bg.jpg" style="position: fixed; left: 0px; top: -189.5px; width: 2133px; height: 1422px; bottom: auto; right: auto;">
-    <div class="vegas-overlay" style="margin: 0px; padding: 0px; position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; background-image: url(&quot;./styling/index/img/vegas/13.png&quot;);"></div>
-    <div class="countdown-wrapper">
-      <header><img src="./styling/index/launch_files/logo.png" alt="Spatial coming soon template"></header>
-      <main>
-        <div class="content">
-          <div class="intro">
-            <h2>
-              Our Website Is Almost Ready. Stay Tuned!
-            </h2>
-            <h4 class="">Access to a fully functional Javscript IDE without any of the setup!</h4>
-          </div>
-          <div class="counter">
-            <h3 class="text-primary">Create a CodeDrop Pad!</h3>
-            <button type="submit" class="btn btn-primary" onclick='pad()' value="Subscribe" name="subscribe">Create Pad</button>
-          </div>
-          <!-- /.counter -->
-        </div>
-        <!-- /.content -->
-        <form role="form" class="newsletter" method="post" action="https://jumpstartthemes.com/demo/v/3.0.0/templates/launch/index.html">
-          <h3 class="">We'll let you know when we launch!</h3>
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Email Address" required="" value="" name="email_address" id="email_address">
-            <span class="input-group-btn">
-            <button type="submit" class="btn btn-primary" value="Subscribe" name="subscribe">Submit</button>
-            </span>
-          </div>
-        </form>
-        <!-- /.newsletter-form -->
-      </main>
-      <footer>
-        <ul class="list-inline">
-          <li>
-            <a href="http://facebook.com/" class="ui-tooltip" title="" data-placement="bottom" target="_blank" data-original-title="Facebook">
-            <i class="fa fa-facebook"></i>
-            </a>
-          </li>
-          <li>
-            <a href="http://twitter.com/" class="ui-tooltip" title="" data-placement="bottom" target="_blank" data-original-title="Twitter">
-            <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-          <li>
-            <a href="http://linkedin.com/" class="ui-tooltip" title="" data-placement="bottom" target="_blank" data-original-title="LinkedIn">
-            <i class="fa fa-linkedin"></i>
-            </a>
-          </li>
-        </ul>
-      </footer>
-    </div>
-    <!-- /.wrapper -->
+  <body>
+    <h1>Welcome to CodeDrop!</h1>
+    <h3>An online Javascript IDE</h3>
+    <!-- <a href="/pad.html" class="button">Go to CodeDrop Pad</a> -->
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <!-- adding in bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
+    
+    <button onclick='pad()'>Click me!</button>
+    <button onclick='github()'>Login with GitHub</button>
+
+    <script>
+      function github(){
+        document.location.href='/auth/github';
+      }
+    </script>
+
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
       function pad(){
@@ -84,14 +33,5 @@
         });
       }
     </script>
-    <!-- Core JS -->
-    <script src="./styling/index/launch_files/jquery.js"></script>
-    <script src="./styling/index/launch_files/bootstrap.min.js"></script>
-    <script src="./styling/index/launch_files/jquery.vegas.min.js"></script>
-    <script src="./styling/index/launch_files/jquery.downCount.js"></script>
-    <script src="./styling/index/launch_files/mvpready-core.js"></script>
-    <script src="./styling/index/launch_files/mvpready-helpers.js"></script>
-    <script src="./styling/index/launch_files/mvpready-launch.js"></script>
-    <script aria-hidden="true" type="application/x-lastpass" id="hiddenlpsubmitdiv" style="display: none;"></script><script>try{(function() { for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){ var lastpass_f = document.forms[lastpass_iter]; if(typeof(lastpass_f.lpsubmitorig2)=="undefined"){ lastpass_f.lpsubmitorig2 = lastpass_f.submit; if (typeof(lastpass_f.lpsubmitorig2)=='object'){ continue;}lastpass_f.submit = function(){ var form=this; var customEvent = document.createEvent("Event"); customEvent.initEvent("lpCustomEvent", true, true); var d = document.getElementById("hiddenlpsubmitdiv"); if (d) {for(var i = 0; i < document.forms.length; i++){ if(document.forms[i]==form){ if (typeof(d.innerText) != 'undefined') { d.innerText=i.toString(); } else { d.textContent=i.toString(); } } } d.dispatchEvent(customEvent); }form.lpsubmitorig2(); } } }})()}catch(e){}</script>
   </body>
 </html>
