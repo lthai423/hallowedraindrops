@@ -46,7 +46,7 @@ describe('Server Side Specifications', function() {
       };
       request(requestParams, function(error, response, body) {
         var output = body;
-        expect(body).to.equal('> hello world!\nundefined\n> ');
+        expect(body).to.equal('> hello world!\n> ');
         expect(body).to.be.an('string');
         done();
       });
@@ -97,7 +97,7 @@ describe('Server Side Specifications', function() {
      };
      request(requestParams, function(error, response, body) {
        var output = body;
-       expect(body).to.equal('> hello world!\nundefined\n> ');
+       expect(body).to.equal('> hello world!\n> ');
        expect(body).to.be.an('string');
        done();
      });
