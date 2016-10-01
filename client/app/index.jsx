@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import Editor from './editor.jsx';
 import Navigation from './navigation.jsx';
-import output from './output.jsx';
+import Output from './output.jsx';
 import Sidebar from './challenge.jsx';
 
 
@@ -13,10 +13,11 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: 'hello world', // text is going to be the code the user inputs
+      text: "console.log('hello world')", // text is going to be the code the user inputs
+      outputText: [],
       sidebar: false,
       question: ''
-    }
+    };
   }
 
   componentDidMount() {
@@ -42,7 +43,6 @@ class App extends React.Component {
       data: {code: this.state.text},
       success: (data) => {
         console.log('data value is: ', data);
-        console.log('value for success is: ', this);
         this.socket.emit('append result', data);
         // $('.response').append(data);
       },
@@ -77,7 +77,7 @@ class App extends React.Component {
 
         // make sure the selected word stays highlighted
         if (range.start.row === pos.row && range.start.column === pos.column) {
-          this.editor.selection.setRange(range, true);  
+          this.editor.selection.setRange(range, true);
         } else {
           this.editor.selection.setRange(range);
         }
@@ -86,7 +86,14 @@ class App extends React.Component {
 
     socket.on('alter result', (msg) => {
       console.log('going to append this: ', msg);
-      $('.response').append(msg);
+      var output = [];
+      msg.split('\n').forEach((line) => {
+        output.push(line);
+      });
+      this.setState({
+        outputText: output
+      });
+      // $('.response').append(msg);
     });
 
     return socket;
@@ -121,7 +128,7 @@ class App extends React.Component {
 
   // getSelection (question) {
   //   console.log('question passed back up is: ', question);
-    
+
   // }
 
   // react keyboard events:
@@ -137,10 +144,8 @@ class App extends React.Component {
         <button onClick={this.getText.bind(this)}>get code</button>
         <button onClick={this.sendCode.bind(this)}>process code</button>
         <div>
-          Response is: <p className="response"></p>
-        </div>
-        <div>
         <div id="editor" onKeyUp={this.handleKeyPress.bind(this)}></div>
+        <Output output={this.state.outputText}/>
         </div>
       </div>
     )
