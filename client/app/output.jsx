@@ -3,19 +3,17 @@
 
 import React from 'react';
 import { render } from 'react-dom';
+import OutputLine from './outputLine.jsx';
 
 var Promise = require('bluebird');
 
-class Output extends React.Component {
-
-	render () {
+var Output = ({output}) => {
 		return (
-		  <div>
-		    <button>Run Code </button>
-
-		  </div>
+      <div id="console">
+        Program Response:
+        {output.map((line, index) => <OutputLine key={index} line={line}/>)}
+      </div>
 		)
-	}
 }
 
 export default Output;
