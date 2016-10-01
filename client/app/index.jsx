@@ -1,6 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
-// random statement for new commit msg
+import Editor from './editor.jsx';
+import Navigation from './navigation.jsx';
+import output from './output.jsx';
+
 
 var Promise = require('bluebird');
 
@@ -55,7 +58,7 @@ class App extends React.Component {
     this.setState({
       text: text
     });
-    
+
     socket.on('alter text', (msg) => {
       this.setState({
         text: msg
@@ -92,7 +95,7 @@ class App extends React.Component {
     this.socket.emit('text change', text);
   }
 
-  // react keyboard events: 
+  // react keyboard events:
   // onkeydown / onkeypress / onkeyup
   // onKeyDown={this.setupSocket.bind(this)}
   render () {

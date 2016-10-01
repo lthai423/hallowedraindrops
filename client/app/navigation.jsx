@@ -6,7 +6,7 @@ import { render } from 'react-dom';
 
 var Promise = require('bluebird');
 
-export default class Navigation extends React.Component {
+class Navigation extends React.Component {
 
 
 	// ????
@@ -27,4 +27,4 @@ export default class Navigation extends React.Component {
 	}
 }
 
-// module.exports = Editor; // 
+export default Navigation;
