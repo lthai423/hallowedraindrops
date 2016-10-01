@@ -11,6 +11,8 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
 
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+
     <link rel="stylesheet" href="./styling/styles.css">
   </head>
   <body>
@@ -18,23 +20,20 @@
       <h1>CoderPath</h1>
     </div>
     
-    <button onclick='pad()'>Click me!</button>
-    <button onclick='github()'>Login with GitHub</button>
+    <!-- <button onclick='pad()'>Click me!</button> -->
+    <!-- <button onclick='github()'>Login with GitHub</button> -->
 
-    <script>
-      function github(){
-        document.location.href='/auth/github';
-      }
-    </script>
+    <div id="app"></div>
 
-    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-    <script>
+    <!-- <script>
       function pad(){
         console.log('was clicked!');
         $.get('/pad/create', function(data){
           window.location = data;
         });
       }
-    </script>
+    </script> -->
+    <script src='public/bundle.js'></script>
+
   </body>
 </html>
