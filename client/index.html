@@ -1,37 +1,27 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Hallowed Raindrops</title>
-  </head>
-  <body>
-    <h1>Welcome to CodeDrop!</h1>
-    <h3>An online Javascript IDE</h3>
-    <!-- <a href="/pad.html" class="button">Go to CodeDrop Pad</a> -->
+    <title>CodeDrop Editor</title>
+
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <!-- adding in bootstrap -->
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
-
+<!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+ -->
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
-    
-    <button onclick='pad()'>Click me!</button>
-    <button onclick='github()'>Login with GitHub</button>
-
-    <script>
-      function github(){
-        document.location.href='/auth/github';
-      }
-    </script>
-
+<!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
+ -->
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-    <script>
-      function pad(){
-        console.log('was clicked!');
-        $.get('/pad/create', function(data){
-          window.location = data;
-        });
-      }
-    </script>
+
+    <link rel="stylesheet" href="./styling/styles.css">
+  </head>
+  <body>
+    <div class="banner">
+    </div>
+    
+    <div id="app"></div>
+
+    <script src='public/bundle.js'></script>
+
   </body>
 </html>
