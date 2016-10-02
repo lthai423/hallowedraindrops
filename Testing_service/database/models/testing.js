@@ -9,6 +9,6 @@ var testingSchema = new Schema({
   sourceCode: String
 });
 
-var Testing = mongoose.model('Testing', testingSchema);
+var Test = mongoose.model('Test', testingSchema);
 
-module.exports = Restaurant;
+module.exports = Test;
