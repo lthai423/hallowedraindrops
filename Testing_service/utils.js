@@ -15,6 +15,7 @@ module.exports = {
   },
 
   getTest: function(req, res) {
+    var id = req.query.question_id;
     Test.findOne({question_id: id}).exec((err, found) => {
       if (err) {
         res.status(500).json({ error: err });
@@ -28,14 +29,15 @@ module.exports = {
   },
 
   updateTest: function(req, res) {
-    Test.findOne({question_id: id}).exec((err, found) => {
+
+    Test.findOne({question_id: req.body.question_id}).exec((err, found) => {
       if (err) {
         res.status(500).json({ error: err });
       }
       if (found) {
-        found.fnInput = input;
-        found.fnOutput = output;
-        found.sourceCode = code;
+        found.fnInput = req.body.fnInput;
+        found.fnOutput = req.body.fnOutput;
+        found.sourceCode = req.body.sourceCode;
         found.save((err, test) => {
           if (err) {
             res.status(500).json({ error: err });

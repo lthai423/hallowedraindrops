@@ -8,5 +8,9 @@ module.exports = (app, express) => {
 
   //Reads information from forms ands puts it in a body object
   app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 };
+
