@@ -11,12 +11,12 @@ module.exports = (app) => {
     */
   app.route('/api/test')
     .get((req, res) => {
-      res.send('Grab new test');
+      utils.getTest(req, res);
     })
     .post((req, res) => {
-      runCode(req.body.code, req.path, (data) => {
-        console.log('data', data);
-        res.send(data);
-      });
+      utils.addTest(req, res);
+    })
+    .put((req, res) => {
+      utils.updateTest(req,res);
     });
 };
