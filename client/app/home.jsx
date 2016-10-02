@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Carousel from 'react-bootstrap/lib/carouselInstance';
+import Jumbotron from 'react-bootstrap/lib/Jumbotron.js';
 
 class Home extends React.Component {
 
@@ -13,7 +13,7 @@ class Home extends React.Component {
 	}
 
 	setPad() {
-		$.get('/pad/create', (data) {
+		$.get('/pad/create', (data) => {
 			window.location = data;
 		})
 	}
@@ -22,7 +22,9 @@ class Home extends React.Component {
 	render() {
 		return (
 			<div>
-				<Carousel> Hello World</Carousel>
+				<Jumbotron className="banner"> 
+					<span className="banner-text">Hello World</span>
+				</Jumbotron>
 				<button onClick={this.githubAuth.bind(this)}>Github</button>
 				<button onClick={this.setPad.bind(this)}>Pad</button>
 			</div>
