@@ -7,6 +7,9 @@ import ReactDOM from 'react-dom';
 import Index from './app/index.jsx';
 import Editor from './app/editor.jsx';
 import Home from './app/home.jsx';
+import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
+
+// bootstrap: https://medium.com/@victorleungtw/how-to-use-webpack-with-react-and-bootstrap-b94d33765970#.yd8htlxw0
 
 //*********** We need an App.jsx
 

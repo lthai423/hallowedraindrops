@@ -23,7 +23,7 @@ class Home extends React.Component {
 		return (
 			<div>
 				<Jumbotron className="banner"> 
-					<span className="banner-text">Hello World</span>
+					<span className="banner-text">codedrop</span>
 				</Jumbotron>
 				<button onClick={this.githubAuth.bind(this)}>Github</button>
 				<button onClick={this.setPad.bind(this)}>Pad</button>
