@@ -21,7 +21,14 @@ var config = {
 			test: /\.jsx?/,
 			include: APP_DIR,
 			loader: 'babel'
-		  }
+		  },
+      { 
+        test: /\.css$/, 
+        loader: "style-loader!css-loader" 
+      },
+      { test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+       loader: 'url-loader?limit=100000' 
+      }
 	  ]
   }
 };
