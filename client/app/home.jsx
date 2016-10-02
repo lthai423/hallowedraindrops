@@ -33,14 +33,14 @@ class Home extends React.Component {
 				</Jumbotron>
 
 				<div className="below-banner">
-					<span className="below-banner-text">Seting you for Success.</span>
+					<span className="below-banner-text">preparing <b className="blue-you">you</b> for success</span>
 				</div>
 
 				<Grid>
 					<Row className="home-github">
 						<Col md={1} mdPush={5} className="vcenter">
 							<div className="home-selection">
-								<Image src="./styling/img/github-mark-resized-4.png" circle responsive onClick={this.githubAuth.bind(this)}/>
+								<Image src="./styling/img/github-mark-resized.png" circle responsive onClick={this.githubAuth.bind(this)}/>
 							</div>
 						</Col>
 						<Col md={1} mdPush={5} className="vcenter">
