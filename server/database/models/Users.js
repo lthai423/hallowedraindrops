@@ -9,10 +9,7 @@ var User = sequelize.define('user', {
   created_at: Sequelize.DATE,
   avatar_url: Sequelize.STRING,
   github_url: Sequelize.STRING,
-  repos_url: Sequelize.STRING,
   email: Sequelize.STRING,
-  gitcreated_at: Sequelize.STRING,
-  gitupdated_at: Sequelize.STRING,
   company: Sequelize.STRING
 });
 

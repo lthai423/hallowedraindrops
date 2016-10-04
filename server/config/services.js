@@ -26,8 +26,14 @@ module.exports = {
   addUser: (profile, User)  => {
     User.sync({}).then(function () {
       return User.create({
-        firstName: 'John',
-        lastName: 'Hancock'
+        login: profile.username,
+        id: profile.id,
+        name: profile.displayName,
+        created_at: new Date(),
+        avatar_url: profile._json.avatar_url,
+        github_url: profile.profile_url,
+        email: profile.emails[0].value,
+        company: Sequelize._json.company
       });
     });
   }
