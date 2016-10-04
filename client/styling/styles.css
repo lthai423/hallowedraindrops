@@ -46,7 +46,7 @@
 
 div#console.home-console {
     margin-right: -500px;
-    margin-left: ;
+    /*margin-left: ;*/
 }
 
 div.home-editor #editor {
@@ -105,13 +105,17 @@ div.home-editor {
     background-color:black;
     position: absolute;
 }
+
+div#console-terminal-editor.home-console {
+    background-color: #333;
+}
 /* The inner console element. */
 .jqconsole {
-    padding: 10px;
+    /*padding: 10px;*/
 }
 /* The cursor. */
 .jqconsole-cursor {
-    background-color: gray;
+    background-color: #333;
 }
 /* The cursor color when the console looses focus. */
 .jqconsole-blurred .jqconsole-cursor {

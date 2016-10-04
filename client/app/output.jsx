@@ -9,12 +9,12 @@ var Promise = require('bluebird');
 
 var Output = ({output}) => {
 
-		return (
-      <div id="console-terminal-editor" className="home-console">
-        Program Response:
-        {output.map((line, index) => <OutputLine key={index} line={line}/>)}
-      </div>
-		)
+	return (
+    <div id="console-terminal-editor" className="home-console">
+      Program Response:
+      {output.map((line, index) => <OutputLine key={index} line={line}/>)}
+    </div>
+	)
 }
 
 export default Output;

@@ -109,20 +109,23 @@ class Editor extends React.Component {
 
     socket.on('alter result', (msg) => {
       console.log('going to append this: ', msg);
-      var output = [];
-      msg.split('\n').forEach((line) => {
-        output.push(line);
-      });
-      this.setState({
-        outputText: output
-      });
+      console.log('typeof msg is: ', typeof msg);
+      //2 and 3
+      var finalMsg = msg.slice(2, msg.length);
+      var finalMsg = finalMsg.substring(0, finalMsg.length - 3);
+
+      // var output = [];
+      // msg.split('\n').forEach((line) => {
+      //   output.push(line);
+      // });
+
+      // this.setState({
+      //   outputText: output
+      // });
 
       // write into the output console
       // note that it's expecting a string
-
-      console.log('value for outputText is: ', this.state.outputText);
-      console.log('value for jqconsole si: ', jqconsole);
-      this.state.console.Write(JSON.stringify(this.state.outputText), 'my-output-class');
+      this.state.console.Write(finalMsg + '\n', 'my-output-class');
 
 
       // $('.response').append(msg);
@@ -173,6 +176,10 @@ class Editor extends React.Component {
       console: jqconsole
     });
 
+    // jqconsole setup 
+    // jqconsole.Write('\030[31mRed Text');
+
+
     $(function () {
         var startPrompt = function () {
         // Start the prompt with history enabled.
@@ -202,7 +209,7 @@ class Editor extends React.Component {
 		        			<div id="editor" className="home-editor" onKeyUp={this.handleKeyPress.bind(this)}></div>
 		        	</Row>
 		        	<Row className="home-console">
-		        			<Output output={this.state.outputText}></Output>
+		        			<Output output={this.state.outputText} console={this.state.console}></Output>
 		      		</Row>
 	      		</Grid>
 		      </div>
