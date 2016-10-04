@@ -8,10 +8,32 @@ import Grid from 'react-bootstrap/lib/Grid.js';
 import Row from 'react-bootstrap/lib/Row.js';
 import Col from 'react-bootstrap/lib/Col.js';
 
+// Somewhere like a Redux middleware or Flux action:
+import { browserHistory } from 'react-router';
+import { Link } from 'react-router';
+
+var $ = require('jquery');
+
+// Go to /some/path.
+
 class Home extends React.Component {
 
 	constructor(props) {
 		super(props);
+		this.state = {
+			pad_link: ''
+		}
+	}
+
+	componentWillMount() {
+		console.log('did not mount yet');
+	}
+
+	componentDidMount() {
+		// uncommented for testing
+		console.log('entered inside of the home.jsx file');
+		this.setPad();
+		console.log('this props children', this.props.children);
 	}
 
 	githubAuth () {
@@ -20,10 +42,33 @@ class Home extends React.Component {
 
 	setPad() {
 		$.get('/pad/create', (data) => {
-			window.location = data;
+			console.log('the ukey pulled in from the front-end is: ', data);
+			//** try redirecting wtih browserHistory
+
+			this.setState({
+				pad_link: '/editor' + data
+			});
+
+			console.log('editor is: ', this.state.pad_link);
+
+			// window.location = 'editor' + data; // does this do a redirect?
+			// do the redirect here to the appropriate page.
 		})
 	}
 
+	// whatever link they added in, throw in a post request with the id
+
+	// *may need a promise
+	// 1. user wants to create a pad
+	// 2. we give client back a unique pad_ID key
+	// 3. with that unique pad_ID key, we move them to that page
+	// 4. on our server side, we catch that route and then send them the pad.html using res.render
+	// 5. then for that specific route, we will serve
+
+// removing from the home-terminal onClick: onClick={this.setPad.bind(this)}
+// <Link to={`/user/${user.id}`}>{user.name}</Link>
+// <span className="home-terminal"><Link to={this.state.pad_link}>      >_</Link></span>
+//	<span className="home-terminal"><a href= {this.state.pad_link}>      >_</a></span>
 
 	render() {
 		return (
@@ -45,13 +90,12 @@ class Home extends React.Component {
 						</Col>
 						<Col md={1} mdPush={5} className="vcenter">
 							<div className="home-selection">
-								<span className="home-terminal" onClick={this.setPad.bind(this)}>     >_</span>
+								 <span className="home-terminal"><Link to={this.state.pad_link}>      >_</Link></span>
 							</div>
+							{this.props.children}
 						</Col>
 					</Row>
 				</Grid>
-
-
 			</div>
 		)
 	}
