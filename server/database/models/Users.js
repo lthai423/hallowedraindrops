@@ -3,14 +3,15 @@ var sequelize = require('../config');
 
 var User = sequelize.define('user', {
   login: Sequelize.STRING,
-  id: Sequelize.STRING,
+  id: Sequelize.UUID,
   name: Sequelize.STRING,
+  created_at: Sequelize.DATE,
   avatar_url: Sequelize.STRING,
   github_url: Sequelize.STRING,
   repos_url: Sequelize.STRING,
   email: Sequelize.STRING,
-  created_at: Sequelize.STRING,
-  updated_at: Sequelize.STRING,
+  gitcreated_at: Sequelize.STRING,
+  gitupdated_at: Sequelize.STRING,
   company: Sequelize.STRING
 });
 
