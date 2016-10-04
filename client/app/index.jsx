@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import Editor from './editor.jsx';
+import Navbar from './navbar.jsx';
 import Navigation from './navigation.jsx';
 import output from './output.jsx';
 
@@ -14,6 +15,7 @@ class App extends React.Component {
     this.state = {
       text: 'hello world', // text is going to be the code the user inputs
     }
+    this.queue = [];
   }
 
   componentDidMount() {
@@ -35,7 +37,7 @@ class App extends React.Component {
   sendCode() {
     $.ajax({
       method: 'POST',
-      url: 'http://localhost:8080/api/replservice/runcode',
+      url: 'http://0.0.0.0:5000/api/replservice/runcode',
       data: {code: this.state.text},
       success: (data) => {
         console.log('data value is: ', data);
@@ -66,7 +68,7 @@ class App extends React.Component {
           text: msg
         });
 
-        //Get the range of selected text adn cursor
+        // //Get the range of selected text adn cursor
         var pos = this.editor.getCursorPosition();
         var range = this.editor.getSelectionRange();
 

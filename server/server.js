@@ -20,9 +20,13 @@ app.use('/api/replservice', replRouter);
 const port = process.argv[2] || 8080;
 const server = require('http').Server(app);
 if(!module.parent) {
-  server.listen(port, () => {
-    console.log('socket on 8080');
+  server.listen(3000, '10.6.26.148', function() {
+      console.log('Listening to port:  ' + 4000);
   });
+
+  // server.listen(port, () => {
+  //   console.log('socket on 8080');
+  // });
 }
 var io = require('socket.io')(server);
 require('./config/routes.js')(app, io);
