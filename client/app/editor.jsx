@@ -5,7 +5,6 @@ import React from 'react';
 import { render } from 'react-dom';
 
 import Output from './output.jsx';
-// import Sidebar from './challenge.jsx';
 import Sidebar from './challenge.jsx';
 import Navigation from './navigation.jsx';
 
@@ -16,9 +15,6 @@ import Col from 'react-bootstrap/lib/Col.js';
 
 var Promise = require('bluebird');
 
-
-// var Promise = require('bluebird');
-
 class Editor extends React.Component {
 
 	constructor(props) {
@@ -28,7 +24,7 @@ class Editor extends React.Component {
 	    outputText: [],
 	    sidebar: false,
 	    question: '',
-	    auth: false
+	    auth: false,
 	  };
 	}
 	
@@ -64,6 +60,7 @@ class Editor extends React.Component {
         console.log('data value is: ', data);
         this.socket.emit('append result', data);
         // $('.response').append(data);
+        console.log('after socket');
       },
       error: (jqXHR, textStatus, errorThrown) => {
         console.log(textStatus, errorThrown, jqXHR);
@@ -74,8 +71,11 @@ class Editor extends React.Component {
   // setupSocket will emit the events when the keydown event occurs
   // there is a problem here... where we are transmitting every key
   setupSocket() {
-    console.log(window.location.pathname)
-    var socket = io(window.location.pathname); // FIX ME
+    console.log(window.location.pathname);
+    var path = window.location.pathname;
+    path = path.split('editor');
+    console.log('path at 75 is: ', path);
+    var socket = io(path[1]); // FIX ME
     var text = this.editor.getValue();
     this.setState({
       text: text
@@ -127,11 +127,9 @@ class Editor extends React.Component {
     editor.getSession().setMode("ace/mode/javascript"); // going to execute js
     editor.getSession().setUseSoftTabs(true); // use soft-tabs
     editor.setHighlightActiveLine(false); // sets line highlighting
-    document.getElementById('editor').style.fontSize='16px'; // sets the font-size
+    document.getElementById('editor').style.fontSize='13px'; // sets the font-size
     editor.getSession().setUseWrapMode(true);
     editor.resize();
-
-
 
     return editor;
   }
@@ -153,28 +151,9 @@ class Editor extends React.Component {
   	console.log('menutoggled has been triggered');
   	$("#wrapper").toggleClass("toggled");
 	}
-/*
-<div>
-	<button onClick={this.sidebar.bind(this)}>Toggle Sidebar</button>
-	<button onClick={this.getText.bind(this)}>get code</button>
-	<button onClick={this.sendCode.bind(this)}>process code</button>
-	{ this.state.sidebar ? <Menu>
-	  <a id="home" className="menu-item" href="/">Home</a>
-	  <a id="about" className="menu-item" href="/about">About</a>
-	  <a id="contact" className="menu-item" href="/contact">Contact</a>
-	</Menu> : null }
-</div>
-*/
 
-	      // { this.state.sidebar ? <Sidebar></Sidebar> : null }
-	      // onClick={this.sendCode.bind(this)}
+
 	render () {
-
-		var navFns = {
-			sidebar: this.sidebar,
-			getText: this.getText,
-			sendCode: this.sendCode
-		};
 
     return (
     	<div>
@@ -187,7 +166,7 @@ class Editor extends React.Component {
 		        			<div id="editor" className="home-editor" onKeyUp={this.handleKeyPress.bind(this)}></div>
 		        	</Row>
 		        	<Row className="home-console">
-		        			<div id="console" className="home-console"></div>
+		        			<Output output={this.state.outputText}></Output>
 		      		</Row>
 	      		</Grid>
 		      </div>
