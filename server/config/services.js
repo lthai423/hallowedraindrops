@@ -21,5 +21,14 @@ module.exports = {
   	    console.log('a user has disconnected');
   	  });
   	});
+  },
+
+  addUser: (profile, User)  => {
+    User.sync({}).then(function () {
+      return User.create({
+        firstName: 'John',
+        lastName: 'Hancock'
+      });
+    });
   }
 };

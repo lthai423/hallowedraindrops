@@ -1,9 +1,10 @@
-var sequelize = require('../config');
+var sequelize = require('../config.js').sequelize;
+var Sequelize = require('sequelize');
 
 
 var User = sequelize.define('user', {
   login: Sequelize.STRING,
-  id: Sequelize.UUID,
+  id: {type: Sequelize.UUID, primaryKey: true},
   name: Sequelize.STRING,
   created_at: Sequelize.DATE,
   avatar_url: Sequelize.STRING,
@@ -14,18 +15,6 @@ var User = sequelize.define('user', {
   gitupdated_at: Sequelize.STRING,
   company: Sequelize.STRING
 });
-
-sequelize.sync().then(function() {
-  return User.create({
-    username: 'janedoe',
-    birthday: new Date(1980, 6, 20)
-  });
-}).then(function(jane) {
-  console.log(jane.get({
-    plain: true
-  }));
-});
-
 
 module.exports = User;
 

@@ -2,7 +2,7 @@ var GitHubStrategy = require('passport-github2').Strategy;
 var partials = require('express-partials');
 var fs = require('fs');
 var Promise = require('bluebird');
-var User = require('../databases/models/Users.js');
+var User = require('../database/models/Users.js');
 
 // promiseify the whole fsPromise
 Promise.promisifyAll(require('fs'));
