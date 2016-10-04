@@ -19,11 +19,16 @@ import { Router, Route, IndexRoute, hashHistory, browserHistory } from 'react-ro
 
 console.log('entered into the react-router');
 
+// for browserHistory, use: 	<Router history={browserHistory}>
+// used to use hashHistory: <Router history={hashHistory}>
+// don't use this route<Route path ="editor/:editorId" component={Editor} />
+
 ReactDOM.render(
-	<Router history={hashHistory}>
-		<Route path="/" component={Home}>
+	<Router history={browserHistory}>
+		<Route path="/" component={Index}>
 			<IndexRoute component={Home}></IndexRoute>
-			<Route path="/editor" component={Editor} />
+			<Route path ="/editor/:editorid" component={Editor} />
+			<Route path ="home" component={Home}/>
 		</Route>
 	</Router>
 	, document.getElementById('app'));

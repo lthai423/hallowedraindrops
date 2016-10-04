@@ -2,6 +2,7 @@
 module.exports = {
   REPL: 'http://localhost:3000/api/repl',
   create_namespace: function(path, io){
+    console.log('entered into services for namespace creation');
   	var nsp = io.of(path);
   	nsp.on('connection', (socket) => {
   	  console.log('a user has connected');

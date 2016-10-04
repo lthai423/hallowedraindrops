@@ -3,7 +3,12 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-class Sidebar extends React.Component {
+/* React-Bootstrap Components */
+import Grid from 'react-bootstrap/lib/Grid.js';
+import Row from 'react-bootstrap/lib/Row.js';
+import Col from 'react-bootstrap/lib/Col.js';
+
+class MenuWrap extends React.Component { 
 	//Sidebar will list questions
 
 	// a sidebar that pops out listing all of the questions (TOP QUESTIONS)
@@ -12,10 +17,20 @@ class Sidebar extends React.Component {
 			// *in the future, like real-time analyses on their code's complexities and such
 	// user selects one, and then the coderpad will pre-populate with that challenge
 		// if code is already on page, then a warning pops up first
+	
+	/* begin copy from example.js */
+
 	constructor(props) {
-		super(props);
-			// state stuff if needed
+    super(props);
+    this.state = {
+    	hidden: false
+  	};
+  }
+
+	show() {
+		this.setState({hidden: false});
 	}
+
 
 	// future, we'd need a pull of the top 5 challenges
 	// for now, have a temporary testcode to pull from
@@ -29,34 +44,55 @@ class Sidebar extends React.Component {
 
 		// stick it in here for now...
 		var testQuestionSnippet = "/* Question Snippet: Set x to be 2 */";
-
 	}
 
 
-	/* Components Needed:
-	 * 
-	*/
-	render() {
-		return (
-			<div id="wrapper">
-				<div className="sidebar sidebar-nav">
-					<li className="sb-title">
-					</li>
-					<li className="sb-title">
-						<p>Questions</p>
-					</li>
-					<li className="sb-small">
-						<p onClick={this.getChallengeQuestion.bind(this)}>Question 1</p>
-					</li>
-					<li className="sb-small">
-						<p>Question 2</p>
-					</li>
-					<li className="sb-small">
-						<p>Question 3</p>
-					</li>
+	/* more test code: 
+	<div className="editor-sidebar">
+				<div className="navmenu navmenu-default navmenu-fixed-left" role="navigation">
+				  <a className="navmenu-brand" href="#">Brand</a>
+				  <ul className="nav navmenu-nav">
+				    <li className="active"><a href="#">Home</a></li>
+				    <li><a href="#">Link</a></li>
+				    <li><a href="#">Link</a></li>
+				  </ul>
 				</div>
-		</div>
-	)}
+				<div class="navbar navbar-default navbar-fixed-top">
+				  <button type="button" className="navbar-toggle" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body">
+				    <span className="icon-bar"></span>
+				    <span className="icon-bar"></span>
+				    <span className="icon-bar"></span>
+				  </button>
+				</div>
+		</div> */
+	render() {
+		let style;
+
+		if(this.state.hidden) {
+			style = { display: 'none'};
+		}
+
+		return (
+			<div>
+				<div id="sidebar-wrapper">
+					<ul className="sidebar-nav">
+						<li className="sidebar-brand">
+							<a href="#">Start Bootstrap</a>
+						</li>
+						<li className="sidebar-brand">
+							<a href="#">Shortcuts</a>
+						</li>
+						<li className="sidebar-brand">
+							<a href="#">Overview</a>
+						</li>
+						<li className="sidebar-brand">
+							<a href="#">Events</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		);
+	}	
 }
 
-module.exports = Sidebar;
+module.exports = MenuWrap;
