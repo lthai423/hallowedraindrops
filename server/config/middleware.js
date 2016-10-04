@@ -32,6 +32,11 @@ module.exports = (app, express) => {
 	];
   public_dirs.forEach((path) => app.use(express.static(__dirname + path)));
 
+  //Check credentials
+  app.use(auth.user);
+  app.use('/mod', auth.moderator);
+  app.use('/admin', auth.admin);
+
   // Add headers
   app.use(function (req, res, next) {
 

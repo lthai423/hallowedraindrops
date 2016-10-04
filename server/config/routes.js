@@ -5,8 +5,6 @@ var path = require('path');
 var express = require('express');
 var Chance = require('chance'),
     chance = new Chance();
-const auth = require('./isAuthenticated.js');
-
 
 var cached = {}, ukey = '';
 
@@ -38,8 +36,6 @@ module.exports = (app, io) => {
       console.log('entered into the auth/github/callback');
       res.redirect('/'); // need to redirect to an editor
     });
-
-  app.use(auth.admin);
 
   app.get('/logout',
     (req, res) => {
