@@ -27,9 +27,9 @@ class Navigation extends React.Component {
 		  <div> 
 		  	<NavBar inverse fixedTop fluid staticTop>
 		  		<Nav bsStyle="tabs">
-		  			<NavItem onClick={() => this.props.sidebar()}>Settings</NavItem>
+		  			<NavItem onClick={() => this.props.sidebar() }>Settings</NavItem>
 		  			<NavItem >Profile</NavItem>
-		  			<NavItem onClick={() => this.props.sendCode()}>Run Code</NavItem>
+		  			<NavItem onClick={() => this.props.sendcode()}>Run Code</NavItem>
 					</Nav>
 				</NavBar>
 		  </div>
