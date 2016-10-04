@@ -4,6 +4,7 @@ const passport = require('passport');
 const session = require('express-session');
 const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
+const auth = require('./isAuthenticated.js');
 
 module.exports = (app, express) => {
   //Print all of the requests to the server

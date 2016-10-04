@@ -1,4 +1,19 @@
 // Services URL
+var jwt = require('jwt-simple');
+var secret = 'workplease';
+var User = require('../database/models/Users.js');
+
+createToken = (user, code) => {
+  var payload = {
+    admin: user.admin,
+    moderator: user.moderator,
+    user: user.username,
+    id: user.github_id
+  };
+
+  return jwt.encode(payload, code);
+};
+
 module.exports = {
   REPL: 'http://localhost:3000/api/repl',
   create_namespace: function(path, io){
@@ -23,7 +38,7 @@ module.exports = {
   	});
   },
 
-  addUser: (profile, User)  => {
+  addUser: (profile, User, callback)  => {
     User.sync().then(() => {
       return User.find({where: {github_id: profile.id}}).then((user) => {
         if (!user) {
@@ -34,9 +49,22 @@ module.exports = {
             avatar_url: profile._json.avatar_url,
             github_url: profile.profileUrl,
             email: profile.emails[0].value,
-            company: profile._json.company
+            company: profile._json.company,
+            admin: null,
+            moderator: null
+          }).then((user) => {
+            callback(createToken(user, secret));
           });
         }
+        callback(createToken(user, secret));
+      });
+    });
+  },
+
+  findUser: (id, callback) => {
+    User.sync().then(() => {
+      User.find({where:{github_id: id}}).then((user) => {
+        callback(user);
       });
     });
   }

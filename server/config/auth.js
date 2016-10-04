@@ -52,8 +52,10 @@ module.exports = function(passport) {
 				// once we have a db setup, we would store their info
 				// into our db
 				console.log('value for profile is: ', profile);
-				services.addUser(profile, User);
-				return done(null, profile);
+				services.addUser(profile, User, (token) => {
+					console.log('created token', token);
+					return done(null, profile);
+				});
 			});
 		}));
 	}).catch((err) => {
