@@ -177,7 +177,6 @@ class Editor extends React.Component {
     });
 
     // jqconsole setup 
-    // jqconsole.Write('\030[31mRed Text');
 
 
     $(function () {
