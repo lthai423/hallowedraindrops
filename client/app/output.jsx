@@ -8,8 +8,9 @@ import OutputLine from './outputLine.jsx';
 var Promise = require('bluebird');
 
 var Output = ({output}) => {
+
 		return (
-      <div id="console" className="home-console">
+      <div id="console-terminal-editor" className="home-console">
         Program Response:
         {output.map((line, index) => <OutputLine key={index} line={line}/>)}
       </div>

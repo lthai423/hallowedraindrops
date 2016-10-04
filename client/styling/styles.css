@@ -96,13 +96,14 @@ div.home-editor {
 }
 
  /*Terminal Styles */
-#console {
+#console-terminal-editor {
     /*min-width: 55%;
     /*max-width: 100%;*/
     /*padding-top: 52px;*/
     height: 970px;
     width: 830px;
     background-color:black;
+    position: absolute;
 }
 /* The inner console element. */
 .jqconsole {

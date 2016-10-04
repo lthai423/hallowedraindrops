@@ -11,6 +11,8 @@ import Navigation from './navigation.jsx';
 import Grid from 'react-bootstrap/lib/Grid.js';
 import Row from 'react-bootstrap/lib/Row.js';
 import Col from 'react-bootstrap/lib/Col.js';
+import jqconsole from '../jqconsole.js';
+
 
 
 var Promise = require('bluebird');
@@ -25,6 +27,7 @@ class Editor extends React.Component {
 	    sidebar: false,
 	    question: '',
 	    auth: false,
+      console: null
 	  };
 	}
 	
@@ -37,6 +40,8 @@ class Editor extends React.Component {
     this.sidebar = this.sidebar.bind(this);
     this.getText = this.getText.bind(this);
     this.sendCode = this.sendCode.bind(this);
+    this.startConsole = this.startConsole.bind(this);
+    this.startConsole();
 
     console.log('state-bar', this.state.sidebar);
   }
@@ -83,7 +88,6 @@ class Editor extends React.Component {
 
     socket.on('alter text', (msg) => {
       if(this.state.text !== msg) {
-        console.log('making changes');
         this.setState({
           text: msg
         });
@@ -112,6 +116,15 @@ class Editor extends React.Component {
       this.setState({
         outputText: output
       });
+
+      // write into the output console
+      // note that it's expecting a string
+
+      console.log('value for outputText is: ', this.state.outputText);
+      console.log('value for jqconsole si: ', jqconsole);
+      this.state.console.Write(JSON.stringify(this.state.outputText), 'my-output-class');
+
+
       // $('.response').append(msg);
     });
 
@@ -151,6 +164,29 @@ class Editor extends React.Component {
   	console.log('menutoggled has been triggered');
   	$("#wrapper").toggleClass("toggled");
 	}
+
+  startConsole () {
+    // move jqconsole out
+    var jqconsole = $('#console-terminal-editor').jqconsole('Hi\n', '>>>');
+
+    this.setState({
+      console: jqconsole
+    });
+
+    $(function () {
+        var startPrompt = function () {
+        // Start the prompt with history enabled.
+        jqconsole.Prompt(true, function (input) {
+        // Output input with the class jqconsole-output.
+        jqconsole.Write(input + '\n', 'jqconsole-output');
+        // Restart the prompt.
+        startPrompt();
+        });
+      };
+    startPrompt();
+    });
+    // $(div).jqconsole(welcomeString, promptLabel, continueLabel);
+  }
 
 
 	render () {
