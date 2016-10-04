@@ -3,6 +3,7 @@ var partials = require('express-partials');
 var fs = require('fs');
 var Promise = require('bluebird');
 var User = require('../database/models/Users.js');
+var services = require('./services.js');
 
 // promiseify the whole fsPromise
 Promise.promisifyAll(require('fs'));
@@ -51,9 +52,7 @@ module.exports = function(passport) {
 				// once we have a db setup, we would store their info
 				// into our db
 				console.log('value for profile is: ', profile);
-
-
-				console.log('type of id ', typeof profile.id);
+				services.addUser(profile, User);
 				return done(null, profile);
 			});
 		}));
