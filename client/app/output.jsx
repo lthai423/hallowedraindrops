@@ -9,11 +9,19 @@ var Promise = require('bluebird');
 
 var Output = ({output}) => {
 
+/* ******
+	
+	I don't think we need this anymore. We only need output.jsx to output the
+	div id tag of 'console-terminal-editor'
+
+	// items before: 
+
+	Program Response:
+	{output.map((line, index) => <OutputLine key={index} line={line}/>)}
+
+ * ******/
 	return (
-    <div id="console-terminal-editor" className="home-console">
-      Program Response:
-      {output.map((line, index) => <OutputLine key={index} line={line}/>)}
-    </div>
+    <div id="console-terminal-editor" className="home-console"></div>
 	)
 }
 
