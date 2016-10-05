@@ -1,18 +1,18 @@
 // Services URL
-var jwt = require('jwt-simple');
-var secret = 'workplease';
+// var jwt = require('jwt-simple');
+// var secret = 'workplease';
 var User = require('../database/models/Users.js');
 
-createToken = (user, code) => {
-  var payload = {
-    admin: user.admin,
-    moderator: user.moderator,
-    user: user.username,
-    id: user.github_id
-  };
+// createToken = (user, code) => {
+//   var payload = {
+//     admin: user.admin,
+//     moderator: user.moderator,
+//     user: user.username,
+//     id: user.github_id
+//   };
 
-  return jwt.encode(payload, code);
-};
+//   return jwt.encode(payload, code);
+// };
 
 module.exports = {
   REPL: 'http://localhost:3000/api/repl',
