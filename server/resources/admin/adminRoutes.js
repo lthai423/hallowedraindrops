@@ -4,7 +4,7 @@ var adminController = require('./adminController.js');
 
 
 
-adminRouter.route('/challenege')
+adminRouter.route('/challenge')
   .get((req, res, next) => {
 
   })
