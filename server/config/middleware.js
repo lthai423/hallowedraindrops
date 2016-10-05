@@ -4,6 +4,7 @@ const passport = require('passport');
 const session = require('express-session');
 const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
+const auth = require('./isAuthenticated.js');
 
 module.exports = (app, express) => {
   //Print all of the requests to the server
@@ -30,6 +31,11 @@ module.exports = (app, express) => {
   	'/../../client/styling/index/'
 	];
   public_dirs.forEach((path) => app.use(express.static(__dirname + path)));
+
+  //Check credentials
+  app.use(auth.user);
+  app.use('/mod', auth.moderator);
+  app.use('/admin', auth.admin);
 
   // Add headers
   app.use(function (req, res, next) {
