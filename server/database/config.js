@@ -3,10 +3,14 @@ var pg = require('pg');
 var fs = require('fs');
 var pgCred;
 
-
-pgCred = !fs.accessSync(__dirname + '/../config/env/config.js') ?
-require('../config/env/config.js').postgres :
-require('../config/env/config_example.js').postgres ;
+try {
+    fs.accessSync(__dirname + '/../config/env/config.js', fs.F_OK);
+    // Do something
+    pgCred = require('../config/env/config.js').postgres;
+} catch (e) {
+    // It isn't accessible
+    pgCred = require('../config/env/config_example.js').postgres;
+}
 
 var sequelize = new Sequelize(pgCred.db, pgCred.user, pgCred.password, {
   host: pgCred.host,
