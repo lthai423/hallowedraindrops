@@ -27,7 +27,11 @@ ReactDOM.render(
 	<Router history={browserHistory}>
 		<Route path="/" component={Index}>
 			<IndexRoute component={Home}></IndexRoute>
-			<Route path ="/editor/:editorid" component={Editor} />
+      <Route path ="/editor/:editorid" component={Editor} />
+			<Route path ="admin" component={Editor}>
+        <Route path="addchallenge" component={Editor} />
+        <Route path="*" component={NoMatch} />
+      </Route>
 			<Route path ="home" component={Home}/>
 		</Route>
 	</Router>

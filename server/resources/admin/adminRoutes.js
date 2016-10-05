@@ -17,5 +17,9 @@ adminRouter.route('/challenge/*')
     });
   });
 
+adminRouter.route('/*')
+  .get((req, res) => {
+    res.render('index.html');
+  });
 
 module.exports = adminRouter;
