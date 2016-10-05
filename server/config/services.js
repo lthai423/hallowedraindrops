@@ -54,7 +54,8 @@ module.exports = {
             email: profile.emails[0].value,
             company: profile._json.company,
             admin: null,
-            moderator: null
+            moderator: null,
+            reputation: 0
           }).then((user) => {
             callback(user);
           });
