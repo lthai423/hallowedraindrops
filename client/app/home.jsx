@@ -75,7 +75,6 @@ class Home extends React.Component {
 			<div>
 				<Jumbotron className="banner"> 
 					<span className="banner-text">codedrop</span>
-					<span "home-terminal">Blog</p>
 				</Jumbotron>
 
 				<div className="below-banner">

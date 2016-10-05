@@ -31,8 +31,6 @@ ReactDOM.render(
 			<IndexRoute component={Home}></IndexRoute>
 			<Route path ="/editor/:editorid" component={Editor} />
 			<Route path ="home" component={Home}/>
-			<Route path ="blog" component={Blog}/>
-				<Route path ="/:bloggername" component={Blogger}/>
 		</Route>
 	</Router>
 	, document.getElementById('app'));
