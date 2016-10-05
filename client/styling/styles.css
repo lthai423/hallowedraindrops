@@ -46,7 +46,7 @@
 
 div#console.home-console {
     margin-right: -500px;
-    margin-left: ;
+    /*margin-left: ;*/
 }
 
 div.home-editor #editor {
@@ -71,16 +71,28 @@ div.container {
 
 /* navbar styles*/
 
+#a:hover {
+    background-color: #de7c00;
+}
+
 .navbar {
-    background-color: rgb(35, 170, 253);
+    background-color: #303840;
+}
+
+nav.nav-tabs navbar-nav {
+    background-color: #de7c00;
 }
 
 .navbar.navbar-inverse.navbar-fixed-top.navbar-static-top {
     border-bottom: 0px;
+    background-color: #de7c00;
+    color: #eee;
+    font-family: SourceSansPro;
 }
 
 ul.nav.nav-tabs.navbar-nav {
     border-bottom: 0px;
+    i
 }
 
 div.home-console {
@@ -96,48 +108,61 @@ div.home-editor {
 }
 
  /*Terminal Styles */
-#console {
+#console-terminal-editor {
     /*min-width: 55%;
     /*max-width: 100%;*/
     /*padding-top: 52px;*/
     height: 970px;
     width: 830px;
     background-color:black;
+    position: absolute;
+}
+
+div#console-terminal-editor.home-console {
+    background-color: #303840;
 }
 /* The inner console element. */
 .jqconsole {
-    padding: 10px;
+    /*padding: 10px;*/
+    background-color: #303840;
+    border: 0px;
 }
 /* The cursor. */
 .jqconsole-cursor {
-    background-color: gray;
+    background-color: #eee;
 }
 /* The cursor color when the console looses focus. */
 .jqconsole-blurred .jqconsole-cursor {
-    background-color: #666;
+    background-color: #eee;
 }
 /* The current prompt text color */
 .jqconsole-prompt {
-    color: #0d0;
+    color: rgb(35, 170, 253);
 }
 /* The command history */
 .jqconsole-old-prompt {
-    color: #0b0;
+    color: #eee;
     font-weight: normal;
 }
 /* The text color when in input mode. */
 .jqconsole-input {
-    color: #dd0;
+    color: #eee;
 }
 /* Previously entered input. */
 .jqconsole-old-input {
-    color: #bb0;
+    color: #eee;
     font-weight: normal;
 }
 /* The text color of the output. */
 .jqconsole-output {
     color: white;
 }
+
+.my-output-class {
+    color: #eee;
+}
+
+/* End for jqconsole styles */
 
 /* Styles for the Home-Page */
 .banner-text {

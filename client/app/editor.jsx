@@ -11,6 +11,8 @@ import Navigation from './navigation.jsx';
 import Grid from 'react-bootstrap/lib/Grid.js';
 import Row from 'react-bootstrap/lib/Row.js';
 import Col from 'react-bootstrap/lib/Col.js';
+import jqconsole from '../jqconsole.js';
+
 
 
 var Promise = require('bluebird');
@@ -25,6 +27,7 @@ class Editor extends React.Component {
 	    sidebar: false,
 	    question: '',
 	    auth: false,
+      console: null
 	  };
 	}
 	
@@ -37,6 +40,8 @@ class Editor extends React.Component {
     this.sidebar = this.sidebar.bind(this);
     this.getText = this.getText.bind(this);
     this.sendCode = this.sendCode.bind(this);
+    this.startConsole = this.startConsole.bind(this);
+    this.startConsole();
 
     console.log('state-bar', this.state.sidebar);
   }
@@ -83,7 +88,6 @@ class Editor extends React.Component {
 
     socket.on('alter text', (msg) => {
       if(this.state.text !== msg) {
-        console.log('making changes');
         this.setState({
           text: msg
         });
@@ -105,13 +109,25 @@ class Editor extends React.Component {
 
     socket.on('alter result', (msg) => {
       console.log('going to append this: ', msg);
-      var output = [];
-      msg.split('\n').forEach((line) => {
-        output.push(line);
-      });
-      this.setState({
-        outputText: output
-      });
+      console.log('typeof msg is: ', typeof msg);
+      //2 and 3
+      var finalMsg = msg.slice(2, msg.length);
+      var finalMsg = finalMsg.substring(0, finalMsg.length - 3);
+
+      // var output = [];
+      // msg.split('\n').forEach((line) => {
+      //   output.push(line);
+      // });
+
+      // this.setState({
+      //   outputText: output
+      // });
+
+      // write into the output console
+      // note that it's expecting a string
+      this.state.console.Write(finalMsg + '\n', 'my-output-class');
+
+
       // $('.response').append(msg);
     });
 
@@ -152,6 +168,32 @@ class Editor extends React.Component {
   	$("#wrapper").toggleClass("toggled");
 	}
 
+  startConsole () {
+    // move jqconsole out
+    var jqconsole = $('#console-terminal-editor').jqconsole('Hi\n', '>>>');
+
+    this.setState({
+      console: jqconsole
+    });
+
+    // jqconsole setup 
+
+
+    $(function () {
+        var startPrompt = function () {
+        // Start the prompt with history enabled.
+        jqconsole.Prompt(true, function (input) {
+        // Output input with the class jqconsole-output.
+        jqconsole.Write(input + '\n', 'jqconsole-output');
+        // Restart the prompt.
+        startPrompt();
+        });
+      };
+    startPrompt();
+    });
+    // $(div).jqconsole(welcomeString, promptLabel, continueLabel);
+  }
+
 
 	render () {
 
@@ -166,7 +208,7 @@ class Editor extends React.Component {
 		        			<div id="editor" className="home-editor" onKeyUp={this.handleKeyPress.bind(this)}></div>
 		        	</Row>
 		        	<Row className="home-console">
-		        			<Output output={this.state.outputText}></Output>
+		        			<Output output={this.state.outputText} console={this.state.console}></Output>
 		      		</Row>
 	      		</Grid>
 		      </div>

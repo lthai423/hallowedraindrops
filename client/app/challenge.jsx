@@ -4,21 +4,9 @@ import React from 'react';
 import { render } from 'react-dom';
 
 /* React-Bootstrap Components */
-import Grid from 'react-bootstrap/lib/Grid.js';
-import Row from 'react-bootstrap/lib/Row.js';
-import Col from 'react-bootstrap/lib/Col.js';
 
 class MenuWrap extends React.Component { 
 	//Sidebar will list questions
-
-	// a sidebar that pops out listing all of the questions (TOP QUESTIONS)
-		// *label as only top questions, since we don't want to populate this field as
-		// *filled with questions since there should be other functionalities included
-			// *in the future, like real-time analyses on their code's complexities and such
-	// user selects one, and then the coderpad will pre-populate with that challenge
-		// if code is already on page, then a warning pops up first
-	
-	/* begin copy from example.js */
 
 	constructor(props) {
     super(props);
@@ -46,25 +34,6 @@ class MenuWrap extends React.Component {
 		var testQuestionSnippet = "/* Question Snippet: Set x to be 2 */";
 	}
 
-
-	/* more test code: 
-	<div className="editor-sidebar">
-				<div className="navmenu navmenu-default navmenu-fixed-left" role="navigation">
-				  <a className="navmenu-brand" href="#">Brand</a>
-				  <ul className="nav navmenu-nav">
-				    <li className="active"><a href="#">Home</a></li>
-				    <li><a href="#">Link</a></li>
-				    <li><a href="#">Link</a></li>
-				  </ul>
-				</div>
-				<div class="navbar navbar-default navbar-fixed-top">
-				  <button type="button" className="navbar-toggle" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body">
-				    <span className="icon-bar"></span>
-				    <span className="icon-bar"></span>
-				    <span className="icon-bar"></span>
-				  </button>
-				</div>
-		</div> */
 	render() {
 		let style;
 
@@ -77,16 +46,34 @@ class MenuWrap extends React.Component {
 				<div id="sidebar-wrapper">
 					<ul className="sidebar-nav">
 						<li className="sidebar-brand">
-							<a href="#">Start Bootstrap</a>
+							<a href="#"></a>
 						</li>
 						<li className="sidebar-brand">
-							<a href="#">Shortcuts</a>
+							<a href="#">asyncMap</a>
 						</li>
 						<li className="sidebar-brand">
-							<a href="#">Overview</a>
+							<a href="#">bubbleSort</a>
 						</li>
 						<li className="sidebar-brand">
-							<a href="#">Events</a>
+							<a href="#">deepEquality</a>
+						</li>
+						<li className="sidebar-brand">
+							<a href="#">powerSet</a>
+						</li>
+						<li className="sidebar-brand">
+							<a href="#">queueStac</a>
+						</li>
+						<li className="sidebar-brand">
+							<a href="#">rangeClass</a>
+						</li>
+						<li className="sidebar-brand">
+							<a href="#">robotPaths</a>
+						</li>
+						<li className="sidebar-brand">
+							<a href="#">treeBFSelect</a>
+						</li>
+						<li className="sidebar-brand">
+							<a href="#">"shuffleDeck"</a>
 						</li>
 					</ul>
 				</div>
