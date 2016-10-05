@@ -1,8 +1,24 @@
 var request = require('request-promise');
 var Question = require('.././database/models/Questions.js');
+var service = require('../../config/services.js');
 
 module.exports = {
-  addQuestion: () => {
+  addQuestion: (req, res) => {
+    console.log('Adding Question');
+  },
+
+  addTest: (req, res) => {
+    var options = {
+      method: 'POST',
+      uri: service.Testing,
+      body: req.body.test,
+      json: true
+    };
+    request(options)
+      .then((test) => {
+        console.log('Test was added');
+        res.send(test);
+      });
   },
 
   getQuestion: (req, res) => {

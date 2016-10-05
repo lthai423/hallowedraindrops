@@ -16,6 +16,7 @@ var User = require('../database/models/Users.js');
 
 module.exports = {
   REPL: 'http://localhost:3000/api/repl',
+  Testing: 'http://localhost:1337/api/add',
   create_namespace: function(path, io){
     console.log('entered into services for namespace creation');
   	var nsp = io.of(path);
