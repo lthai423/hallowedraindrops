@@ -23,12 +23,16 @@ console.log('entered into the react-router');
 // used to use hashHistory: <Router history={hashHistory}>
 // don't use this route<Route path ="editor/:editorId" component={Editor} />
 
+// need a blog path
+
 ReactDOM.render(
 	<Router history={browserHistory}>
 		<Route path="/" component={Index}>
 			<IndexRoute component={Home}></IndexRoute>
 			<Route path ="/editor/:editorid" component={Editor} />
 			<Route path ="home" component={Home}/>
+			<Route path ="blog" component={Blog}/>
+				<Route path ="/:bloggername" component={Blogger}/>
 		</Route>
 	</Router>
 	, document.getElementById('app'));
