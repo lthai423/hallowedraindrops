@@ -40,8 +40,11 @@ module.exports = {
 
   addUser: (profile, User, callback)  => {
     User.sync().then(() => {
+      console.log('adding user');
       return User.find({where: {github_id: profile.id}}).then((user) => {
+        console.log('finding if user exist in add user');
         if (!user) {
+          console.log('user does not exist');
           User.create({
             login: profile.username,
             github_id: profile.id,
@@ -53,17 +56,19 @@ module.exports = {
             admin: null,
             moderator: null
           }).then((user) => {
-            callback(createToken(user, secret));
+            callback(user);
           });
         }
-        callback(createToken(user, secret));
+        // callback(createToken(user, secret));
+        callback(user);
       });
     });
   },
 
   findUser: (id, callback) => {
+    console.log('finding user');
     User.sync().then(() => {
-      User.find({where:{github_id: id}}).then((user) => {
+      return User.find({where:{github_id: id}}).then((user) => {
         callback(user);
       });
     });

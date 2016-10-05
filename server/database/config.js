@@ -1,7 +1,7 @@
 var Sequelize = require('sequelize');
 var pg = require('pg');
-var sequelize = new Sequelize('codedrop', 'hallowedraindrops', 'codedrop', {
-  host: 'localhost',
+var sequelize = new Sequelize('codedrop', 'hallowed', 'raindrops', {
+  host: 'codedrop.clqru1hihd55.us-west-2.rds.amazonaws.com',
   dialect: 'postgres',
 
   pool: {

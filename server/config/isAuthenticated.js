@@ -2,7 +2,12 @@ var service = require('./services.js');
 
 module.exports = {
   user: (req, res, next) => {
-    if (req.isAuthenticated()) { return next(); }
+    if (req.isAuthenticated()) {
+      console.log('Authenticated!');
+      next();
+      return;
+    }
+
     // res.redirect('/login');
     //leave as next for testing
     next();
@@ -14,6 +19,7 @@ module.exports = {
       if (user.moderator) {
         console.log('This guy is an moderator!');
         next();
+        return;
       }
       res.redirect('/');
     });
@@ -25,6 +31,7 @@ module.exports = {
       if (user.admin) {
         console.log('This guy is an admin!');
         next();
+        return;
       }
       res.redirect('/');
     });
