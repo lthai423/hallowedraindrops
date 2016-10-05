@@ -11,7 +11,8 @@ class MenuWrap extends React.Component {
 	constructor(props) {
     super(props);
     this.state = {
-    	hidden: false
+    	hidden: false,
+    	questions: []
   	};
   }
 
@@ -19,19 +20,20 @@ class MenuWrap extends React.Component {
 		this.setState({hidden: false});
 	}
 
-
-	// future, we'd need a pull of the top 5 challenges
-	// for now, have a temporary testcode to pull from
-
 	/* @name: getChallengeQuestion
 	 * @input: Click
 	 * @output: Desired Question will populate in Editor in comments
 	*/
 	getChallengeQuestion() {
-		console.log('value for props is: ', props);
+		// find the className of that particular question
+		// when rendering, we need to attach a question with it. 
 
-		// stick it in here for now...
-		var testQuestionSnippet = "/* Question Snippet: Set x to be 2 */";
+		// 1. getter to make a 'GET' request from db for questions
+			// 3. we now have the responses, and we use map to display
+
+		//SERVER-SIDE
+			// 2. once we get the responses back, then we return only the top 10 back to client
+
 	}
 
 	render() {
@@ -41,7 +43,12 @@ class MenuWrap extends React.Component {
 			style = { display: 'none'};
 		}
 
+	//<div>
+		//{this.state.questions.map((question) => return <div className="top-question" id={question}>{question}</div>)}
+	//</div>
+
 		return (
+
 			<div>
 				<div id="sidebar-wrapper">
 					<ul className="sidebar-nav">

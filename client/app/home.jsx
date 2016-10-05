@@ -12,7 +12,7 @@ import Col from 'react-bootstrap/lib/Col.js';
 import { browserHistory } from 'react-router';
 import { Link } from 'react-router';
 
-var $ = require('jquery');
+// var $ = require('jquery');
 
 // Go to /some/path.
 
@@ -81,21 +81,23 @@ class Home extends React.Component {
 					<span className="below-banner-text">preparing <b className="blue-you">you</b> for success</span>
 				</div>
 
-				<Grid>
-					<Row className="home-github">
-						<Col md={1} mdPush={5} className="vcenter">
-							<div className="home-selection">
-								<Image src="./styling/img/github-mark-resized.png" circle responsive onClick={this.githubAuth.bind(this)}/>
-							</div>
-						</Col>
-						<Col md={1} mdPush={5} className="vcenter">
-							<div className="home-selection">
-								 <span className="home-terminal"><Link to={this.state.pad_link}>      >_</Link></span>
-							</div>
-							{this.props.children}
-						</Col>
-					</Row>
-				</Grid>
+				<div className="home-bar">
+					<Grid className="home-grid">
+						<Row className="home-github">
+							<Col md={1} mdPush={5} className="vcenter">
+								<div className="home-selection">
+									<Image src="./styling/img/github-mark-resized.png" circle responsive onClick={this.githubAuth.bind(this)}/>
+								</div>
+							</Col>
+							<Col md={1} mdPush={5} className="vcenter">
+								<div className="home-selection">
+									 <span className="home-terminal"><Link to={this.state.pad_link}>      >_</Link></span>
+								</div>
+								{this.props.children}
+							</Col>
+						</Row>
+					</Grid>
+				</div>
 			</div>
 		)
 	}
