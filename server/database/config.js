@@ -1,6 +1,13 @@
 var Sequelize = require('sequelize');
 var pg = require('pg');
-var pgCred = require('../config/env/config.js').postgres;
+var fs = require('fs');
+var pgCred;
+
+
+pgCred = !fs.accessSync(__dirname + '/../config/env/config.js') ?
+require('../config/env/config.js').postgres :
+require('../config/env/config_example.js').postgres ;
+
 var sequelize = new Sequelize(pgCred.db, pgCred.user, pgCred.password, {
   host: pgCred.host,
   dialect: 'postgres',
@@ -20,7 +27,6 @@ sequelize
   .catch(function (err) {
     console.log('Unable to connect to the database:', err);
   });
-
 
 //possible use to create DB if it doesn't exist
 //NOT being used right now
