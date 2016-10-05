@@ -26,6 +26,7 @@ module.exports = {
   },
 
   admin: (req, res, next) => {
+    //Next and return added at the top for testing
       next();
       return;
     var id = req.user.id;
