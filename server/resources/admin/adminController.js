@@ -3,11 +3,21 @@ var Question = require('.././database/models/Questions.js');
 var service = require('../../config/services.js');
 
 module.exports = {
-  addQuestion: (req, res) => {
+  addQuestion: (req, res, callback) => {
     console.log('Adding Question');
+    var question = req.body.question;
+    Question.sync().then(() => {
+      return Question.find({where:{name: question.name}}).then((question) => {
+        if (!question) {
+          res.send('Question Not Found');
+          Question.create(question).then((q) => callback(q));
+        }
+      callback(question);
+      });
+    });
   },
 
-  addTest: (req, res) => {
+  addTest: (req, res, callback) => {
     var options = {
       method: 'POST',
       uri: service.Testing,
@@ -17,7 +27,7 @@ module.exports = {
     request(options)
       .then((test) => {
         console.log('Test was added');
-        res.send(test);
+        callback(test);
       });
   },
 
@@ -25,7 +35,7 @@ module.exports = {
     console.log('Getting Question');
     var urlPath = req.path.split('challenge/')[1];
     Question.sync().then(() => {
-      return User.find({where:{name: urlPath}}).then((question) => {
+      return Question.find({where:{name: urlPath}}).then((question) => {
         if (!question) {
           res.send('Question Not Found');
         } else {
