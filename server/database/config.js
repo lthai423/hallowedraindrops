@@ -1,7 +1,8 @@
 var Sequelize = require('sequelize');
 var pg = require('pg');
-var sequelize = new Sequelize('codedrop', 'hallowed', 'raindrops', {
-  host: 'codedrop.clqru1hihd55.us-west-2.rds.amazonaws.com',
+var pgCred = require('../config/env/config.js').postgres;
+var sequelize = new Sequelize(pgCred.db, pgCred.user, pgCred.password, {
+  host: pgCred.host,
   dialect: 'postgres',
 
   pool: {
