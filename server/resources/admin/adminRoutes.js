@@ -6,9 +6,14 @@ var adminController = require('./adminController.js');
 
 adminRouter.route('/challenge')
   .get((req, res, next) => {
-
+    adminController.getQuestion(req, res);
   })
   .post((req, res, next) => {
+    adminController.addQuestion(req, res, () => {
+      adminController.addTest(req, res, () => {
+        res.sendStatus(201);
+      });
+    });
   });
 
 

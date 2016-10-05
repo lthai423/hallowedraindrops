@@ -28,6 +28,9 @@ module.exports = {
       .then((test) => {
         console.log('Test was added');
         callback(test);
+      }).catch((e)=> {
+        console.error(e);
+        res.sendStatus(404);
       });
   },
 
