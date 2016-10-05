@@ -1,16 +1,16 @@
 var request = require('request-promise');
-var Question = require('.././database/models/Questions.js');
+var Question = require('../../database/models/Questions.js');
 var service = require('../../config/services.js');
 
 module.exports = {
   addQuestion: (req, res, callback) => {
     console.log('Adding Question');
-    var question = req.body.question;
+    var reqQ = req.body.question;
     Question.sync().then(() => {
-      return Question.find({where:{name: question.name}}).then((question) => {
+      return Question.find({where:{name: reqQ.name}}).then((question) => {
+        console.log(question, 'question');
         if (!question) {
-          res.send('Question Not Found');
-          Question.create(question).then((q) => callback(q));
+          Question.create(reqQ).then((q) => callback(q));
         }
       callback(question);
       });
