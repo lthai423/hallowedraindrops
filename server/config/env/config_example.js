@@ -7,5 +7,11 @@ module.exports = {
 
 	mongo: {
 		url: ''
-	}
+	},
+    postgres: {
+    user: '',
+    password: '',
+    db: '',
+    host:''
+  }
 }

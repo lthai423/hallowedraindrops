@@ -26,7 +26,7 @@ module.exports = (app, io) => {
   app.get('/auth/github',
     passport.authenticate('github', {scope: ['user', 'public_repo']}),
     (req, res) => {
-      console.log('success'); 
+      console.log('success');
     }
   );
 
@@ -106,20 +106,20 @@ module.exports = (app, io) => {
         // in the future, we need to see if we should completely remove pad.html
         // and have it render within index.html with *pad-specific components
       else
-        res.send(404);
+        res.sendStatus(404);
     });
 
-  
+
     /*function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) { return next(); }
     res.redirect('/login')
     }*/
 
-    // commenting out for now, but this pretty much checks for existing auth. 
+    // commenting out for now, but this pretty much checks for existing auth.
     // app.route('/[^\/]', isAuth(req, res, next));
   // ** below code block is used for the server setup
   // for socket.io
   // link: http://stackoverflow.com/questions/27393705/socketio-get-http-localhost3000-socket-io-eio-3transport-pollingt-1418187
-  
+
   // end for socket
 };
