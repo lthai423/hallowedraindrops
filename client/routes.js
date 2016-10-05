@@ -8,6 +8,8 @@ import NoMatch from './app/NoMatch.jsx';
 import Index from './app/index.jsx';
 import Editor from './app/editor.jsx';
 import Home from './app/home.jsx';
+import Admin from './app/Admin/Admin.jsx';
+import ChallengeForm from './app/Admin/ChallengeForm.jsx';
 import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 
 // bootstrap: https://medium.com/@victorleungtw/how-to-use-webpack-with-react-and-bootstrap-b94d33765970#.yd8htlxw0
@@ -29,8 +31,10 @@ ReactDOM.render(
 		<Route path="/" component={Index}>
 			<IndexRoute component={Home}></IndexRoute>
       <Route path ="/editor/:editorid" component={Editor} />
-        <Route path="admin/addchallenge" component={Editor} />
-        <Route path="admin/*" component={NoMatch} />
+      <Route path ="admin" component={Admin}>
+        <Route path="addchallenge" component={ChallengeForm} />
+        <Route path="*" component={NoMatch} />
+      </Route>
       <Route path ="home" component={Home}/>
 			<Route path ="*" component={NoMatch}/>
 		</Route>

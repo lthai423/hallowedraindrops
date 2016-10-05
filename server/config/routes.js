@@ -111,7 +111,7 @@ module.exports = (app, io) => {
 
   app.route('/*')
     .get((req, res) => {
-      res.render('index.html');
+      res.status(404).render('index.html');
     });
     /*function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) { return next(); }

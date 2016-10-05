@@ -19,7 +19,7 @@ adminRouter.route('/challenge/*')
 
 adminRouter.route('/*')
   .get((req, res) => {
-    res.render('index.html');
+    res.status(404).render('index.html');
   });
 
 module.exports = adminRouter;
