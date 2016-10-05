@@ -109,7 +109,10 @@ module.exports = (app, io) => {
         res.sendStatus(404);
     });
 
-
+  app.route('/*')
+    .get((req, res) => {
+      res.render('index.html');
+    });
     /*function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) { return next(); }
     res.redirect('/login')

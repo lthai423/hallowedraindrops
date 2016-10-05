@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 // other pages such as signup-page
 // other pages such as interviewer page
 // other pages such as profile page
+import NoMatch from './app/NoMatch.jsx';
 import Index from './app/index.jsx';
 import Editor from './app/editor.jsx';
 import Home from './app/home.jsx';
@@ -28,11 +29,10 @@ ReactDOM.render(
 		<Route path="/" component={Index}>
 			<IndexRoute component={Home}></IndexRoute>
       <Route path ="/editor/:editorid" component={Editor} />
-			<Route path ="admin" component={Editor}>
-        <Route path="addchallenge" component={Editor} />
-        <Route path="*" component={NoMatch} />
-      </Route>
-			<Route path ="home" component={Home}/>
+        <Route path="admin/addchallenge" component={Editor} />
+        <Route path="admin/*" component={NoMatch} />
+      <Route path ="home" component={Home}/>
+			<Route path ="*" component={NoMatch}/>
 		</Route>
 	</Router>
 	, document.getElementById('app'));
