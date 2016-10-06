@@ -34,7 +34,7 @@ class TestingLayout extends React.Component{
       <div>
         <Row>
           <Col sm={6} md={12}>
-            <ChallengeInfo />
+            <ChallengeInfo handleInfo={this.props.handleInfo} />
           </Col>
         </Row>
         <Row>

@@ -20,7 +20,10 @@ class ChallengeForm extends React.Component{
       prompt: '',
       tests: [],
       sourceCode: '',
-      info: {},
+      info: {
+        title: '',
+        difficulty: ''
+      },
     };
   }
 
@@ -48,7 +51,9 @@ class ChallengeForm extends React.Component{
   }
 
   handleChallengeInfo(info) {
-
+    this.setState({
+      info: info
+    });
   }
 
   handleSubmit() {
