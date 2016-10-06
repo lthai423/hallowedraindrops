@@ -41,7 +41,12 @@ class Editor extends React.Component {
     this.getText = this.getText.bind(this);
     this.sendCode = this.sendCode.bind(this);
     this.startConsole = this.startConsole.bind(this);
+    this.sidebar();
     this.startConsole();
+
+    // reset the container to 0
+    $('.container').css("margin", 0);
+
 
     console.log('state-bar', this.state.sidebar);
   }
@@ -160,12 +165,20 @@ class Editor extends React.Component {
     this.socket.emit('text change', text);
   }
 
+
 	sidebar () {
 	  this.setState({
 	    sidebar: !this.state.sidebar
 	  });
   	console.log('menutoggled has been triggered');
   	$("#wrapper").toggleClass("toggled");
+
+    if(!this.state.sidebar) { // if it's not clicked
+      // adjust the div=container
+      console.log('adjusting css...?');
+      $('.container').css("margin", 0);
+      // $('.container').css("margin-right", "0px");
+    }
 	}
 
   startConsole () {

@@ -44,6 +44,14 @@
     /*background-color: #ccc;*/
 }
 
+
+/*div.home-bar {
+    margin-left: 255px;
+    margin-right: 255px;
+    text-align: center;
+    max-width: 100%;
+}*/
+
 div#console.home-console {
     margin-right: -500px;
     /*margin-left: ;*/
@@ -54,7 +62,7 @@ div.home-editor #editor {
 }
 
 div.container {
-    margin: 0px;
+    /*margin: 0px;*/
 }
 
 
