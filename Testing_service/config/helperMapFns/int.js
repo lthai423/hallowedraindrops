@@ -4,5 +4,14 @@
 module.exports = {
 
 	// contain expects that deal with integers
+	greaterThanNum : {
+
+	},
+
+	lessThanNum : {
+
+	},
+
+
 
 }

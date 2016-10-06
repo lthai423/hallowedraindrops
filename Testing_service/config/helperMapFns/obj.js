@@ -64,6 +64,7 @@ module.exports = {
 		}
 	},
 
+	// check index of an item
 
 
 
