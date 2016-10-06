@@ -21,7 +21,7 @@ class Navigation extends React.Component {
   render () { // we also need to build the nav bar on the right
     return (
       <div>
-        <NavBar fixedTop='true' fluid staticTop='true'>
+        <NavBar fixedTop fluid staticTop>
           <Nav bsStyle="tabs" pullLeft>
             <NavItem>Prep-Challenges</NavItem>
             <NavItem>Run Code</NavItem>

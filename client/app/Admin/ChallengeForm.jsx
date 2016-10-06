@@ -1,9 +1,16 @@
 import React from 'react';
+
+//Other Components
 import Navigation from './AdminNavigation.jsx';
+import ChallengePrompt from './ChallengePrompt.jsx';
+import ChallengeAnswer from './ChallengeAnswer.jsx';
+
+//React Bootstrap
 import PageHeader from 'react-bootstrap/lib/PageHeader.js';
 import Grid from 'react-bootstrap/lib/Grid.js';
 import Row from 'react-bootstrap/lib/Row.js';
 import Col from 'react-bootstrap/lib/Col.js';
+
 
 class ChallengeForm extends React.Component{
   constructor(props) {
@@ -32,17 +39,19 @@ class ChallengeForm extends React.Component{
   render() {
     return (
       <div>
-          <PageHeader>Add a new challenge:</PageHeader>
+          <PageHeader>Add a new challenge!</PageHeader>
            <div id="page-content-wrapper">
             <Grid>
               <Col sm={6} md={6}>
                 <Row>
                   <Col sm={6} md={12}>
-                    <div id="challenge-editor" className="challenge-editor">This is where editor 1 goes</div>
+                    <ChallengePrompt />
                   </Col>
                 </Row>
                 <Row>
-                  <Col sm={6} md={12}>This is where editor 2 goes</Col>
+                  <Col sm={6} md={12}>
+                    <ChallengeAnswer />
+                  </Col>
                 </Row>
               </Col>
               <Col sm={6} md={6}>
