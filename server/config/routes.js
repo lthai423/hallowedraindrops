@@ -94,7 +94,7 @@ module.exports = (app, io) => {
 
 // *****COMMENTING OUT FOR TESTING
   // console.log(path.join(__dirname, '/../../client/pad.html'));
-  app.route('/*')
+  app.route('/editor/*')
     .get((req, res) => {
       console.log('req.path provided is: ', req.path);
       var path = req.path.split('editor');
@@ -109,7 +109,10 @@ module.exports = (app, io) => {
         res.sendStatus(404);
     });
 
-
+  app.route('/*')
+    .get((req, res) => {
+      res.status(404).render('index.html');
+    });
     /*function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) { return next(); }
     res.redirect('/login')

@@ -5,7 +5,7 @@ import { render } from 'react-dom';
 
 /* React-Bootstrap Components */
 
-class MenuWrap extends React.Component { 
+class MenuWrap extends React.Component {
 	//Sidebar will list questions
 
 	constructor(props) {
@@ -80,13 +80,16 @@ class MenuWrap extends React.Component {
 							<a href="#">treeBFSelect</a>
 						</li>
 						<li className="sidebar-brand">
-							<a href="#">"shuffleDeck"</a>
+							<a href="#">shuffleDeck</a>
+						</li>
+						<li className="sidebar-brand">
+							<a href="/admin/addchallenge">-- add challenge --</a>
 						</li>
 					</ul>
 				</div>
 			</div>
 		);
-	}	
+	}
 }
 
 module.exports = MenuWrap;

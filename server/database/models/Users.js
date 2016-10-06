@@ -10,8 +10,10 @@ var User = sequelize.define('user', {
   email: Sequelize.STRING,
   company: Sequelize.STRING,
   admin: Sequelize.BOOLEAN,
-  moderator: Sequelize.BOOLEAN
+  moderator: Sequelize.BOOLEAN,
+  reputation: Sequelize.INTEGER
 });
+
 
 module.exports = User;
 
