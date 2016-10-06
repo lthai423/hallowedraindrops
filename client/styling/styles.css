@@ -41,6 +41,7 @@ body {
     padding-top: 0px;
   }
 }
+
 /* Styles for the Editor */
 #editor {
     padding-top: 30px;
@@ -232,4 +233,8 @@ div.jumbotron {
     vertical-align: middle;
     width: 500px;
     background-color: grey;
+}
+
+pre {
+  height: 17pc
 }
