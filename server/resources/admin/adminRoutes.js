@@ -6,6 +6,7 @@ var adminController = require('./adminController.js');
 
 adminRouter.route('/challenge/*')
   .get((req, res, next) => {
+    console.log('getting route in admin');
     adminController.getQuestion(req, res);
   })
   .post((req, res, next) => {

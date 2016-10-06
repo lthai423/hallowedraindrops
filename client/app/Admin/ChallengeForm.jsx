@@ -63,7 +63,7 @@ class ChallengeForm extends React.Component{
   sendQuestion() {
     $.ajax({
       method: 'POST',
-      url: 'http://localhost:8080/admin/challenge',
+      url: 'http://localhost:8080/admin/challenge/' + this.state.info.title,
       data: {
         question: {
           name: this.state.info.title,
@@ -76,7 +76,7 @@ class ChallengeForm extends React.Component{
       success: (data) => {
         console.log('Success!', data);
       },
-      error: (err) => {
+      error: (error) => {
         console.log('Error in posting question', error);
       }
     });

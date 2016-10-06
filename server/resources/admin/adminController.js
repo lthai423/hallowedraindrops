@@ -11,6 +11,9 @@ module.exports = {
         console.log(question, 'question');
         if (!question) {
           Question.create(reqQ).then((q) => callback(q));
+            // .catch((error) => {
+            //   res.status(500).send(error);
+            // });
         }
       callback(question);
       });
