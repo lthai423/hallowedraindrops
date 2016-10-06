@@ -28,20 +28,18 @@ class ChallengeForm extends React.Component{
   }
 
   componentDidMount() {
-    // this.editor = this.editorSetup();
-
   }
 
   handlePrompt(code) {
-    console.log(code);
     this.setState({
       prompt: code
     });
-    console.log('at challengeForm', this.state.prompt);
   }
 
   handleTests(tests) {
-    console.log('logging tests in handletest', tests);
+    this.setState({
+      tests: tests
+    });
   }
 
   handleSourceCode(code) {
@@ -57,17 +55,22 @@ class ChallengeForm extends React.Component{
   }
 
   handleSubmit() {
-    var name;
-    var prompt;
-    var sourceCode;
-    var tests;
-
+    console.log('state to send', this.state);
+    this.sendRequest();
   }
 
   sendRequest() {
+    console.log('sending state');
     $.ajax({
-
-
+      method: 'POST',
+      url: 'http://localhost:1337/db/test',
+      data: this.state,
+      success: (data) => {
+        console.log('data value is: ', data);
+      },
+      error: (jqXHR, textStatus, errorThrown) => {
+        console.log(textStatus, errorThrown, jqXHR);
+      }
     });
   }
   // editorSetup () {

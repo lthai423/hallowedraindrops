@@ -11,7 +11,6 @@ class TestEntry extends React.Component{
   }
 
   handleMethod (e) {
-    console.log('method', e.target.value);
     var method = e.target.value;
     this.setState({
       method: method
@@ -22,7 +21,6 @@ class TestEntry extends React.Component{
   }
 
   handleSnippet(e) {
-    console.log('snippet', e.target.value);
     var snippet = e.target.value;
     this.setState({
       snippet: snippet
@@ -33,7 +31,6 @@ class TestEntry extends React.Component{
   }
 
   handleAnswer(e) {
-    console.log('answer', e.target.value);
     var answer = e.target.value;
     this.setState({
       answer: answer

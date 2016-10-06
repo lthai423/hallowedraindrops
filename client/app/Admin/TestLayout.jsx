@@ -30,8 +30,6 @@ class TestingLayout extends React.Component{
   }
 
   getInfo(el, state) {
-    console.log(el, state);
-    console.log('key', el.props.num);
     var tests = this.state.testinfo;
     tests[el.props.num] = el.state;
 
