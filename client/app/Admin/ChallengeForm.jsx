@@ -4,6 +4,7 @@ import React from 'react';
 import Navigation from './AdminNavigation.jsx';
 import ChallengePrompt from './ChallengePrompt.jsx';
 import ChallengeAnswer from './ChallengeAnswer.jsx';
+import TestLayout from './TestLayout.jsx';
 
 //React Bootstrap
 import PageHeader from 'react-bootstrap/lib/PageHeader.js';
@@ -18,23 +19,23 @@ class ChallengeForm extends React.Component{
   }
 
   componentDidMount() {
-    this.editor = this.editorSetup();
+    // this.editor = this.editorSetup();
 
   }
 
-  editorSetup () {
-    var editor = ace.edit("editor");
+  // editorSetup () {
+  //   var editor = ace.edit("editor");
 
-    editor.setTheme("ace/theme/dreamweaver");
-    editor.getSession().setMode("ace/mode/javascript"); // going to execute js
-    editor.getSession().setUseSoftTabs(true); // use soft-tabs
-    editor.setHighlightActiveLine(false); // sets line highlighting
-    document.getElementById('editor').style.fontSize='13px'; // sets the font-size
-    editor.getSession().setUseWrapMode(true);
-    editor.resize();
+  //   editor.setTheme("ace/theme/dreamweaver");
+  //   editor.getSession().setMode("ace/mode/javascript"); // going to execute js
+  //   editor.getSession().setUseSoftTabs(true); // use soft-tabs
+  //   editor.setHighlightActiveLine(false); // sets line highlighting
+  //   document.getElementById('editor').style.fontSize='13px'; // sets the font-size
+  //   editor.getSession().setUseWrapMode(true);
+  //   editor.resize();
 
-    return editor;
-  }
+  //   return editor;
+  // }
 
   render() {
     return (
@@ -42,6 +43,9 @@ class ChallengeForm extends React.Component{
           <PageHeader>Add a new challenge!</PageHeader>
            <div id="page-content-wrapper">
             <Grid>
+              <Col sm={6} md={6}>
+                <TestLayout/ >
+              </Col>
               <Col sm={6} md={6}>
                 <Row>
                   <Col sm={6} md={12}>
@@ -53,9 +57,6 @@ class ChallengeForm extends React.Component{
                     <ChallengeAnswer />
                   </Col>
                 </Row>
-              </Col>
-              <Col sm={6} md={6}>
-                <h1>This is where tests goes</h1>
               </Col>
             </Grid>
           </div>
