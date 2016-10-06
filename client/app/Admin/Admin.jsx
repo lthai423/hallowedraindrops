@@ -1,4 +1,6 @@
 import React from 'react';
+import Navigation from './AdminNavigation.jsx';
+
 
 class Admin extends React.Component{
   constructor(props) {
@@ -13,8 +15,8 @@ class Admin extends React.Component{
   render() {
     return (
       <div>
-        <h1>This is the Admin Page</h1>
-        {this.props.children}
+        <Navigation />
+        <div>{this.props.children}</div>
       </div>
     );
   }
