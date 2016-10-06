@@ -1,4 +1,5 @@
 // Routes received by the server
+var db_utils = require('../db_utils.js');
 var utils = require('../utils.js');
 module.exports = (app) => {
 
@@ -9,15 +10,21 @@ module.exports = (app) => {
     * @param {req, res} the request and response for calls
     * @returns {nothing}
     */
-  app.route('/api/test')
+  app.route('/db/test')
     .get((req, res) => {
       console.log(req.query);
-      utils.getTest(req, res);
+      db_utils.getTest(req, res);
     })
     .post((req, res) => {
-      utils.newTest(req, res);
+      // res.send('hello world');
+      db_utils.newTest(req, res);
     })
     .put((req, res) => {
-      utils.updateTest(req,res);
+      db_utils.updateTest(req,res);
+    });
+
+  app.route('/api/test')
+    .post((req, res) => {
+      utils.testSuite(req, res);
     });
 };

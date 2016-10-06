@@ -5,7 +5,7 @@ describe('Server Side Specifications', function() {
   describe('Test function', function() {
   	// manually create and restore the sandbox
   	var sandbox,
-  			jamesBond;
+  			jamesBond;s
 
   	var licensesToKill = {
 	    start: function (agent) {

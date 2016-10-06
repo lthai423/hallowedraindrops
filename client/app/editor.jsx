@@ -1,4 +1,4 @@
-// a placeholder for our editor file.
+  // a placeholder for our editor file.
 // code in here is only for testing purposes
 
 import React from 'react';
@@ -37,6 +37,7 @@ class Editor extends React.Component {
     this.sidebar = this.sidebar.bind(this);
     this.getText = this.getText.bind(this);
     this.sendCode = this.sendCode.bind(this);
+    this.testCode = this.testCode.bind(this);
 
     console.log('state-bar', this.state.sidebar);
   }
@@ -52,6 +53,7 @@ class Editor extends React.Component {
   // sendCode will take the code on the 'text' state
   // and will be processed on the server
   sendCode() {
+    console.log(this.state);
     $.ajax({
       method: 'POST',
       url: 'http://localhost:8080/api/replservice/runcode',
@@ -61,6 +63,22 @@ class Editor extends React.Component {
         this.socket.emit('append result', data);
         // $('.response').append(data);
         console.log('after socket');
+      },
+      error: (jqXHR, textStatus, errorThrown) => {
+        console.log(textStatus, errorThrown, jqXHR);
+      }
+    });
+  }
+
+  testCode() {
+    console.log(this.state);
+    $.ajax({
+      method: 'POST',
+      url: 'http://localhost:8080/api/replservice/testcode',
+      data: {code: this.state.text},
+      success: (data) => {
+        console.log('data value is: ', data);
+        
       },
       error: (jqXHR, textStatus, errorThrown) => {
         console.log(textStatus, errorThrown, jqXHR);
@@ -157,7 +175,7 @@ class Editor extends React.Component {
 
     return (
     	<div>
-    	<Navigation sidebar={this.sidebar} sendcode={this.sendCode}></Navigation>
+    	<Navigation sidebar={this.sidebar} sendcode={this.sendCode} testcode={this.testCode}></Navigation>
 	    	<div id="wrapper">
 	    		<Sidebar></Sidebar>
 	        <div id="page-content-wrapper">
