@@ -56,9 +56,31 @@ class ChallengeForm extends React.Component{
 
   handleSubmit() {
     console.log('state to send', this.state);
+    this.sendQuestion();
     this.sendRequest();
   }
 
+  sendQuestion() {
+    $.ajax({
+      method: 'POST',
+      url: 'http://localhost:8080/admin/challenge',
+      data: {
+        question: {
+          name: this.state.info.title,
+          difficulty: this.state.info.difficulty,
+          attempts: 0,
+          answers: 0,
+          prompt: this.state.prompt,
+        }
+      },
+      success: (data) => {
+        console.log('Success!', data);
+      },
+      error: (err) => {
+        console.log('Error in posting question', error);
+      }
+    });
+  }
   sendRequest() {
     console.log('sending state');
     $.ajax({
