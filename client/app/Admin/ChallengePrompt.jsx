@@ -3,30 +3,29 @@ import React from 'react';
 class ChallengePrompt extends React.Component{
   constructor(props) {
     super(props);
-    this.textarea = <textarea placeholder="Paste Challenge Code Here"
-      onPaste={this.handlePaste.bind(this)} className="form-control" rows="14"
-      id="comment"></textarea>;
-    this.code = 'set'
     this.state = {
       mode: 'edit',
       textform: true,
       code: ''
     };
-    this.textbox = <pre id='pre' className='pre-scrollable'>{this.code}</pre>
 
   }
 
   handleSave() {
-    var text = this.refs.textarea.value
+    var text = this.refs.textarea.value;
     this.setState({
       code: text
-    })
+    });
     this.setState({
       textform: false
-    })
+    });
+
+    $('#save').toggleClass("hide");
   }
 
   handleEdit() {
+    $('#save').toggleClass("hide");
+
     this.setState({
       textform: true
     })
@@ -44,6 +43,8 @@ class ChallengePrompt extends React.Component{
         textform: false,
       })
     }.bind(this), 100)
+    $('#save').toggleClass("hide");
+
   }
 
   handleChange(e) {
@@ -62,7 +63,7 @@ class ChallengePrompt extends React.Component{
             onPaste={this.handlePaste.bind(this)} onChange={this.handleChange.bind(this)} className="form-control" rows="14"
             id="comment" ref='textarea'>{this.state.code}</textarea> :
           <pre id='pre' className='pre-scrollable'>{this.state.code}</pre>}
-          <button onClick={this.handleSave.bind(this)} className="btn btn-default" type="button">Save</button>
+          <button id='save' onClick={this.handleSave.bind(this)} className="btn btn-default" type="button">Save</button>
           <button onClick={this.handleEdit.bind(this)} className="btn btn-default" type="button">Edit</button>
         </div>
       </form>

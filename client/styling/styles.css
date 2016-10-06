@@ -238,3 +238,7 @@ div.jumbotron {
 pre {
   height: 17pc
 }
+
+.hide {
+    display: none;
+}
