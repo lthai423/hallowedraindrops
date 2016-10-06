@@ -42,7 +42,9 @@ class ChallengeForm extends React.Component{
   }
 
   handleSourceCode(code) {
-
+    this.setState({
+      sourceCode: code
+    });
   }
 
   handleChallengeInfo(info) {

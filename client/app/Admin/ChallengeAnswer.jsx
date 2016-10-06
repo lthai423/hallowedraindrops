@@ -17,6 +17,7 @@ class ChallengeAnswer extends React.Component{
     this.setState({
       code: text
     });
+    this.props.handleSourceCode(text);
     this.setState({
       textform: false
     });
@@ -35,9 +36,11 @@ class ChallengeAnswer extends React.Component{
   handlePaste(e) {
     // let code to be pasted
     setTimeout(function () {
+      var text = this.refs.textarea.value;
       this.setState({
-        code:this.refs.textarea.value
+        code:text
       });
+      this.props.handleSourceCode(text);
       this.setState({
         textform: false,
       });
