@@ -235,3 +235,28 @@ div.jumbotron {
     margin-right: 100px;
 }
 
+/* styles for our blogger-question.jsx */
+
+/* styles for the question */
+.ques {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: SourceSansPro;
+  font-size: 40px;
+  font-weight: 400;
+}
+
+.ans {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-family: SourceSansPro;
+  font-size: 20px;;
+  font-weight: 100;
+}
+
+
+
+
+
+
+

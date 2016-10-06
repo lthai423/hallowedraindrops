@@ -14,7 +14,22 @@ class BloggerQuestions extends React.Component {
 
 	constructor(props) {
 		super(props)
+		// response is going to be an array of responses to that question
+		// ques is going to be an array of questions
+		var questions = ["Did you feel that you got your value from attending HackReactor?"];
+		var response = ["Yeah. "]
+
+
+		this.state = {
+			questions: questions,
+			response: response
+		}
+
 	}
+
+
+
+	// need to change to this.props.questions after testing
 
 	render () {
 		return (

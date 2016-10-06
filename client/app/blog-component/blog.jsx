@@ -10,6 +10,7 @@ import Jumbotron from 'react-bootstrap/lib/Jumbotron.js';
 import Image from 'react-bootstrap/lib/Image.js';
 
 class Blog extends React.Component {
+
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -32,9 +33,6 @@ class Blog extends React.Component {
 							<Link to="/blog/brian">to brian</Link>
 						</div>
 					</Jumbotron>
-				{ 
-					// a map function that loops and prints each blog 
-				}
 			</div>
 		)
 	}

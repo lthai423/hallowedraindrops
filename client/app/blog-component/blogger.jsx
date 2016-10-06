@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import BlogNavigation from './blog.jsx';
+// import BlogNavigation from './blog.jsx';
 import BloggerProfile from './bloggerprofile.jsx';
 import BloggerQuestions from './blogger-questions.jsx';
+import BlogNavigation from './blog-navigation.jsx';
 
 // react-bootstrap elements
 import Jumbotron from 'react-bootstrap/lib/Jumbotron.js';
@@ -13,14 +14,18 @@ class Blogger extends React.Component {
 		this.state = {
 			// empty for now
 			currentPage: 0, // the page in the array
-			users: ['brianz', 'chris', 'thai'], // the users who have pages
+			users: ['brianz', 'chris', 'thai'] // the users who have pages
 		}
+	}
+
+	componentDidMount() {
+		console.log('blogger component mounted');
 	}
 
 	// a service that will make a call to the db for that blog profile
 		// should be a sql db
 
-	// will pull in data from the database for the user
+	// will pull in data from the database for 
 		// the user that's being pulled will be from the url
 			// 
 
@@ -41,7 +46,6 @@ class Blogger extends React.Component {
 			</div>
 		)
 	}
-
 }
 
 export default Blogger;
