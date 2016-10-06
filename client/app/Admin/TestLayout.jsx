@@ -12,12 +12,15 @@ class TestingLayout extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      tests: []
+      tests: [],
+      testinfo: []
     };
   }
 
   handleNewTest() {
-    var test = <TestEntry />;
+    var length = this.state.tests.length;
+
+    var test = <TestEntry num={length} info={this.getInfo.bind(this)}/>;
     var tests = this.state.tests.slice();
     tests.push(test);
     console.log('add new test');
@@ -26,9 +29,18 @@ class TestingLayout extends React.Component{
     });
   }
 
-  handleSubmit() {
+  getInfo(el, state) {
+    console.log(el, state);
+    console.log('key', el.props.num);
+    var tests = this.state.testinfo;
+    tests[el.props.num] = el.state;
 
+    this.setState({
+      testinfo: tests
+    })
+    this.props.handleTests(tests);
   }
+
   render() {
     return (
       <div>
@@ -46,7 +58,9 @@ class TestingLayout extends React.Component{
             <p className='col-xs-2'>Answer</p>
             </div>
             <form>
-              {this.state.tests}
+              {this.state.tests.map((test) => (
+                test
+                ))}
             </form>
             <button onClick={this.handleNewTest.bind(this)} type="button" className="btn btn-outline-primary">Add Another Test</button>
           </Col>

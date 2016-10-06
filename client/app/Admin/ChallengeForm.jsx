@@ -40,8 +40,8 @@ class ChallengeForm extends React.Component{
     console.log('at challengeForm', this.state.prompt);
   }
 
-  handleTests() {
-
+  handleTests(tests) {
+    console.log('logging tests in handletest', tests);
   }
 
   handleSourceCode(code) {
