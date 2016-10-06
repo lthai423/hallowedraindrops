@@ -16,6 +16,12 @@ import Col from 'react-bootstrap/lib/Col.js';
 class ChallengeForm extends React.Component{
   constructor(props) {
     super(props);
+    this.state = {
+      prompt: '',
+      tests: [],
+      sourceCode: '',
+      info: {},
+    };
   }
 
   componentDidMount() {
@@ -23,6 +29,40 @@ class ChallengeForm extends React.Component{
 
   }
 
+  handlePrompt(code) {
+    console.log(code);
+    this.setState({
+      prompt: code
+    });
+    console.log('at challengeForm', this.state.prompt);
+  }
+
+  handleTests() {
+
+  }
+
+  handleSourceCode(code) {
+
+  }
+
+  handleChallengeInfo(info) {
+
+  }
+
+  handleSubmit() {
+    var name;
+    var prompt;
+    var sourceCode;
+    var tests;
+
+  }
+
+  sendRequest() {
+    $.ajax({
+
+
+    });
+  }
   // editorSetup () {
   //   var editor = ace.edit("editor");
 
@@ -41,20 +81,21 @@ class ChallengeForm extends React.Component{
     return (
       <div>
           <PageHeader>Add a new challenge!</PageHeader>
+          <button onClick={this.handleSubmit.bind(this)} type="button" className="btn btn-outline-primary">Submit Challenge</button>
            <div id="page-content-wrapper">
             <Grid>
               <Col sm={6} md={6}>
-                <TestLayout/ >
+                <TestLayout handleInfo={this.handleChallengeInfo.bind(this)} handleTests={this.handleTests.bind(this)}/ >
               </Col>
               <Col sm={6} md={6}>
                 <Row>
                   <Col sm={6} md={12}>
-                    <ChallengePrompt />
+                    <ChallengePrompt handlePrompt={this.handlePrompt.bind(this)} />
                   </Col>
                 </Row>
                 <Row>
                   <Col sm={6} md={12}>
-                    <ChallengeAnswer />
+                    <ChallengeAnswer handleSourceCode={this.handleSourceCode.bind(this)}/>
                   </Col>
                 </Row>
               </Col>

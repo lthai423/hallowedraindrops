@@ -26,6 +26,9 @@ class TestingLayout extends React.Component{
     });
   }
 
+  handleSubmit() {
+
+  }
   render() {
     return (
       <div>

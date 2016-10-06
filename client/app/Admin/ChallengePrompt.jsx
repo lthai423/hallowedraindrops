@@ -16,10 +16,10 @@ class ChallengePrompt extends React.Component{
     this.setState({
       code: text
     });
+    this.props.handlePrompt(text);
     this.setState({
       textform: false
     });
-
     $('#save').toggleClass("hide");
   }
 
@@ -28,7 +28,7 @@ class ChallengePrompt extends React.Component{
 
     this.setState({
       textform: true
-    })
+    });
     document.getElementById('comment').html(this.state.code);
     // this.textarea.value = this.state.code;
   }
@@ -36,13 +36,15 @@ class ChallengePrompt extends React.Component{
   handlePaste(e) {
     // let code to be pasted
     setTimeout(function () {
+      var code = this.refs.textarea.value;
       this.setState({
-        code:this.refs.textarea.value
-      })
+        code: code
+      });
+      this.props.handlePrompt(code);
       this.setState({
         textform: false,
-      })
-    }.bind(this), 100)
+      });
+    }.bind(this), 100);
     $('#save').toggleClass("hide");
 
   }
@@ -50,7 +52,7 @@ class ChallengePrompt extends React.Component{
   handleChange(e) {
     this.setState({
       code: e.target.value
-    })
+    });
   }
 
   render() {
