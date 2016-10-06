@@ -22,7 +22,7 @@ class ChallengeForm extends React.Component{
       sourceCode: '',
       info: {
         title: '',
-        difficulty: ''
+        difficulty: '1'
       },
     };
   }
@@ -56,23 +56,27 @@ class ChallengeForm extends React.Component{
 
   handleSubmit() {
     console.log('state to send', this.state);
-    this.sendQuestion();
-    this.sendRequest();
+    var question = {
+      name: this.state.info.title,
+      difficulty: this.state.info.difficulty,
+      attempts: 0,
+      answers: 0,
+      prompt: this.state.prompt,
+    };
+
+    var body = {
+      question: question,
+      varArry: this.state.tests,
+      sourceCode: this.state.sourceCode
+    };
+    this.addChallenge(body);
   }
 
-  sendQuestion() {
+  addChallenge(body) {
     $.ajax({
       method: 'POST',
       url: 'http://localhost:8080/admin/challenge/' + this.state.info.title,
-      data: {
-        question: {
-          name: this.state.info.title,
-          difficulty: this.state.info.difficulty,
-          attempts: 0,
-          answers: 0,
-          prompt: this.state.prompt,
-        }
-      },
+      data: body,
       success: (data) => {
         console.log('Success!', data);
       },
