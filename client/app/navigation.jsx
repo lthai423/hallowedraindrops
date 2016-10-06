@@ -22,15 +22,19 @@ class Navigation extends React.Component {
 		console.log('this.props', this.props);
 	}
 
+
+
 	render () { // we also need to build the nav bar on the right
 		return (
-		  <div> 
-		  	<NavBar inverse fixedTop fluid staticTop>
-		  		<Nav bsStyle="tabs">
-		  			<NavItem onClick={() => this.props.sidebar() }>Settings</NavItem>
-		  			<NavItem >Profile</NavItem>
+		  <div>
+		  	<NavBar fixedTop fluid staticTop>
+		  		<Nav bsStyle="tabs" pullLeft>
+		  			<NavItem onClick={() => this.props.sidebar() }>Prep-Challenges</NavItem>
 		  			<NavItem onClick={() => this.props.sendcode()}>Run Code</NavItem>
 		  			<NavItem onClick={() => this.props.testcode()}>Submit Code</NavItem>
+					</Nav>
+					<Nav bsStyle="tabs" pullRight>
+						<NavItem pullRight>Profile Details</NavItem>
 					</Nav>
 				</NavBar>
 		  </div>

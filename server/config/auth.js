@@ -2,6 +2,8 @@ var GitHubStrategy = require('passport-github2').Strategy;
 var partials = require('express-partials');
 var fs = require('fs');
 var Promise = require('bluebird');
+var User = require('../database/models/Users.js');
+var services = require('./services.js');
 
 // promiseify the whole fsPromise
 Promise.promisifyAll(require('fs'));
@@ -41,16 +43,19 @@ module.exports = function(passport) {
 			clientID: githubKeys.GITHUB_CLIENT_ID,
 			clientSecret: githubKeys.GITHUB_CLIENT_SECRET,
 			callbackURL: githubKeys.GITHUB_CALLBACK_URL // not sure about this
-		}, 
+		},
 		function(accessToken, refreshToken, profile, done) {
 			// async verification
 			process.nextTick(function() {
 				console.log('entered into the passport use part');
-				// **FIX 
+				// **FIX
 				// once we have a db setup, we would store their info
 				// into our db
 				console.log('value for profile is: ', profile);
-				return done(null, profile);
+				services.addUser(profile, User, (token) => {
+					console.log('created token', token);
+					return done(null, profile);
+				});
 			});
 		}));
 	}).catch((err) => {

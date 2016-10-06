@@ -3,6 +3,8 @@ const express = require('express');
 const app = express();
 const services = require('./config/services.js');
 const replRouter = require('./resources/repl/replRoutes.js');
+const adminRouter = require('./resources/admin/adminRoutes.js');
+
 // var router = require('./config/routes.js');
 
 //use middleware
@@ -16,6 +18,7 @@ app.set('view engine', 'html');
 // use services
 app.use(express.static(__dirname + '../client'));
 app.use('/api/replservice', replRouter);
+app.use('/admin', adminRouter);
 
 const port = process.argv[2] || 8080;
 const server = require('http').Server(app);

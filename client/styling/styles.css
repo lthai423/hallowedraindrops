@@ -33,8 +33,17 @@
 
 /* Dark Color Editor: background-color: #303840; */
 
+body {
+  padding-top: 60px;
+}
+@media (max-width: 979px) {
+  body {
+    padding-top: 0px;
+  }
+}
+
 /* Styles for the Editor */
-#editor { 
+#editor {
     padding-top: 30px;
     height: 970px; /* set to the height of macbook pro 13" */
     padding-right:65px;
@@ -44,9 +53,17 @@
     /*background-color: #ccc;*/
 }
 
+
+/*div.home-bar {
+    margin-left: 255px;
+    margin-right: 255px;
+    text-align: center;
+    max-width: 100%;
+}*/
+
 div#console.home-console {
     margin-right: -500px;
-    margin-left: ;
+    /*margin-left: ;*/
 }
 
 div.home-editor #editor {
@@ -54,7 +71,7 @@ div.home-editor #editor {
 }
 
 div.container {
-    margin: 0px;
+    /*margin: 0px;*/
 }
 
 
@@ -71,16 +88,28 @@ div.container {
 
 /* navbar styles*/
 
+#a:hover {
+    background-color: #de7c00;
+}
+
 .navbar {
-    background-color: rgb(35, 170, 253);
+    background-color: #303840;
+}
+
+nav.nav-tabs navbar-nav {
+    background-color: #de7c00;
 }
 
 .navbar.navbar-inverse.navbar-fixed-top.navbar-static-top {
     border-bottom: 0px;
+    background-color: #de7c00;
+    color: #eee;
+    font-family: SourceSansPro;
 }
 
 ul.nav.nav-tabs.navbar-nav {
     border-bottom: 0px;
+    i
 }
 
 div.home-console {
@@ -96,48 +125,61 @@ div.home-editor {
 }
 
  /*Terminal Styles */
-#console {
+#console-terminal-editor {
     /*min-width: 55%;
     /*max-width: 100%;*/
     /*padding-top: 52px;*/
     height: 970px;
     width: 830px;
     background-color:black;
+    position: absolute;
+}
+
+div#console-terminal-editor.home-console {
+    background-color: #303840;
 }
 /* The inner console element. */
 .jqconsole {
-    padding: 10px;
+    /*padding: 10px;*/
+    background-color: #303840;
+    border: 0px;
 }
 /* The cursor. */
 .jqconsole-cursor {
-    background-color: gray;
+    background-color: #eee;
 }
 /* The cursor color when the console looses focus. */
 .jqconsole-blurred .jqconsole-cursor {
-    background-color: #666;
+    background-color: #eee;
 }
 /* The current prompt text color */
 .jqconsole-prompt {
-    color: #0d0;
+    color: rgb(35, 170, 253);
 }
 /* The command history */
 .jqconsole-old-prompt {
-    color: #0b0;
+    color: #eee;
     font-weight: normal;
 }
 /* The text color when in input mode. */
 .jqconsole-input {
-    color: #dd0;
+    color: #eee;
 }
 /* Previously entered input. */
 .jqconsole-old-input {
-    color: #bb0;
+    color: #eee;
     font-weight: normal;
 }
 /* The text color of the output. */
 .jqconsole-output {
     color: white;
 }
+
+.my-output-class {
+    color: #eee;
+}
+
+/* End for jqconsole styles */
 
 /* Styles for the Home-Page */
 .banner-text {
@@ -184,3 +226,19 @@ div.jumbotron {
     z-index: -999;
 }
 
+/* admin */
+#formSpace {
+    margin-top: 90px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 500px;
+    background-color: grey;
+}
+
+pre {
+  height: 17pc
+}
+
+.hide {
+    display: none;
+}
