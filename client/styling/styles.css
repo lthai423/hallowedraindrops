@@ -32,7 +32,7 @@
 }
 
 body {
-    padding-top: 100px;
+    /*padding-top: 100px;*/
 }
 
 .blogger-font {
@@ -43,8 +43,9 @@ body {
 /* Dark Color Editor: background-color: #303840; */
 
 body {
-  padding-top: 60px;
+  padding-top: 52px;
 }
+
 @media (max-width: 979px) {
   body {
     padding-top: 0px;
@@ -53,7 +54,7 @@ body {
 
 /* Styles for the Editor */
 #editor {
-    padding-top: 30px;
+    /*padding-top: 30px;*/
     height: 970px; /* set to the height of macbook pro 13" */
     padding-right:65px;
     padding-left: 0;
@@ -221,7 +222,7 @@ div.jumbotron {
 
 .home-terminal {
 	font-size: 50px;
-	padding-top: 10px;
+	/*padding-top: 10px;*/
 }
 /* vertically-align the github and terminal icons on the home-page*/
 .vcenter {
@@ -235,7 +236,6 @@ div.jumbotron {
     z-index: -999;
 }
 
-<<<<<<< HEAD
 /* blog navbar */
 .blog-nav.nav.navbar-nav.navbar-right li a {
     color: #de7c00;
