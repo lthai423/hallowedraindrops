@@ -223,8 +223,9 @@ class Editor extends React.Component {
     // $(div).jqconsole(welcomeString, promptLabel, continueLabel);
   }
 
-  pasteCode(code) {
-    this.editor.setValue(code);
+  pasteCode(question) {
+    console.log(question);
+    this.editor.setValue(question.prompt);
   }
 	render () {
 
