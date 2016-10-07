@@ -118,7 +118,6 @@ nav.nav-tabs navbar-nav {
 
 ul.nav.nav-tabs.navbar-nav {
     border-bottom: 0px;
-    i
 }
 
 div.home-console {
@@ -197,6 +196,18 @@ div#console-terminal-editor.home-console {
 	font-weight: 100;
 }
 
+.banner-text-blog {
+    font-family: SourceSansPro;
+    font-size: 50px;
+    font-weight: 100;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 320px;
+    padding-right: 320px;
+    /*background-color: #de7c00;*/
+    text-align: center;    
+}
+
 .blue-you {
 	color: rgb(35, 170, 253);
 }
@@ -236,6 +247,9 @@ div.jumbotron {
 }
 
 <<<<<<< HEAD
+
+/** BLOG STYLES **/
+
 /* blog navbar */
 .blog-nav.nav.navbar-nav.navbar-right li a {
     color: #de7c00;
@@ -246,12 +260,53 @@ div.jumbotron {
   outline: none;
 }
 
+div.jumbotron.banner-blog {
+    background-image: url(./img/bricks.jpeg);
+    background-size: cover;
+    max-width: 100%;
+    max-height: 100%;
+    padding-top: 150px;
+    padding-bottom: 150px;
+}
+
 .blog-nav-right {
     margin-left: 100px;
 }
 
 .blog-nav-left {
     margin-right: 100px;
+}
+
+.blog-selection-header {
+    font-family: SourceSansPro;
+    font-style: bold;
+    font-size: 35px;
+    text-align: left;
+}
+
+.blog-selection-name {
+    font-family: SourceSansPro;
+    font-style: italic;
+    font-size: 20px;
+    text-align: right;
+}
+
+.blog-selection-bootcamp {
+    font-family: SourceSansPro;
+    font-size: 20px;
+    text-align: left;
+}
+
+.blog-selection {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    padding-left: 50px;
+    padding-right: 50px;
+    outline: 1px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    /*box-shadow: 0 0 5px 2px rgba(0,0,0,.35);*/
 }
 
 /* styles for our blogger-question.jsx */
