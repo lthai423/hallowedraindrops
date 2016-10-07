@@ -43,7 +43,11 @@ class Blogger extends React.Component {
 	<Jumbotron className="banner">
 		<BloggerProfile user={this.state.users[this.state.currentPage]}></BloggerProfile>
 	</Jumbotron>
-
+<Col md={1} mdPush={5} className="vcenter">
+								<div className="home-selection">
+									<Image src="./styling/img/github-mark-resized.png" circle responsive onClick={this.githubAuth.bind(this)}/>
+								</div>
+							</Col>
 
 
 	*/
@@ -53,13 +57,12 @@ class Blogger extends React.Component {
 			<div className="blogger-font">
 				<BlogNavigation></BlogNavigation>
 				<Grid>
-					<div>
-						<h1>{this.state.users[this.state.currentPage]}</h1>
-						<BloggerProfile profile={this.state.users[this.state.currentPage]}></BloggerProfile>
-					</div>
-					<div>
+					<Row>
+						<Col><Col md={2}></Col>
+						<BloggerProfile></BloggerProfile>
 						<BloggerQuestions></BloggerQuestions>
-					</div>
+						</Col><Col md={2}></Col>
+					</Row>
 				</Grid>
 			</div>
 		)

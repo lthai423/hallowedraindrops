@@ -26,20 +26,15 @@ ReactDOM.render(
 	<Router history={browserHistory}>
 		<Route path="/" component={Index}>
 			<IndexRoute component={Home}></IndexRoute>
-<<<<<<< HEAD
-			<Route path ="/editor/:editorid" component={Editor} />
-			<Route path ="home" component={Home}/>
-			<Route path ="blog" component={Blog}/>
-			<Route path ="/blog/:bloggername" component={Blogger}/>
-=======
       <Route path ="/editor/:editorid" component={Editor} />
       <Route path ="admin" component={Admin}>
         <Route path="addchallenge" component={ChallengeForm} />
         <Route path="*" component={NoMatch} />
       </Route>
-      <Route path ="home" component={Home}/>
+      <Route path ="home" component={Home} />
+      <Route path ="blog" component={Blog} />
+      <Route path ="blog/:bloggername" component={Blogger} />
 			<Route path ="*" component={NoMatch}/>
->>>>>>> 8af4780efe1cedcf1f456927e4b1c12311c06fed
 		</Route>
 	</Router>
 	, document.getElementById('app'));
