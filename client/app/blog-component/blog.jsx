@@ -61,8 +61,8 @@ class Blog extends React.Component {
 				<BlogNavigation></BlogNavigation>
 						<Grid>
 						<Jumbotron className="banner-blog">
+							<h1 className="banner-text-blog">BootCamp Reviews</h1>
 						</Jumbotron>
-						<h1 className="banner-text-blog">BootCamp Reviews</h1>
 							{this.state.users.map((user) => 
 								<Row>
 									<Col>
@@ -71,7 +71,8 @@ class Blog extends React.Component {
 												<Media.Body>
 													<Media.Heading className="blog-selection-header">A Difficult, but Very Humbling 12 Weeks</Media.Heading>
 														<span className="blog-selection-name">Here could be the first 140 characters of their entry, ending with ...</span>
-														</br>
+														<br/>
+														<br/>
 														<span className="blog-selection-bootcamp">Brian Zhou @ HackReactor </span>
 												</Media.Body>
 												<Media.Right>

@@ -196,17 +196,6 @@ div#console-terminal-editor.home-console {
 	font-weight: 100;
 }
 
-.banner-text-blog {
-    font-family: SourceSansPro;
-    font-size: 50px;
-    font-weight: 100;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    padding-left: 320px;
-    padding-right: 320px;
-    /*background-color: #de7c00;*/
-    text-align: center;    
-}
 
 .blue-you {
 	color: rgb(35, 170, 253);
@@ -267,6 +256,8 @@ div.jumbotron.banner-blog {
     max-height: 100%;
     padding-top: 150px;
     padding-bottom: 150px;
+    padding-right: 15px;
+    padding-left: 15px;
 }
 
 .blog-nav-right {
@@ -297,9 +288,21 @@ div.jumbotron.banner-blog {
     text-align: left;
 }
 
+.banner-text-blog {
+    font-family: SourceSansPro;
+    font-size: 40px;
+    font-weight: 100;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    /*padding-left: 300px;*/
+    /*padding-right: 300px;*/
+    /*background-color: #de7c00;*/
+    text-align: center;    
+}
+
 .blog-selection {
-    padding-top: 75px;
-    padding-bottom: 75px;
+    padding-top: 35px;
+    padding-bottom: 50px;
     padding-left: 50px;
     padding-right: 50px;
     outline: 1px;

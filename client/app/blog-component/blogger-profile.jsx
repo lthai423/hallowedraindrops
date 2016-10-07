@@ -20,7 +20,7 @@ class BloggerProfile extends React.Component {
 	render () {
 		return (
 			<div>
-				<Image src="https://www.hackreactorconnect.com/assets/photos/1469481559380.jpg" circle responsive/>
+				<Image src="https://www.hackreactorconnect.com/assets/photos/1469481559380.jpg" circle responsive width={64} height={64}/>
 				<div>
 					Github:   www.github.com/brianzhou13
 					<br/>
