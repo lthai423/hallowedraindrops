@@ -42,8 +42,17 @@ body {
 }
 /* Dark Color Editor: background-color: #303840; */
 
+body {
+  padding-top: 60px;
+}
+@media (max-width: 979px) {
+  body {
+    padding-top: 0px;
+  }
+}
+
 /* Styles for the Editor */
-#editor { 
+#editor {
     padding-top: 30px;
     height: 970px; /* set to the height of macbook pro 13" */
     padding-right:65px;
@@ -226,6 +235,7 @@ div.jumbotron {
     z-index: -999;
 }
 
+<<<<<<< HEAD
 /* blog navbar */
 .blog-nav.nav.navbar-nav.navbar-right li a {
     color: #de7c00;
@@ -269,3 +279,19 @@ div.jumbotron {
 
 
 
+/* admin */
+#formSpace {
+    margin-top: 90px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 500px;
+    background-color: grey;
+}
+
+pre {
+  height: 17pc
+}
+
+.hide {
+    display: none;
+}

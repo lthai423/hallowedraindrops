@@ -1,4 +1,4 @@
-// a placeholder for our editor file.
+  // a placeholder for our editor file.
 // code in here is only for testing purposes
 
 import React from 'react';
@@ -30,7 +30,7 @@ class Editor extends React.Component {
       console: null
 	  };
 	}
-	
+
 	componentDidMount() {
     this.editor = this.editorSetup();
     this.socket = this.setupSocket();
@@ -40,6 +40,7 @@ class Editor extends React.Component {
     this.sidebar = this.sidebar.bind(this);
     this.getText = this.getText.bind(this);
     this.sendCode = this.sendCode.bind(this);
+    this.testCode = this.testCode.bind(this);
     this.startConsole = this.startConsole.bind(this);
     this.sidebar();
     this.startConsole();
@@ -47,10 +48,8 @@ class Editor extends React.Component {
     // reset the container to 0
     $('.container').css("margin", 0);
 
-
     console.log('state-bar', this.state.sidebar);
   }
-
 
   getText() {
     var code = this.editor.getValue();
@@ -62,6 +61,7 @@ class Editor extends React.Component {
   // sendCode will take the code on the 'text' state
   // and will be processed on the server
   sendCode() {
+    console.log(this.state);
     $.ajax({
       method: 'POST',
       url: 'http://localhost:8080/api/replservice/runcode',
@@ -71,6 +71,22 @@ class Editor extends React.Component {
         this.socket.emit('append result', data);
         // $('.response').append(data);
         console.log('after socket');
+      },
+      error: (jqXHR, textStatus, errorThrown) => {
+        console.log(textStatus, errorThrown, jqXHR);
+      }
+    });
+  }
+
+  testCode() {
+    console.log(this.state);
+    $.ajax({
+      method: 'POST',
+      url: 'http://localhost:8080/api/replservice/testcode',
+      data: {code: this.state.text},
+      success: (data) => {
+        console.log('data value is: ', data);
+        
       },
       error: (jqXHR, textStatus, errorThrown) => {
         console.log(textStatus, errorThrown, jqXHR);
@@ -189,7 +205,7 @@ class Editor extends React.Component {
       console: jqconsole
     });
 
-    // jqconsole setup 
+    // jqconsole setup
 
 
     $(function () {
@@ -207,14 +223,17 @@ class Editor extends React.Component {
     // $(div).jqconsole(welcomeString, promptLabel, continueLabel);
   }
 
-
+  pasteCode(question) {
+    console.log(question);
+    this.editor.setValue(question.prompt);
+  }
 	render () {
 
     return (
     	<div>
-    	<Navigation sidebar={this.sidebar} sendcode={this.sendCode}></Navigation>
+    	<Navigation sidebar={this.sidebar} sendcode={this.sendCode} testcode={this.testCode}></Navigation>
 	    	<div id="wrapper">
-	    		<Sidebar></Sidebar>
+	    		<Sidebar pasteCode={this.pasteCode.bind(this)}></Sidebar>
 	        <div id="page-content-wrapper">
 	        	<Grid>
 		        	<Row className="home-editor">

@@ -73,7 +73,7 @@ class Home extends React.Component {
 	render() {
 		return (
 			<div>
-				<Jumbotron className="banner"> 
+				<Jumbotron className="banner">
 					<span className="banner-text">codedrop</span>
 					<div>
 						<Link className="home-terminal" to="/blog">Blog</Link>

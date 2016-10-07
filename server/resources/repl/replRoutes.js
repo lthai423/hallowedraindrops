@@ -9,5 +9,10 @@ replRouter.route('/runcode')
     replController.sendCodeToService(req,res);
   });
 
+replRouter.route('/testcode')
+	.post((req, res, next) => {
+		replController.sendCodeToTest(req, res);
+	});
+
 
 module.exports = replRouter;

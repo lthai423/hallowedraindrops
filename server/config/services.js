@@ -15,20 +15,21 @@ var User = require('../database/models/Users.js');
 // };
 
 module.exports = {
+  run: 'http://localhost:3000/api/repl',
+  test: 'http://localhost:1337/api/test',
+  Testing: 'http://localhost:1337/api/add',
   REPL: 'http://localhost:3000/api/repl',
+  // Testing: 'http://localhost:1337/db/test',
   create_namespace: function(path, io){
-    console.log('entered into services for namespace creation');
   	var nsp = io.of(path);
   	nsp.on('connection', (socket) => {
   	  console.log('a user has connected');
 
   	  socket.on('text change', (msg) => {
-  	    console.log('msg value is: ', msg);
   	    nsp.emit('alter text', msg);
   	  });
 
   	  socket.on('append result', (msg) => {
-  	    console.log('append result is: ', msg);
   	    nsp.emit('alter result', msg);
   	  });
 
@@ -54,7 +55,8 @@ module.exports = {
             email: profile.emails[0].value,
             company: profile._json.company,
             admin: null,
-            moderator: null
+            moderator: null,
+            reputation: 0
           }).then((user) => {
             callback(user);
           });
