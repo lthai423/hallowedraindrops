@@ -18,6 +18,8 @@ module.exports = {
   run: 'http://localhost:3000/api/repl',
   test: 'http://localhost:1337/api/test',
   Testing: 'http://localhost:1337/api/add',
+  REPL: 'http://localhost:3000/api/repl',
+  // Testing: 'http://localhost:1337/db/test',
   create_namespace: function(path, io){
   	var nsp = io.of(path);
   	nsp.on('connection', (socket) => {

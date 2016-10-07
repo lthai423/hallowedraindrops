@@ -22,7 +22,7 @@ class ChallengeForm extends React.Component{
       sourceCode: '',
       info: {
         title: '',
-        difficulty: ''
+        difficulty: '1'
       },
     };
   }
@@ -56,36 +56,35 @@ class ChallengeForm extends React.Component{
 
   handleSubmit() {
     console.log('state to send', this.state);
-    this.sendRequest();
+    var question = {
+      name: this.state.info.title,
+      difficulty: this.state.info.difficulty,
+      attempts: 0,
+      answers: 0,
+      prompt: this.state.prompt,
+    };
+
+    var body = {
+      question: question,
+      varArry: this.state.tests,
+      sourceCode: this.state.sourceCode
+    };
+    this.addChallenge(body);
   }
 
-  sendRequest() {
-    console.log('sending state');
+  addChallenge(body) {
     $.ajax({
       method: 'POST',
-      url: 'http://localhost:1337/db/test',
-      data: this.state,
+      url: 'http://localhost:8080/admin/challenge/' + this.state.info.title,
+      data: body,
       success: (data) => {
-        console.log('data value is: ', data);
+        console.log('Success!', data);
       },
-      error: (jqXHR, textStatus, errorThrown) => {
-        console.log(textStatus, errorThrown, jqXHR);
+      error: (error) => {
+        console.log('Error in posting question', error);
       }
     });
   }
-  // editorSetup () {
-  //   var editor = ace.edit("editor");
-
-  //   editor.setTheme("ace/theme/dreamweaver");
-  //   editor.getSession().setMode("ace/mode/javascript"); // going to execute js
-  //   editor.getSession().setUseSoftTabs(true); // use soft-tabs
-  //   editor.setHighlightActiveLine(false); // sets line highlighting
-  //   document.getElementById('editor').style.fontSize='13px'; // sets the font-size
-  //   editor.getSession().setUseWrapMode(true);
-  //   editor.resize();
-
-  //   return editor;
-  // }
 
   render() {
     return (

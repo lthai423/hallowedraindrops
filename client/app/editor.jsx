@@ -30,7 +30,7 @@ class Editor extends React.Component {
       console: null
 	  };
 	}
-	
+
 	componentDidMount() {
     this.editor = this.editorSetup();
     this.socket = this.setupSocket();
@@ -205,7 +205,7 @@ class Editor extends React.Component {
       console: jqconsole
     });
 
-    // jqconsole setup 
+    // jqconsole setup
 
 
     $(function () {
@@ -223,14 +223,17 @@ class Editor extends React.Component {
     // $(div).jqconsole(welcomeString, promptLabel, continueLabel);
   }
 
-
+  pasteCode(question) {
+    console.log(question);
+    this.editor.setValue(question.prompt);
+  }
 	render () {
 
     return (
     	<div>
     	<Navigation sidebar={this.sidebar} sendcode={this.sendCode} testcode={this.testCode}></Navigation>
 	    	<div id="wrapper">
-	    		<Sidebar></Sidebar>
+	    		<Sidebar pasteCode={this.pasteCode.bind(this)}></Sidebar>
 	        <div id="page-content-wrapper">
 	        	<Grid>
 		        	<Row className="home-editor">

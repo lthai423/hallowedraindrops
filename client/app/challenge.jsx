@@ -16,6 +16,11 @@ class MenuWrap extends React.Component {
   	};
   }
 
+  componentDidMount() {
+  	this.makeRequest();
+  }
+
+
 	show() {
 		this.setState({hidden: false});
 	}
@@ -26,7 +31,7 @@ class MenuWrap extends React.Component {
 	*/
 	getChallengeQuestion() {
 		// find the className of that particular question
-		// when rendering, we need to attach a question with it. 
+		// when rendering, we need to attach a question with it.
 
 		// 1. getter to make a 'GET' request from db for questions
 			// 3. we now have the responses, and we use map to display
@@ -36,6 +41,29 @@ class MenuWrap extends React.Component {
 
 	}
 
+	makeRequest(challenge) {
+		$.ajax({
+		  method: 'GET',
+		  url: 'http://localhost:8080/admin/challenge',
+		  success: (data) => {
+		    console.log('data value is: ', data);
+		    this.setState({
+		    	questions: data
+		    });
+		  },
+		  error: (jqXHR, textStatus, errorThrown) => {
+		    console.log(textStatus, errorThrown, jqXHR);
+		  }
+		});
+	}
+
+	renderQuestion(question) {
+		return (
+			<li onClick={() => this.props.pasteCode(question)} className="sidebar-brand">
+				<a>{question.name}</a>
+			</li>
+		);
+	}
 	render() {
 		let style;
 
@@ -52,36 +80,7 @@ class MenuWrap extends React.Component {
 			<div>
 				<div id="sidebar-wrapper">
 					<ul className="sidebar-nav">
-						<li className="sidebar-brand">
-							<a href="#"></a>
-						</li>
-						<li className="sidebar-brand">
-							<a href="#">asyncMap</a>
-						</li>
-						<li className="sidebar-brand">
-							<a href="#">bubbleSort</a>
-						</li>
-						<li className="sidebar-brand">
-							<a href="#">deepEquality</a>
-						</li>
-						<li className="sidebar-brand">
-							<a href="#">powerSet</a>
-						</li>
-						<li className="sidebar-brand">
-							<a href="#">queueStac</a>
-						</li>
-						<li className="sidebar-brand">
-							<a href="#">rangeClass</a>
-						</li>
-						<li className="sidebar-brand">
-							<a href="#">robotPaths</a>
-						</li>
-						<li className="sidebar-brand">
-							<a href="#">treeBFSelect</a>
-						</li>
-						<li className="sidebar-brand">
-							<a href="#">shuffleDeck</a>
-						</li>
+						{this.state.questions.map(this.renderQuestion.bind(this))}
 						<li className="sidebar-brand">
 							<a href="/admin/addchallenge">-- add challenge --</a>
 						</li>
@@ -92,4 +91,35 @@ class MenuWrap extends React.Component {
 	}
 }
 
+
+// <li className="sidebar-brand">
+// 	<a href="#"></a>
+// </li>
+// <li className="sidebar-brand">
+// 	<a href="#">asyncMap</a>
+// </li>
+// <li className="sidebar-brand">
+// 	<a href="#">bubbleSort</a>
+// </li>
+// <li className="sidebar-brand">
+// 	<a href="#">deepEquality</a>
+// </li>
+// <li className="sidebar-brand">
+// 	<a href="#">powerSet</a>
+// </li>
+// <li className="sidebar-brand">
+// 	<a href="#">queueStac</a>
+// </li>
+// <li className="sidebar-brand">
+// 	<a href="#">rangeClass</a>
+// </li>
+// <li className="sidebar-brand">
+// 	<a href="#">robotPaths</a>
+// </li>
+// <li className="sidebar-brand">
+// 	<a href="#">treeBFSelect</a>
+// </li>
+// <li className="sidebar-brand">
+// 	<a href="#">shuffleDeck</a>
+// </li>
 module.exports = MenuWrap;
