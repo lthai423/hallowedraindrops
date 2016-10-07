@@ -56,6 +56,14 @@ class MenuWrap extends React.Component {
 		  }
 		});
 	}
+
+	renderQuestion(question) {
+		return (
+			<li onClick={() => this.props.pasteCode(question)} className="sidebar-brand">
+				<a>{question.name}</a>
+			</li>
+		);
+	}
 	render() {
 		let style;
 
@@ -72,36 +80,7 @@ class MenuWrap extends React.Component {
 			<div>
 				<div id="sidebar-wrapper">
 					<ul className="sidebar-nav">
-						<li className="sidebar-brand">
-							<a href="#"></a>
-						</li>
-						<li className="sidebar-brand">
-							<a href="#">asyncMap</a>
-						</li>
-						<li className="sidebar-brand">
-							<a href="#">bubbleSort</a>
-						</li>
-						<li className="sidebar-brand">
-							<a href="#">deepEquality</a>
-						</li>
-						<li className="sidebar-brand">
-							<a href="#">powerSet</a>
-						</li>
-						<li className="sidebar-brand">
-							<a href="#">queueStac</a>
-						</li>
-						<li className="sidebar-brand">
-							<a href="#">rangeClass</a>
-						</li>
-						<li className="sidebar-brand">
-							<a href="#">robotPaths</a>
-						</li>
-						<li className="sidebar-brand">
-							<a href="#">treeBFSelect</a>
-						</li>
-						<li className="sidebar-brand">
-							<a href="#">shuffleDeck</a>
-						</li>
+						{this.state.questions.map(this.renderQuestion.bind(this))}
 						<li className="sidebar-brand">
 							<a href="/admin/addchallenge">-- add challenge --</a>
 						</li>
@@ -112,4 +91,35 @@ class MenuWrap extends React.Component {
 	}
 }
 
+
+// <li className="sidebar-brand">
+// 	<a href="#"></a>
+// </li>
+// <li className="sidebar-brand">
+// 	<a href="#">asyncMap</a>
+// </li>
+// <li className="sidebar-brand">
+// 	<a href="#">bubbleSort</a>
+// </li>
+// <li className="sidebar-brand">
+// 	<a href="#">deepEquality</a>
+// </li>
+// <li className="sidebar-brand">
+// 	<a href="#">powerSet</a>
+// </li>
+// <li className="sidebar-brand">
+// 	<a href="#">queueStac</a>
+// </li>
+// <li className="sidebar-brand">
+// 	<a href="#">rangeClass</a>
+// </li>
+// <li className="sidebar-brand">
+// 	<a href="#">robotPaths</a>
+// </li>
+// <li className="sidebar-brand">
+// 	<a href="#">treeBFSelect</a>
+// </li>
+// <li className="sidebar-brand">
+// 	<a href="#">shuffleDeck</a>
+// </li>
 module.exports = MenuWrap;
