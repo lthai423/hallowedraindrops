@@ -2,11 +2,18 @@ var Mocha = require('mocha');
 var Chai = require('chai');
 var Test = Mocha.Test;
 var expect = Chai.expect;
+var should = Chai.should;
 
+var methodMap = require('./mappedMethod.js');
 
+var wrapper = function(item){
+  return eval('(' + item + ')');
+}
 
 module.exports = {
   testSuite: function(req, res){
+    // console.log(req.body);
+    // res.send('ok');
     var mochaInstance = new Mocha();
     var dArr = req.body.dArr;
     // make sure userFunction is named 'fn'
@@ -15,8 +22,7 @@ module.exports = {
       var suiteInstance = Mocha.Suite.create(mochaInstance.suite, dObj.description);
       dObj.itsArr.forEach(function(itObj){
         suiteInstance.addTest(new Test(itObj.description, function(){
-          // methodMap[itObj.method](eval(itObj.snippet), itObj.ans);
-          methodMap[itObj.method](2,4);
+          methodMap[itObj.method](wrapper(itObj.snippet), wrapper(itObj.ans));
         }));
       });
     });
@@ -42,7 +48,7 @@ module.exports = {
 //   this.description = it.description;
 //   this.method = it.method;
 //   this.ans = it.ans;
-//   this.snippet = it.ans;
+//   this.snippet = it.snippet;
 // };
 
 // var dArr = [],
