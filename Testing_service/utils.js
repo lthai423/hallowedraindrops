@@ -1,54 +1,112 @@
-var db = require('./database/config.js');
-var Test = require('./database/models/testing.js');
+var Mocha = require('mocha');
+var Chai = require('chai');
+var Test = Mocha.Test;
+var expect = Chai.expect;
+
+
 
 module.exports = {
-  newTest: function (req, res) {
-    var test = new Test(req.body);
-
-    test.save((err, newTest) => {
-      if (err) {
-        res.status(500).json({ error: err });
-      }
-      console.log('New test added to db: ' , newTest);
-      res.json(newTest);
+  testSuite: function(req, res){
+    var mochaInstance = new Mocha();
+    var dArr = req.body.dArr;
+    // make sure userFunction is named 'fn'
+    // expected example: var fn = eval(req.body.userFunction);
+    dArr.forEach(function(dObj){
+      var suiteInstance = Mocha.Suite.create(mochaInstance.suite, dObj.description);
+      dObj.itsArr.forEach(function(itObj){
+        suiteInstance.addTest(new Test(itObj.description, function(){
+          // methodMap[itObj.method](eval(itObj.snippet), itObj.ans);
+          methodMap[itObj.method](2,4);
+        }));
+      });
     });
-  },
 
-  getTest: function(req, res) {
-    var id = req.query.question_id;
-    Test.findOne({question_id: id}).exec((err, found) => {
-      if (err) {
-        res.status(500).json({ error: err });
-      }
-      if (found) {
-        res.json(found);
-      } else {
-        res.send('Test does not exist!');
-      }
-    });
-  },
-
-  updateTest: function(req, res) {
-
-    Test.findOne({question_id: req.body.question_id}).exec((err, found) => {
-      if (err) {
-        res.status(500).json({ error: err });
-      }
-      if (found) {
-        found.fnInput = req.body.fnInput;
-        found.fnOutput = req.body.fnOutput;
-        found.sourceCode = req.body.sourceCode;
-        found.save((err, test) => {
-          if (err) {
-            res.status(500).json({ error: err });
-          }
-          console.log('Test has been updated ', test);
-          res.json(test);
-        });
-      } else {
-        res.send('Test does not exist!');
-      }
+    mochaInstance.run(function(num_of_errs){
+      res.send({num_of_errs: num_of_errs});
     });
   }
 };
 
+// var methodMap = {
+//     equal: function(submit, answer){
+//         expect(submit).to.equal(answer);
+//     }
+// };
+
+// var Describe = function(describe) {
+//   this.description = describe.description;
+//   this.itsArr = describe.itsArr;
+// };
+
+// var It = function(it) {
+//   this.description = it.description;
+//   this.method = it.method;
+//   this.ans = it.ans;
+//   this.snippet = it.ans;
+// };
+
+// var dArr = [],
+// 		itsArr;
+
+// for (var i = 0; i < 10; i++){
+// 	itsArr = [];
+// 	for (var j = 0 ; j < 10; j++){
+// 		itsArr.push(new It({description: "it test" + j, method: 'equal'}));
+// 	}
+// 	dArr.push(new Describe({itsArr: itsArr, description: "hello" + i}));
+// }
+
+// var dArr = [
+//   {
+//     description:'test1',
+//     itsArr: [
+//       {
+//         method: 'equal',
+//         description: 'test description1'
+//       },
+//       {
+//         method: 'equal',
+//         description: 'test description2'
+//       }
+//     ]
+//   },
+//   {
+//     description:'test2',
+//     itsArr: [
+//       {
+//         method: 'equal',
+//         description: 'test description3'
+//       },
+//       {
+//         method: 'equal',
+//         description: 'test description4'
+//       }
+//     ]
+//   },
+//   {
+//     description:'test3',
+//     itsArr: [
+//       {
+//         method: 'equal',
+//         description: 'test description5'
+//       },
+//       {
+//         method: 'equal',
+//         description: 'test description6'
+//       }
+//     ]
+//   },
+//   {
+//     description:'test4',
+//     itsArr: [
+//       {
+//         method: 'equal',
+//         description: 'test description7'
+//       },
+//       {
+//         method: 'equal',
+//         description: 'test description8'
+//       }
+//     ]
+//   }
+// ];
