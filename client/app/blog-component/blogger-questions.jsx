@@ -17,7 +17,7 @@ class BloggerQuestions extends React.Component {
 		// response is going to be an array of responses to that question
 		// ques is going to be an array of questions
 		var questions = ["Did you feel that you got your value from attending HackReactor?"];
-		var response = ["Yeah. "]
+		var response = ["Yeah. "];
 
 
 		this.state = {
@@ -32,9 +32,10 @@ class BloggerQuestions extends React.Component {
 	// need to change to this.props.questions after testing
 
 	render () {
+		var responses = this.state.response;
 		return (
 			<div>
-				{this.props.questions.map(function(ques, i) {
+				{this.state.questions.map(function(ques, i) {
 					/*
 					 * @input: "ques" - question that was asked
 					 *         "i"    - index of the question that was asked
@@ -45,7 +46,7 @@ class BloggerQuestions extends React.Component {
 						// return styled element
 						<div>
 							<h3 className="ques">Question {i}:{ques}</h3>
-							<h5 className="res">{this.props.response[i]}</h5>
+							<h5 className="res">{responses[i]}</h5>
 						</div>
 						)	
 					})

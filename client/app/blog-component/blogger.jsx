@@ -1,9 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import BlogNavigation from './blog.jsx';
-import BloggerProfile from './bloggerprofile.jsx';
+
+// Other Components
 import BloggerQuestions from './blogger-questions.jsx';
 import BlogNavigation from './blog-navigation.jsx';
+import BloggerProfile from './blogger-profile.jsx';
+
+// React Components
+import Grid from 'react-bootstrap/lib/Grid.js';
+import Row from 'react-bootstrap/lib/Row.js';
+import Col from 'react-bootstrap/lib/Col.js';
 
 // react-bootstrap elements
 import Jumbotron from 'react-bootstrap/lib/Jumbotron.js';
@@ -14,7 +20,7 @@ class Blogger extends React.Component {
 		this.state = {
 			// empty for now
 			currentPage: 0, // the page in the array
-			users: ['brianz', 'chris', 'thai'] // the users who have pages
+			users: ['Brian Zhou', 'Chris Wong', 'thai'] // the users who have pages
 		}
 	}
 
@@ -31,18 +37,30 @@ class Blogger extends React.Component {
 
 	/* To-Dos:
 		columns for this page
+
+		**Below doesn't work well right now, and it should be inserted within
+			the jumbotron portion
+	<Jumbotron className="banner">
+		<BloggerProfile user={this.state.users[this.state.currentPage]}></BloggerProfile>
+	</Jumbotron>
+
+
+
 	*/
 
 	render () {
 		return (
-			<div>
+			<div className="blogger-font">
 				<BlogNavigation></BlogNavigation>
-				<Jumbotron className="banner">
-					<BloggerProfile user={this.state.users[this.state.currentPage]}></BloggerProfile>
-				</Jumbotron>
-				<div>
-					<BloggerQuestions></BloggerQuestions>
-				</div>
+				<Grid>
+					<div>
+						<h1>{this.state.users[this.state.currentPage]}</h1>
+						<BloggerProfile profile={this.state.users[this.state.currentPage]}></BloggerProfile>
+					</div>
+					<div>
+						<BloggerQuestions></BloggerQuestions>
+					</div>
+				</Grid>
 			</div>
 		)
 	}

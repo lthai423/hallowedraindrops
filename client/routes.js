@@ -17,8 +17,6 @@ import Blogger from './app/blog-component/blogger.jsx';
 
 import { Router, Route, IndexRoute, hashHistory, browserHistory } from 'react-router';
 
-console.log('entered into the react-router');
-
 // need a correct way to route to blog
 
 ReactDOM.render(

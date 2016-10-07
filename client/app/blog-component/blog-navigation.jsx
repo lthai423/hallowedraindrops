@@ -14,7 +14,6 @@ class BlogNavigation extends React.Component {
 	}
 
 	componentDidMount() {
-		console.log('this.props', this.props);
 	}
 
 	render () { // we also need to build the nav bar on the right
