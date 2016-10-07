@@ -16,6 +16,11 @@ class MenuWrap extends React.Component {
   	};
   }
 
+  componentDidMount() {
+  	this.makeRequest();
+  }
+
+
 	show() {
 		this.setState({hidden: false});
 	}
@@ -26,7 +31,7 @@ class MenuWrap extends React.Component {
 	*/
 	getChallengeQuestion() {
 		// find the className of that particular question
-		// when rendering, we need to attach a question with it. 
+		// when rendering, we need to attach a question with it.
 
 		// 1. getter to make a 'GET' request from db for questions
 			// 3. we now have the responses, and we use map to display
@@ -36,6 +41,21 @@ class MenuWrap extends React.Component {
 
 	}
 
+	makeRequest(challenge) {
+		$.ajax({
+		  method: 'GET',
+		  url: 'http://localhost:8080/admin/challenge',
+		  success: (data) => {
+		    console.log('data value is: ', data);
+		    this.setState({
+		    	questions: data
+		    });
+		  },
+		  error: (jqXHR, textStatus, errorThrown) => {
+		    console.log(textStatus, errorThrown, jqXHR);
+		  }
+		});
+	}
 	render() {
 		let style;
 

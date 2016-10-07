@@ -85,33 +85,6 @@ class ChallengeForm extends React.Component{
       }
     });
   }
-  sendRequest() {
-    console.log('sending state');
-    $.ajax({
-      method: 'POST',
-      url: 'http://localhost:1337/db/test',
-      data: this.state,
-      success: (data) => {
-        console.log('data value is: ', data);
-      },
-      error: (jqXHR, textStatus, errorThrown) => {
-        console.log(textStatus, errorThrown, jqXHR);
-      }
-    });
-  }
-  // editorSetup () {
-  //   var editor = ace.edit("editor");
-
-  //   editor.setTheme("ace/theme/dreamweaver");
-  //   editor.getSession().setMode("ace/mode/javascript"); // going to execute js
-  //   editor.getSession().setUseSoftTabs(true); // use soft-tabs
-  //   editor.setHighlightActiveLine(false); // sets line highlighting
-  //   document.getElementById('editor').style.fontSize='13px'; // sets the font-size
-  //   editor.getSession().setUseWrapMode(true);
-  //   editor.resize();
-
-  //   return editor;
-  // }
 
   render() {
     return (

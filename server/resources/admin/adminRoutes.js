@@ -2,7 +2,10 @@
 var adminRouter = require('express').Router();
 var adminController = require('./adminController.js');
 
-
+adminRouter.route('/challenge')
+  .get((req, res, next) => {
+    adminController.getAllQuestions(req, res);
+  });
 
 adminRouter.route('/challenge/*')
   .get((req, res, next) => {

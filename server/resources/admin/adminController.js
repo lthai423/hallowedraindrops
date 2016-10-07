@@ -20,6 +20,12 @@ module.exports = {
     });
   },
 
+  getAllQuestions: (req, res) => {
+    Question.findAll({}).then((questions) => {
+      res.send(questions);
+    });
+  },
+
   addTest: (req, res, callback) => {
     var options = {
       method: 'POST',
