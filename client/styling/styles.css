@@ -31,11 +31,21 @@
     font-weight: 300;
 }
 
+body {
+    /*padding-top: 100px;*/
+}
+
+.blogger-font {
+    font-family: SourceSansPro;
+    text-align: center;
+    font-weight: 200;
+}
 /* Dark Color Editor: background-color: #303840; */
 
 body {
-  padding-top: 60px;
+  padding-top: 52px;
 }
+
 @media (max-width: 979px) {
   body {
     padding-top: 0px;
@@ -44,7 +54,7 @@ body {
 
 /* Styles for the Editor */
 #editor {
-    padding-top: 30px;
+    /*padding-top: 30px;*/
     height: 970px; /* set to the height of macbook pro 13" */
     padding-right:65px;
     padding-left: 0;
@@ -212,7 +222,7 @@ div.jumbotron {
 
 .home-terminal {
 	font-size: 50px;
-	padding-top: 10px;
+	/*padding-top: 10px;*/
 }
 /* vertically-align the github and terminal icons on the home-page*/
 .vcenter {
@@ -225,6 +235,49 @@ div.jumbotron {
 .editor-sidebar {
     z-index: -999;
 }
+
+/* blog navbar */
+.blog-nav.nav.navbar-nav.navbar-right li a {
+    color: #de7c00;
+}
+
+/* aims to try and remove the button highlighting */
+.btn:focus { 
+  outline: none;
+}
+
+.blog-nav-right {
+    margin-left: 100px;
+}
+
+.blog-nav-left {
+    margin-right: 100px;
+}
+
+/* styles for our blogger-question.jsx */
+
+/* styles for the question */
+.ques {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: SourceSansPro;
+  font-size: 40px;
+  font-weight: 400;
+}
+
+.ans {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-family: SourceSansPro;
+  font-size: 20px;;
+  font-weight: 100;
+}
+
+
+
+
+
+
 
 /* admin */
 #formSpace {
