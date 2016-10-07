@@ -12,12 +12,27 @@ class MenuWrap extends React.Component {
     super(props);
     this.state = {
     	hidden: false,
-    	questions: []
+    	questions: [],
+    	shareCode: 'Copy Pad URL', // text of shareCode
+    	windowLink: '' // link of the window
   	};
   }
 
   componentDidMount() {
   	this.makeRequest();
+  	this.setLink();
+  	this.clipboardSetup();
+  }
+
+  setLink() {
+  	var link = window.location.hostname + ':' + window.location.port + window.location.pathname;
+  	this.setState({
+  		windowLink: link
+  	});
+  }
+
+  clipboardSetup() {
+  	new Clipboard('.share-code');
   }
 
 
@@ -39,6 +54,12 @@ class MenuWrap extends React.Component {
 		//SERVER-SIDE
 			// 2. once we get the responses back, then we return only the top 10 back to client
 
+	}
+
+	getWindowLink() {
+		this.setState({
+			shareCode: 'Link Copied!'
+		});
 	}
 
 	makeRequest(challenge) {
@@ -80,6 +101,9 @@ class MenuWrap extends React.Component {
 			<div>
 				<div id="sidebar-wrapper">
 					<ul className="sidebar-nav">
+						<li className="share-code sidebar-brand" data-clipboard-text={this.state.windowLink} onClick={this.getWindowLink.bind(this)}>
+							<span>{this.state.shareCode}</span>
+						</li>
 						{this.state.questions.map(this.renderQuestion.bind(this))}
 						<li className="sidebar-brand">
 							<a href="/admin/addchallenge">-- add challenge --</a>
