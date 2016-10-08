@@ -5,5 +5,14 @@ module.exports = {
 		password: '#',
 		db: '#',
 		host: '#'
+	},
+
+	awspostgres: {
+		user: '#',
+		password: '#',
+		db: '#',
+		host: '#'
 	}
+
 }
+

@@ -11,11 +11,12 @@ require('./config/routes.js')(app);
 // start the db
 const db = require('./database/db.js');
 
-var sequelize;
-db.init((sqlize) => {
-	sequelize = sqlize;
-	console.log('value for sqlize is: ', sqlize);
-})
+// commenting out since we have our db on amazon now
+// var sequelize;
+// db.init((sqlize) => {
+// 	sequelize = sqlize;
+// 	console.log('value for sqlize is: ', sqlize);
+// })
 
 
 var port = process.argv[2] || 1337; 
