@@ -67,10 +67,10 @@ class Blog extends React.Component {
 								<Row>
 									<Col>
 										<Media.List>
-											<Media.ListItem href="/blog/brian" className="blog-selection">
+											<Media.ListItem href="/blog/brian" className="blog-selection blog-outline">
 												<Media.Body>
 													<Media.Heading className="blog-selection-header">A Difficult, but Very Humbling 12 Weeks</Media.Heading>
-														<span className="blog-selection-name">Here could be the first 140 characters of their entry, ending with ...</span>
+														<span className="blog-selection-name">Here could be a 140 character tagline (insertion of twitter handle, pickup line, etc. etc.) ...</span>
 														<br/>
 														<br/>
 														<span className="blog-selection-bootcamp">Brian Zhou @ HackReactor </span>

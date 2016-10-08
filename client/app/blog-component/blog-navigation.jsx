@@ -20,11 +20,11 @@ class BlogNavigation extends React.Component {
 		return (
 		  <div> 
 		  	<NavBar fixedTop fluid staticTop className="blog-nav">
-		  		<Nav bsStyle="tabs">
-		  			<NavItem pullLeft className="blog-nav-right">Back to Coding</NavItem>
+		  		<Nav bsStyle="tabs" pullLeft>
+		  			<NavItem className="blog-nav-right">Back to Coding</NavItem>
 					</Nav>
-					<Nav bsStyle="tabs">
-						<NavItem pullRight className="blog-nav-left">View my Profile</NavItem>
+					<Nav bsStyle="tabs" pullRight>
+						<NavItem className="blog-nav-left">View my Profile</NavItem>
 					</Nav>
 				</NavBar>
 		  </div>

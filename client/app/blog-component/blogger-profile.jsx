@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Image from 'react-bootstrap/lib/Image.js';
+import Jumbotron from 'react-bootstrap/lib/Jumbotron.js';
 
 
 class BloggerProfile extends React.Component {
@@ -20,12 +21,14 @@ class BloggerProfile extends React.Component {
 	render () {
 		return (
 			<div>
-				<Image src="https://www.hackreactorconnect.com/assets/photos/1469481559380.jpg" circle responsive width={64} height={64}/>
-				<div>
-					Github:   www.github.com/brianzhou13
-					<br/>
-					LinkedIn: www.linkedin.com 
-				</div>
+				<Jumbotron>
+					<Image src="https://www.hackreactorconnect.com/assets/photos/1469481559380.jpg" circle responsive width={64} height={64}/>
+					<div>
+						Github:   www.github.com/brianzhou13
+						<br/>
+						LinkedIn: www.linkedin.com 
+					</div>
+				</Jumbotron>
 			</div>
 		)
 	}

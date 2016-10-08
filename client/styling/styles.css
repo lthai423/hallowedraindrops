@@ -37,8 +37,8 @@ body {
 
 .blogger-font {
     font-family: SourceSansPro;
-    text-align: center;
-    font-weight: 200;
+    /*text-align: center;*/
+    /*font-weight: 200;*/
 }
 /* Dark Color Editor: background-color: #303840; */
 
@@ -268,11 +268,16 @@ div.jumbotron.banner-blog {
     margin-right: 100px;
 }
 
-.blog-selection-header {
+/* added uqestion-header for Media.Heading for blogger-question */
+.blog-selection-header .question-header {
     font-family: SourceSansPro;
     font-style: bold;
     font-size: 35px;
     text-align: left;
+}
+
+.question-header {
+    padding-bottom: 20px;
 }
 
 .blog-selection-name {
@@ -303,35 +308,45 @@ div.jumbotron.banner-blog {
 .blog-selection {
     padding-top: 35px;
     padding-bottom: 50px;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.blog-outline {
     outline: 1px;
     border-style: solid;
     border-width: 1px;
     border-radius: 5px;
-    /*box-shadow: 0 0 5px 2px rgba(0,0,0,.35);*/
 }
 
-/* styles for our blogger-question.jsx */
-
 /* styles for the question */
-.ques {
+span.ques-num {
   margin-top: 20px;
   margin-bottom: 20px;
   font-family: SourceSansPro;
-  font-size: 40px;
-  font-weight: 400;
+  font-size: 35px;
+  /*font-style: bold;*/
+  text-align: left;
+  /*font-weight: 100;*/
 }
 
-.ans {
+span.res {
   margin-top: 15px;
   margin-bottom: 15px;
   font-family: SourceSansPro;
-  font-size: 20px;;
+  font-size: 25px;;
   font-weight: 100;
+  text-align: left;
 }
 
-
+span.ques-word {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: SourceSansPro;
+    font-size: 30px;
+    /*font-style: bold;*/
+    text-align: left;
+}
 
 
 

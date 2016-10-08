@@ -58,10 +58,10 @@ class Blogger extends React.Component {
 				<BlogNavigation></BlogNavigation>
 				<Grid>
 					<Row>
-						<Col><Col md={2}></Col>
-						<BloggerProfile></BloggerProfile>
-						<BloggerQuestions></BloggerQuestions>
-						</Col><Col md={2}></Col>
+						<Col>
+							<BloggerProfile></BloggerProfile>
+							<BloggerQuestions></BloggerQuestions>
+						</Col>
 					</Row>
 				</Grid>
 			</div>
@@ -70,6 +70,8 @@ class Blogger extends React.Component {
 }
 
 export default Blogger;
+
+// Could add a Footer that's blue to direct to HR
 
 // we need 4 components
 // photo
