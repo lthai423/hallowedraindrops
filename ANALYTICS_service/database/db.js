@@ -37,11 +37,11 @@ sequelize
 
 // BELOW CODE IS OUR OWN TEST CODE
 
-var pgInit = function(callback) {
-	var dbName = 'codedrop';
-	var username = 'hallowedraindrops';
-	var password = 'codedrop';
-	var host = '127.0.0.1';
+// var pgInit = function(callback) {
+// 	var dbName = 'codedrop';
+// 	var username = 'hallowedraindrops';
+// 	var password = 'codedrop';
+// 	var host = '127.0.0.1';
 
 
 	// var config = {
@@ -60,22 +60,22 @@ var pgInit = function(callback) {
 	// 	}
 	// })
 
-	var conStringPri = 'postgres://' + username + ':' + password + '@' + host + dbName;
-	var conStringPost = 'postgres://' + username + ':' + password + '@' + host + '/' + dbName;
+// 	var conStringPri = 'postgres://' + username + ':' + password + '@' + host + dbName;
+// 	var conStringPost = 'postgres://' + username + ':' + password + '@' + host + '/' + dbName;
 
-	// connect to postgres db
-	pg.connect(conStringPri, function(err, client, done) {
-	    // create the db and ignore any errors, for example if it already exists.
-	    client.query('CREATE DATABASE ' + dbName, function(err) {
-	        //db should exist now, initialize Sequelize
-	        var sequelize = new Sequelize(conStringPost);
-	        callback(sequelize);
-	        client.end(); // close the connection
-	    });
-	});
-};
+// 	// connect to postgres db
+// 	pg.connect(conStringPri, function(err, client, done) {
+// 	    // create the db and ignore any errors, for example if it already exists.
+// 	    client.query('CREATE DATABASE ' + dbName, function(err) {
+// 	        //db should exist now, initialize Sequelize
+// 	        var sequelize = new Sequelize(conStringPost);
+// 	        callback(sequelize);
+// 	        client.end(); // close the connection
+// 	    });
+// 	});
+// };
 
 module.exports = {
-	init: pgInit,
+	// init: pgInit,
 	sequelize: sequelize // should be the sequelize defined on line15
 };
