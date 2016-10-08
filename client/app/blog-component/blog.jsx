@@ -28,46 +28,30 @@ class Blog extends React.Component {
 
 	// this will purely hold all of the links to the blogger pages
 
-	/* For the UI, how about have them include a 1-liner about their exp
-	   and then have it go across the grid as a clickable that would
-	   highlight their experience at their bootcamp
-	   so we need to map through the people
-
+	/*
 	   ** in the future, we can have a filter section
-
-	   .blog-selection-header {
-    font-family: SourceSansPro;
-    font-style: bold;
-}
-
-.blog-selection-name {
-    font-family: SourceSansPro;
-    font-style: italic;
-}
-
-.blog-selection-bootcamp {
-    font-family: SourceSansPro;
-}
 	*/
 
-	/* removed this code: 
-	<div>
-		<Link to="/blog/brian">to {user}</Link>
-	</div>*/
+	/* Styles 
+		.blog-selection-header     : Title of their post
+		.blog-selection-name       : Extra fun snippet
+		.blog-selection-bootcamp   : "Name"@"Bootcamp"
+		.blog-selection-link       : Used to allow element to be clickable, but no style changes
+	*/
 
 	render () {
 		return (
 			<div>
 				<BlogNavigation></BlogNavigation>
+					<Jumbotron className="banner-blog">
+					</Jumbotron>
+					<h1 className="banner-text-blog">BootCamp Reviews</h1>
 						<Grid>
-						<Jumbotron className="banner-blog">
-							<h1 className="banner-text-blog">BootCamp Reviews</h1>
-						</Jumbotron>
 							{this.state.users.map((user) => 
 								<Row>
 									<Col>
 										<Media.List>
-											<Media.ListItem href="/blog/brian" className="blog-selection blog-outline">
+											<a className="blog-selection-link" href="/blog/brian"><Media.ListItem className="blog-selection blog-outline">
 												<Media.Body>
 													<Media.Heading className="blog-selection-header">A Difficult, but Very Humbling 12 Weeks</Media.Heading>
 														<span className="blog-selection-name">Here could be a 140 character tagline (insertion of twitter handle, pickup line, etc. etc.) ...</span>
@@ -76,9 +60,9 @@ class Blog extends React.Component {
 														<span className="blog-selection-bootcamp">Brian Zhou @ HackReactor </span>
 												</Media.Body>
 												<Media.Right>
-													<Image src="https://www.hackreactorconnect.com/assets/photos/1469481559380.jpg" width={64} height={64} circle/>
+													<Image src="https://avatars.githubusercontent.com/u/5092263?v=3" width={64} height={64} circle/>
 												</Media.Right>
-											</Media.ListItem>
+											</Media.ListItem></a>
 										</Media.List>
 									</Col>
 								</Row>

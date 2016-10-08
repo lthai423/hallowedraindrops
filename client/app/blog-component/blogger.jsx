@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import BloggerQuestions from './blogger-questions.jsx';
 import BlogNavigation from './blog-navigation.jsx';
 import BloggerProfile from './blogger-profile.jsx';
+import BloggerFooter from './blogger-footer.jsx';
 
 // React Components
 import Grid from 'react-bootstrap/lib/Grid.js';
@@ -52,18 +53,22 @@ class Blogger extends React.Component {
 
 	*/
 
+// footer link: 				<BloggerFooter></BloggerFooter>
+
 	render () {
+		var user = this.state.users[this.state.currentPage];
 		return (
 			<div className="blogger-font">
 				<BlogNavigation></BlogNavigation>
 				<Grid>
 					<Row>
 						<Col>
-							<BloggerProfile></BloggerProfile>
+							<BloggerProfile name={user}></BloggerProfile>
 							<BloggerQuestions></BloggerQuestions>
 						</Col>
 					</Row>
 				</Grid>
+				<BloggerFooter></BloggerFooter>
 			</div>
 		)
 	}
