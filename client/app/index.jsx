@@ -1,24 +1,17 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import Admin from './reducers';
+import App from './App.jsx';
 
-// index.jsx is going to house both the editor as well the editors' output
+// Index is now our store
 
-class App extends React.Component {
+let store = createStore(Admin);
 
-  constructor(props) {
-    super(props);
-  }
-
-
-  render () {
-    return (
-      <div>
-        {this.props.children}
-      </div>
-    )
-  }
-}
-
-module.exports = App;
-
-// render(<App/>, document.getElementById('app'));
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('app')
+  );
