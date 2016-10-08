@@ -37,8 +37,8 @@ body {
 
 .blogger-font {
     font-family: SourceSansPro;
-    text-align: center;
-    font-weight: 200;
+    /*text-align: center;*/
+    /*font-weight: 200;*/
 }
 /* Dark Color Editor: background-color: #303840; */
 
@@ -119,7 +119,6 @@ nav.nav-tabs navbar-nav {
 
 ul.nav.nav-tabs.navbar-nav {
     border-bottom: 0px;
-    i
 }
 
 div.home-console {
@@ -198,6 +197,7 @@ div#console-terminal-editor.home-console {
 	font-weight: 100;
 }
 
+
 .blue-you {
 	color: rgb(35, 170, 253);
 }
@@ -236,6 +236,11 @@ div.jumbotron {
     z-index: -999;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+/** BLOG STYLES **/
+
 /* blog navbar */
 .blog-nav.nav.navbar-nav.navbar-right li a {
     color: #de7c00;
@@ -246,6 +251,23 @@ div.jumbotron {
   outline: none;
 }
 
+div.jumbotron.banner-blog {
+    background-image: url(./img/bricks.jpeg);
+    background-size: cover;
+    max-width: 100%;
+    max-height: 100%;
+    /*padding-top: 0px;
+    padding-bottom: 150px;
+    padding-right: 15px;
+    padding-left: 15px;*/
+}
+
+/* teseting to set the whole background as an image*/
+/*.blog-page {
+    background-image: url(./img/bricks.jpeg);
+    background-size: cover;
+}
+*/
 .blog-nav-right {
     margin-left: 100px;
 }
@@ -254,26 +276,111 @@ div.jumbotron {
     margin-right: 100px;
 }
 
-/* styles for our blogger-question.jsx */
+/* added uqestion-header for Media.Heading for blogger-question */
+.blog-selection-header .question-header {
+    font-family: SourceSansPro;
+    font-style: bold;
+    font-size: 35px;
+    text-align: left;
+}
+
+.question-header {
+    padding-bottom: 20px;
+}
+
+.blog-selection-name {
+    font-family: SourceSansPro;
+    font-style: italic;
+    font-size: 20px;
+    text-align: right;
+}
+
+.blog-selection-bootcamp {
+    font-family: SourceSansPro;
+    font-size: 20px;
+    text-align: left;
+}
+
+.banner-text-blog {
+    font-family: SourceSansPro;
+    font-size: 40px;
+    font-weight: 100;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    /*padding-left: 300px;*/
+    /*padding-right: 300px;*/
+    /*background-color: #de7c00;*/
+    text-align: center;    
+}
+
+.blog-selection {
+    padding-top: 35px;
+    padding-bottom: 50px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+a.blog-selection-link {
+    color: black;
+}
+
+/* used so when hovering, no color changes occur but element is clickable*/
+a.blog-selection-link:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.blog-outline {
+    outline: 1px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
 
 /* styles for the question */
-.ques {
+span.ques-num {
   margin-top: 20px;
   margin-bottom: 20px;
   font-family: SourceSansPro;
-  font-size: 40px;
-  font-weight: 400;
+  font-size: 35px;
+  /*font-style: bold;*/
+  text-align: left;
+  /*font-weight: 100;*/
 }
 
-.ans {
+span.res {
   margin-top: 15px;
   margin-bottom: 15px;
   font-family: SourceSansPro;
-  font-size: 20px;;
+  font-size: 25px;;
   font-weight: 100;
+  text-align: left;
 }
 
+span.ques-word {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: SourceSansPro;
+    font-size: 30px;
+    /*font-style: bold;*/
+    text-align: left;
+}
 
+/* styles for blogger-profile */
+div.blogger-banner-img {
+
+}
+div.blogger-footer {
+    /*background-color: rgb(35, 170, 253);*/
+    background-color: #de7c00;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    font-family: SourceSansPro;
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    font-weight: 100px;
+}
 
 
 
