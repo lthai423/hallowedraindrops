@@ -5,7 +5,7 @@ var pg = require('pg');
 try {
 	fs.accessSync(__dirname + '/../config/env/config.js', fs.F_OK);
 	// file is present
-	pgCred = require('../config/env/config.js').postgres;
+	pgCred = require('../config/env/config.js').awspostgres;
 } catch (e) {
 	// It isn't accessible
 	pgCred = require('../config/env/config_example.js').postgres;

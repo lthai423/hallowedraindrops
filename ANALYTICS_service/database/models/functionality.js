@@ -2,12 +2,11 @@ var sequelize = require('../db.js').sequelize;
 var Sequelize = require('sequelize');
 
 var Functionality = sequelize.define('functionality', {
-	forloop: Sequelize.INTEGER,
-	whileloop: Sequelize.INTEGER,
-	function: Sequelize.INTEGER,
-	variables: Sequelize.INTEGER,
-	ifelse: Sequelize.INTEGER,
-	switch:Sequelize.INTEGER,
+	U_ID: Sequelize.STRING, // not sure
+	Q_ID: Sequelize.INTEGER, // not sure
+	speed: Sequelize.DOUBLE,
+	space: Sequelize.DOUBLE,
+	time_complexity: Sequelize.DOUBLE,
 });
 
 module.exports = Functionality;
