@@ -12,36 +12,55 @@ try {
 }
 
 // once we have a server setup, we can have it directly set to our URL
-var sequelize = new Sequelize(pgCred.db, pgCred.user, pgCred.password, {
-	host: pgCred.host,
-	dialect: 'postgres',
+// var sequelize = new Sequelize(pgCred.db, pgCred.user, pgCred.password, {
+// 	host: pgCred.host,
+// 	dialect: 'postgres',
 
-	pool: {
-		max: 5,
-		min: 0,
-		idle: 10000
-	},
-});
+// 	pool: {
+// 		max: 5,
+// 		min: 0,
+// 		idle: 10000
+// 	},
+// });
 
-sequelize.
-	.authenticate()
-	.then(function(err) {
-		console.log('Connection has been established successfully');
-	})
-	.catch(function(err) {
-		console.log('Unable to connect to the database', err);
-	});
+// sequelize
+// 	.authenticate()
+// 	.then(function(err) {
+// 		console.log('Connection has been established successfully');
+// 	})
+// 	.catch(function(err) {
+// 		console.log('Unable to connect to the database', err);
+// 	});
 
 // possible to use to create DB if it doesn't exist
 // need Chris to explain
+
+// BELOW CODE IS OUR OWN TEST CODE
 
 var pgInit = function(callback) {
 	var dbName = 'codedrop';
 	var username = 'hallowedraindrops';
 	var password = 'codedrop';
-	var host = 'localhost';
+	var host = '127.0.0.1';
 
-	var conStringPri = 'postgres://' + username + ':' + password + '@' + host + '/postgres';
+
+	// var config = {
+	// 	user: 'hallowedraindrops',
+	// 	database: 'codedrop',
+	// 	password: 'codedrop',
+	// 	port: 5432,
+	// 	max: 10,
+	// };
+
+	// var pool = new pg.Pool(config);
+
+	// pool.connect(function(err, client, done) {
+	// 	if(err) {
+	// 		return console.log('error fetching from pool', err);
+	// 	}
+	// })
+
+	var conStringPri = 'postgres://' + username + ':' + password + '@' + host + dbName;
 	var conStringPost = 'postgres://' + username + ':' + password + '@' + host + '/' + dbName;
 
 	// connect to postgres db
@@ -58,5 +77,5 @@ var pgInit = function(callback) {
 
 module.exports = {
 	init: pgInit,
-	sequelize: sequelize
+	// sequelize: sequelize
 };
