@@ -254,12 +254,18 @@ div.jumbotron.banner-blog {
     background-size: cover;
     max-width: 100%;
     max-height: 100%;
-    padding-top: 150px;
+    /*padding-top: 0px;
     padding-bottom: 150px;
     padding-right: 15px;
-    padding-left: 15px;
+    padding-left: 15px;*/
 }
 
+/* teseting to set the whole background as an image*/
+/*.blog-page {
+    background-image: url(./img/bricks.jpeg);
+    background-size: cover;
+}
+*/
 .blog-nav-right {
     margin-left: 100px;
 }

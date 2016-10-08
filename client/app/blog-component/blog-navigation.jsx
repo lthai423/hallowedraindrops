@@ -24,7 +24,7 @@ class BlogNavigation extends React.Component {
 		  			<NavItem className="blog-nav-right">Back to Coding</NavItem>
 					</Nav>
 					<Nav bsStyle="tabs" pullRight>
-						<NavItem className="blog-nav-left">View my Profile</NavItem>
+						<NavItem className="blog-nav-left">Profile</NavItem>
 					</Nav>
 				</NavBar>
 		  </div>

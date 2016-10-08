@@ -39,12 +39,23 @@ class Blog extends React.Component {
 		.blog-selection-link       : Used to allow element to be clickable, but no style changes
 	*/
 
+	/* test grid:
+		<BlogNavigation></BlogNavigation>
+			<Grid>
+				<Row>
+					<Col lg ={12}>
+						<Jumbotron className="banner-blog"></Jumbotron>
+						<h1 className="banner-text-blog">BootCamp Reviews</h1>
+					</Col>
+				</Row>
+			</Grid>
+	*/
+
 	render () {
 		return (
-			<div>
+			<div className="blog-page">
 				<BlogNavigation></BlogNavigation>
-					<Jumbotron className="banner-blog">
-					</Jumbotron>
+					<Jumbotron className="banner-blog"></Jumbotron>
 					<h1 className="banner-text-blog">BootCamp Reviews</h1>
 						<Grid>
 							{this.state.users.map((user) => 
@@ -54,10 +65,10 @@ class Blog extends React.Component {
 											<a className="blog-selection-link" href="/blog/brian"><Media.ListItem className="blog-selection blog-outline">
 												<Media.Body>
 													<Media.Heading className="blog-selection-header">A Difficult, but Very Humbling 12 Weeks</Media.Heading>
-														<span className="blog-selection-name">Here could be a 140 character tagline (insertion of twitter handle, pickup line, etc. etc.) ...</span>
-														<br/>
-														<br/>
 														<span className="blog-selection-bootcamp">Brian Zhou @ HackReactor </span>
+														<br/>
+														<br/>
+														<span className="blog-selection-name">Here could be a 140 character tagline (insertion of twitter handle, pickup line, etc. etc.) ...</span>
 												</Media.Body>
 												<Media.Right>
 													<Image src="https://avatars.githubusercontent.com/u/5092263?v=3" width={64} height={64} circle/>
