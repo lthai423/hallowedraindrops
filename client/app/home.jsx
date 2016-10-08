@@ -70,11 +70,18 @@ class Home extends React.Component {
 // <span className="home-terminal"><Link to={this.state.pad_link}>      >_</Link></span>
 //	<span className="home-terminal"><a href= {this.state.pad_link}>      >_</a></span>
 
+
+/* Note: the blog will only be temporarily here..*/
 	render() {
 		return (
 			<div>
 				<Jumbotron className="banner">
 					<span className="banner-text">codedrop</span>
+					
+					<div>
+						<Link className="home-terminal" to="/blog">Blog (temporary)</Link>
+					</div>
+
 				</Jumbotron>
 
 				<div className="below-banner">
