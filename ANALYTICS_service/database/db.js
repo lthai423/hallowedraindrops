@@ -12,25 +12,25 @@ try {
 }
 
 // once we have a server setup, we can have it directly set to our URL
-// var sequelize = new Sequelize(pgCred.db, pgCred.user, pgCred.password, {
-// 	host: pgCred.host,
-// 	dialect: 'postgres',
+var sequelize = new Sequelize(pgCred.db, pgCred.user, pgCred.password, {
+	host: pgCred.host,
+	dialect: 'postgres',
 
-// 	pool: {
-// 		max: 5,
-// 		min: 0,
-// 		idle: 10000
-// 	},
-// });
+	pool: {
+		max: 5,
+		min: 0,
+		idle: 10000
+	},
+});
 
-// sequelize
-// 	.authenticate()
-// 	.then(function(err) {
-// 		console.log('Connection has been established successfully');
-// 	})
-// 	.catch(function(err) {
-// 		console.log('Unable to connect to the database', err);
-// 	});
+sequelize
+	.authenticate()
+	.then(function(err) {
+		console.log('Connection has been established successfully');
+	})
+	.catch(function(err) {
+		console.log('Unable to connect to the database', err);
+	});
 
 // possible to use to create DB if it doesn't exist
 // need Chris to explain
@@ -77,5 +77,5 @@ var pgInit = function(callback) {
 
 module.exports = {
 	init: pgInit,
-	// sequelize: sequelize
+	sequelize: sequelize // should be the sequelize defined on line15
 };
