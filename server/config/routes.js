@@ -44,8 +44,9 @@ module.exports = (app, io) => {
 
   app.route('/editor/*')
     .get((req, res) => {
-      if (cached[req.path])
-        res.render('pad.html');
+      var urlPath = req.path.slice(7, req.path.length);
+      if (cached[urlPath])
+        res.render('index.html');
       else
         res.sendStatus(404);
     });
