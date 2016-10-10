@@ -1,32 +1,24 @@
-// import React from 'react';
-// import { render } from 'react-dom';
-// import { Provider } from 'react-redux';
-// import { createStore } from 'redux';
-// // import Admin from './reducers';
-// import App from './App.jsx';
-
-// // Index is now our store
-
-// // let store = createStore(Admin);
-
-// render(
-//   <Provider store={store}>
-//     <App />
-//   </Provider>,
-//   document.getElementById('app')
-//   );
-
 import React from 'react'
 import { render } from 'react-dom'
-import { browserHistory } from 'react-router'
-import { syncHistoryWithStore } from 'react-router-redux'
-import Root from './app/containers/Root'
-import configureStore from './app/store/configureStore'
+import { Router, browserHistory } from 'react-router'
+// // import { syncHistoryWithStore } from 'react-router-redux'
+// // import Root from './app/containers/Root'
+import configureStore from './store/index'
+import routes from '../routes'
+import { Provider } from 'react-redux'
+import ReactDOM from 'react-dom'
 
-const store = configureStore()
-const history = syncHistoryWithStore(browserHistory, store)
+const store = configureStore;
+// const history = syncHistoryWithStore(browserHistory, store)
 
 render(
-  <Root store={store} history={history} />,
+  <Provider store={store}>
+    <Router history={browserHistory} routes={routes} />
+  </Provider>,
   document.getElementById('app')
 )
+
+
+// render (
+//   <h1>hello</h1>,
+//   document.getElementById('app'));

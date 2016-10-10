@@ -4,8 +4,8 @@
 // Creates a whole new object when creating new state but keeps refs to old things that are not changed
   // this makes redux fast
 
-import {combinereducers } from 'redux'
-import { CHALLENGE_PROMPT, CHALLENNGE_SRC_CODE,
+import {combineReducers } from 'redux'
+import { CHALLENGE_PROMPT, CHALLENGE_SRC_CODE,
           CHALLENGE_TITLE, CHALLENGE_ADD_TEST} from '../actions/index'
 
 function challengePrompt(state = '', action) {

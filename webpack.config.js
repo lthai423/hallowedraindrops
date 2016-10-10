@@ -9,7 +9,7 @@ var devFlagPlugin = new webpack.DefinePlugin({
 });
 
 var config = {
-  entry: APP_DIR + '/routes.js',
+  entry: APP_DIR + '/app/index.jsx',
   output: {
 	  path: BUILD_DIR,
 	  filename: 'bundle.js'

@@ -22,18 +22,18 @@ export const CHALLENGE_ADD_TEST = 'CHALLENGE_ADD_TEST'
 */
 
 
-export function challengePrompt = (text) {
+export function challengePrompt (text) {
   return { type: CHALLENGE_PROMPT, text};
 }
 
-export function challengeSRCCode = (text) {
+export function challengeSRCCode (text) {
   return { type: CHALLENGE_SRC_CODE, text};
 }
 
-export function challengeTitle = (text) {
+export function challengeTitle (text) {
   return { type: CHALLENGE_TITLE, text};
 }
 
-export function challengeAddTest = (text) {
+export function challengeAddTest (text) {
   return { type: CHALLENGE_TITLE, text};
 }
