@@ -27,7 +27,8 @@ class Editor extends React.Component {
 	    sidebar: false,
 	    question: '',
 	    auth: false,
-      console: null
+      console: null,
+      current_question: ''
 	  };
 	}
 
@@ -79,14 +80,12 @@ class Editor extends React.Component {
   }
 
   testCode() {
-    console.log(this.state);
     $.ajax({
       method: 'POST',
       url: 'http://localhost:8080/api/replservice/testcode',
-      data: {code: this.state.text},
+      data: {code: this.state.text, name: this.state.current_question},
       success: (data) => {
-        console.log('data value is: ', data);
-        
+        console.log('data is: ', data);
       },
       error: (jqXHR, textStatus, errorThrown) => {
         console.log(textStatus, errorThrown, jqXHR);
@@ -97,11 +96,7 @@ class Editor extends React.Component {
   // setupSocket will emit the events when the keydown event occurs
   // there is a problem here... where we are transmitting every key
   setupSocket() {
-    console.log(window.location.pathname);
-    var path = window.location.pathname;
-    path = path.split('editor');
-    console.log('path at 75 is: ', path);
-    var socket = io(path[1]); // FIX ME
+    var socket = io(window.location.pathname.split('editor')[1]); // FIX ME
     var text = this.editor.getValue();
     this.setState({
       text: text
@@ -224,8 +219,9 @@ class Editor extends React.Component {
   }
 
   pasteCode(question) {
-    console.log(question);
+    console.log('question', question);
     this.editor.setValue(question.prompt);
+    this.setState({current_question: question.name});
   }
 	render () {
 
