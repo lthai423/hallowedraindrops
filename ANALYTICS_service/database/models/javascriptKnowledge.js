@@ -4,7 +4,7 @@ var Sequelize = require('sequelize');
 var Javascript = sequelize.define('javascript', {
 	U_ID: Sequelize.STRING, // not sure
 	Q_ID: Sequelize.INTEGER, // not sure
-	for_each: Sequelize.INTEGER,
+	forEach: Sequelize.INTEGER,
 	map: Sequelize.INTEGER,
 	filter: Sequelize.INTEGER,
 	reduce: Sequelize.INTEGER,
@@ -14,8 +14,8 @@ var Javascript = sequelize.define('javascript', {
 	arguments: Sequelize.INTEGER,
 	push: Sequelize.INTEGER,
 	pop: Sequelize.INTEGER,
-	reduce_right: Sequelize.INTEGER,
-	reduce_left: Sequelize.INTEGER,
+	// reduce_right: Sequelize.INTEGER,
+	// reduce_left: Sequelize.INTEGER,
 	slice: Sequelize.INTEGER,
 	splice: Sequelize.INTEGER,
 	shift: Sequelize.INTEGER,
@@ -23,8 +23,8 @@ var Javascript = sequelize.define('javascript', {
 	sort: Sequelize.INTEGER,
 	reverse: Sequelize.INTEGER,
 	length: Sequelize.INTEGER,
-	is_prototype_of: Sequelize.INTEGER,
-	to_string: Sequelize.INTEGER,
+	// is_prototype_of: Sequelize.INTEGER,
+	// to_string: Sequelize.INTEGER,
 });
 
 module.exports = Javascript;
