@@ -19,12 +19,10 @@ class MenuWrap extends React.Component {
     super(props);
     this.state = {
     	hidden: false,
-    	questions: [],
     	curr: '',
     	shareCode: 'Copy Pad URL', // text of shareCode
     	windowLink: '' // link of the window
   	};
-    console.log(state());
   }
 
   componentDidMount() {
@@ -93,9 +91,6 @@ class MenuWrap extends React.Component {
 		  url: 'http://localhost:8080/admin/challenge',
 		  success: (data) => {
 		    console.log('data value isdddd: ', data);
-		    // this.setState({
-		    // 	questions: data
-		    // });
 
         store.dispatch(questionsList(data));
 		  },
