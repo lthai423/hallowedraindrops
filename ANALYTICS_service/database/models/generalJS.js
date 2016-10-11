@@ -8,8 +8,8 @@ var General = sequelize.define('general', {
 	while_loop: Sequelize.INTEGER,
 	function: Sequelize.INTEGER,
 	variables: Sequelize.INTEGER,
-	if_else: Sequelize.INTEGER,
-	switch_case:Sequelize.INTEGER,
+	if: Sequelize.INTEGER,
+	else: Sequelize.INTEGER,
 });
 
 module.exports = General;

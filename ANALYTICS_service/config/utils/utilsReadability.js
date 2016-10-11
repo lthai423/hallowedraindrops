@@ -6,6 +6,17 @@ module.exports = (code, parser) => {
 	var len = code.length;
 	var numComments = 0;
 
+	/*
+	 * @name: countWords
+	 * @input: code to parse
+	 * @output: sets the code_length property on the passed in parser table
+	 * @notes: n/a
+	*/
+
+	var countWords = (code) => {
+		parser.code_length = code.split(' ').length;
+	};
+
 	/* 
 	 * @name: countLines
 	 * @input: code to parse.
@@ -148,6 +159,9 @@ module.exports = (code, parser) => {
 			}
 		}
 	} // end of removeComments
+
+	// sets the code_length property on parser
+	countWords(code);
 
 	// pass in code to remove all comments
 	var code = removeComments(code);

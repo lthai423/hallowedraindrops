@@ -7,7 +7,7 @@ var Readability = sequelize.define('readability', {
 	indentation: Sequelize.DOUBLE, // we have a score for this
 	function_code_length: Sequelize.DOUBLE, 
 	code_length: Sequelize.INTEGER, // we need to count this in regards to words
-	repeated_statements: Sequelize.DOUBLE, // NO SCORE FOR THIS YET
+	// repeated_statements: Sequelize.DOUBLE, // leave for future feature
 	num_comments: Sequelize.INTEGER, // we have a score for this
 });
 

@@ -1,17 +1,16 @@
+// Fill in the attributes within the Functionality Table
 
-// we need to send the code into here as well
-var testFile = require('../testJS.js').code;
+module.exports = function (code, parser) {
 
-// note this object is different than the sequelize model in functionality.js
-
-module.exports = (code, parser) => {
-
-	var getSpeed = (code) => {
-		var fn = () => { return eval(code)};
+	var getSpeed = function (input_code) {
+		var fn = function(input_code) { 
+			return eval('(' + input_code + ')');
+		};
 
 		var startTime = (new Date()).getTime();
-			for(var i=0;i<1000;i++) {
-		    fn();
+
+		for(var i=0;i<1000;i++) {
+	    fn();
 		}
 		var endTime = (new Date()).getTime();
 		var diffTime = endTime - startTime;
@@ -36,7 +35,10 @@ module.exports = (code, parser) => {
 		parser.space = code.length;
 	};
 
+	// sets the parser.speed through the run in getSpeed
 	getSpeed(code);
+
+	// sets the parser.space through the run in getSpace
 	getSpace(code);
 
 	return parser;

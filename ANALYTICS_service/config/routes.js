@@ -21,13 +21,20 @@ module.exports = (app) => {
 			// also goes in to get their analytic information
 			res.send(200);
 		}) 
-		.post((req, res) => { /* route hits */
-			// sends the file into our parser fn
-			parser(req.body);
+		.post((req, res) => { 
+
+			var url = req.url;
+			// ex is: /api/analytics/brian/1234
+			var urlSplit = url.split('/');
+			// 3 and 4 are respectively 'brian' and '1234'
+
+			var username = urlSplit[3];
+			var problem = urlSplit[4];
+
+			parser(req.body, username, problem);
 
 			res.send('Receiving the body');
-			/*
-			 * Notice that the userId and Problem Id are both on the route */
+			/* Notice that the userId and Problem Id are both on the route */
 		});
 
 }
