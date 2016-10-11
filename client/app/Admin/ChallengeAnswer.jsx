@@ -1,4 +1,6 @@
 import React from 'react';
+import store from '../store/index';
+import {challengeSRCCode} from '../actions/index';
 
 class ChallengeAnswer extends React.Component{
   constructor(props) {
@@ -10,14 +12,17 @@ class ChallengeAnswer extends React.Component{
       code: ''
     };
 
+    let unsubscribe = store.subscribe(() =>
+      console.log(store.getState()));
   }
 
   handleSave() {
     var text = this.refs.textarea.value;
-    this.setState({
-      code: text
-    });
-    this.props.handleSourceCode(text);
+    // this.setState({
+    //   code: text
+    // });
+    store.dispatch(challengeSRCCode(text));
+    // this.props.handleSourceCode(text);
     this.setState({
       textform: false
     });
@@ -29,7 +34,7 @@ class ChallengeAnswer extends React.Component{
     this.setState({
       textform: true
     });
-    document.getElementById('comment').html(this.state.code);
+    // document.getElementById('comment').html(this.state.code);
     // this.textarea.value = this.state.code;
   }
 
@@ -37,9 +42,11 @@ class ChallengeAnswer extends React.Component{
     // let code to be pasted
     setTimeout(function () {
       var text = this.refs.textarea.value;
-      this.setState({
-        code:text
-      });
+      // this.setState({
+      //   code:text
+      // });
+      store.dispatch(challengeSRCCode(text));
+
       this.props.handleSourceCode(text);
       this.setState({
         textform: false,
@@ -49,9 +56,11 @@ class ChallengeAnswer extends React.Component{
   }
 
   handleChange(e) {
-    this.setState({
-      code: e.target.value
-    });
+    // this.setState({
+    //   code: e.target.value
+    // });
+
+    store.dispatch(challengeSRCCode(e.target.value));
   }
 
   render() {
@@ -62,8 +71,8 @@ class ChallengeAnswer extends React.Component{
           {this.state.textform ?
           <textarea placeholder="Paste Challenge Answer Here"
             onPaste={this.handlePaste.bind(this)} onChange={this.handleChange.bind(this)} className="form-control" rows="14"
-            id="comment" ref='textarea'>{this.state.code}</textarea> :
-          <pre id='pre' className='pre-scrollable'>{this.state.code}</pre>}
+            id="comment" ref='textarea'>{store.getState().challengeSRCCode}</textarea> :
+          <pre id='pre' className='pre-scrollable'>{store.getState().challengeSRCCode}</pre>}
           <button id='save' onClick={this.handleSave.bind(this)} className="btn btn-default" type="button">Save</button>
           <button onClick={this.handleEdit.bind(this)} className="btn btn-default" type="button">Edit</button>
         </div>

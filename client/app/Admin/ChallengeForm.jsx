@@ -12,6 +12,7 @@ import Grid from 'react-bootstrap/lib/Grid.js';
 import Row from 'react-bootstrap/lib/Row.js';
 import Col from 'react-bootstrap/lib/Col.js';
 
+import store from '../store/index';
 
 class ChallengeForm extends React.Component{
   constructor(props) {
@@ -67,7 +68,7 @@ class ChallengeForm extends React.Component{
     var body = {
       question: question,
       varArry: this.state.tests,
-      sourceCode: this.state.sourceCode
+      sourceCode: store.getState().challengeSRCCode,
     };
     console.log(body);
     this.addChallenge(body);
