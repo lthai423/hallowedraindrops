@@ -14,10 +14,7 @@ import Col from 'react-bootstrap/lib/Col.js';
 
 import store from '../store/index';
 
-class ChallengeForm extends React.Component{
-  constructor(props) {
-    super(props);
-  }
+const ChallengeForm = props => {
 
   handleSubmit() {
     var question = {
