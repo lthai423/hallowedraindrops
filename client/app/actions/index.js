@@ -17,6 +17,7 @@ let nextTestId = 0;
 * action types
 */
 
+// For Admin
 export const CHALLENGE_PROMPT = 'CHALLENGE_PROMPT'
 export const CHALLENGE_SRC_CODE = 'CHALLENGE_SRC_CODE'
 export const CHALLENGE_TITLE = 'CHALLENGE_TITLE'
@@ -25,11 +26,24 @@ export const CHALLENGE_MOD_TEST = 'CHALLENGE_MOD_TEST'
 export const CHALLENGE_DIFFICULTY = 'CHALLENGE_DIFFICULTY'
 // export const CHALLENGE_TESTS = 'CHALLENGE_TESTS'
 
+//For Editor
+
+
+// Editor Side Bar
+export const GET_QUESTIONS = 'GET_QUESTIONS'
+
 
 /*
 * action creators
 */
 
+/************************
+* ACTIONS FOR SIDE BAR
+************************/
+
+export function questionsList (obj) {
+  return { type: GET_QUESTIONS, obj};
+}
 
 /************************
 * ACTIONS FOR CREATING CHALLENGES
