@@ -48,33 +48,32 @@ const ChallengeForm = props => {
     });
   }
 
-  render() {
-    return (
-      <div>
-          <PageHeader>Add a new challenge!</PageHeader>
-          <button onClick={this.handleSubmit.bind(this)} type="button" className="btn btn-outline-primary">Submit Challenge</button>
-           <div id="page-content-wrapper">
-            <Grid>
-              <Col sm={6} md={6}>
-                <TestLayout />
-              </Col>
-              <Col sm={6} md={6}>
-                <Row>
-                  <Col sm={6} md={12}>
-                    <ChallengePrompt />
-                  </Col>
-                </Row>
-                <Row>
-                  <Col sm={6} md={12}>
-                    <ChallengeAnswer />
-                  </Col>
-                </Row>
-              </Col>
-            </Grid>
-          </div>
-      </div>
-    );
-  }
+  return (
+    <div>
+        <PageHeader>Add a new challenge!</PageHeader>
+        <button onClick={handleSubmit} type="button" className="btn btn-outline-primary">Submit Challenge</button>
+         <div id="page-content-wrapper">
+          <Grid>
+            <Col sm={6} md={6}>
+              <TestLayout />
+            </Col>
+            <Col sm={6} md={6}>
+              <Row>
+                <Col sm={6} md={12}>
+                  <ChallengePrompt />
+                </Col>
+              </Row>
+              <Row>
+                <Col sm={6} md={12}>
+                  <ChallengeAnswer />
+                </Col>
+              </Row>
+            </Col>
+          </Grid>
+        </div>
+    </div>
+  );
+
 }
 
 export default ChallengeForm;
