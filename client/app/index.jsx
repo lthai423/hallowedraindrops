@@ -18,7 +18,4 @@ render(
   document.getElementById('app')
 )
 
-
-// render (
-//   <h1>hello</h1>,
-//   document.getElementById('app'));
+store.subscribe(render);

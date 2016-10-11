@@ -17,6 +17,7 @@ store.dispatch(challengeAddTest({
   method: 'here',
   answer: 'ans'
 }));
+store.dispatch(challengePrompt('this is the prompt 2'));
 
 unsubscribe();
 export default store;
