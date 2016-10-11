@@ -12,7 +12,8 @@ class MenuWrap extends React.Component {
     super(props);
     this.state = {
     	hidden: false,
-    	questions: []
+    	questions: [],
+    	curr: ''
   	};
   }
 
@@ -46,7 +47,7 @@ class MenuWrap extends React.Component {
 		  method: 'GET',
 		  url: 'http://localhost:8080/admin/challenge',
 		  success: (data) => {
-		    console.log('data value is: ', data);
+		    console.log('data value isdddd: ', data);
 		    this.setState({
 		    	questions: data
 		    });
@@ -91,35 +92,4 @@ class MenuWrap extends React.Component {
 	}
 }
 
-
-// <li className="sidebar-brand">
-// 	<a href="#"></a>
-// </li>
-// <li className="sidebar-brand">
-// 	<a href="#">asyncMap</a>
-// </li>
-// <li className="sidebar-brand">
-// 	<a href="#">bubbleSort</a>
-// </li>
-// <li className="sidebar-brand">
-// 	<a href="#">deepEquality</a>
-// </li>
-// <li className="sidebar-brand">
-// 	<a href="#">powerSet</a>
-// </li>
-// <li className="sidebar-brand">
-// 	<a href="#">queueStac</a>
-// </li>
-// <li className="sidebar-brand">
-// 	<a href="#">rangeClass</a>
-// </li>
-// <li className="sidebar-brand">
-// 	<a href="#">robotPaths</a>
-// </li>
-// <li className="sidebar-brand">
-// 	<a href="#">treeBFSelect</a>
-// </li>
-// <li className="sidebar-brand">
-// 	<a href="#">shuffleDeck</a>
-// </li>
 module.exports = MenuWrap;
