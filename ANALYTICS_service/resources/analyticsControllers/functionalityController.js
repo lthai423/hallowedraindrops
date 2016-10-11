@@ -1,27 +1,21 @@
-var request = require('request-promise');
 var Functionality = require('../../database/models/functionality.js');
 
-var url: "http://localhost:1337/api/analytics";
-
-// we need the questionID and userID before any of this. 
-
-module.exports = (data, username, ) => {
-	console.log('usernaem value is: ', username);
-	console.log('data value is: ', data);
-	// Functionality.sync().then(() => {
-	// 	return Functionality.find({where:{username: username}})
-
-	// })
-
-
+module.exports = (data, username, question) => {
+	Functionality.sync().then(() => {
+		return Functionality.find({where:{U_ID: username, Q_ID: question}})
+			.then((entry) => {
+				console.log('entry value is: ', entry); // if no entry
+				if(!entry) {
+					// if it's not already created, create
+					Functionality.create(data);
+						// .then((q) => callback(q));
+					// not sure about q
+				} else {
+					// update old entry to the newer one
+					Functionality.update(data, {where: {U_ID: username, Q_ID: question}});
+						// .then((q) => callback(q));
+				}
+			// callback(data);
+		});
+	});
 }
-
-/*
-sequelize.sync({ force: true }).then(function() {
-  return User.create({ username: 'john', password: '1111' });
-}).then(function(user1) {
-  return User.find({ username: 'john' })
-}).then(function(user2) {
-  console.log(user2.get()); // Get returns a JSON representation of the user
-}); 
-*/
