@@ -1,3 +1,5 @@
+// functionality Table schema
+
 var sequelize = require('../db.js').sequelize;
 var Sequelize = require('sequelize');
 

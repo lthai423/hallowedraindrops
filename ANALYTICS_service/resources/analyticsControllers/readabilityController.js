@@ -1,3 +1,6 @@
+// Readability controller that will add entry into DB.
+// If entry already exists, it will update existing entry to fit new one
+
 var Readability = require('../../database/models/readability.js');
 
 module.exports = (data, username, question) => {

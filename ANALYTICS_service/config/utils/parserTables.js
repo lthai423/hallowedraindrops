@@ -1,4 +1,4 @@
-// these are tables that will be imported and used in parser.js
+// Tables that will be imported and used in parser.js
 
 // readabilityJS table requirements
 var readability = {

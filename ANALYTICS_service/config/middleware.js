@@ -1,3 +1,5 @@
+// middleware for our Analytics Service
+
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 

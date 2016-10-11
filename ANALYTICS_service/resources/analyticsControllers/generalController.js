@@ -1,3 +1,6 @@
+// GeneralJS controller that will add entry into DB.
+// If entry already exists, it will update existing entry to fit new one
+
 var General = require('../../database/models/generalJS.js');
 
 module.exports = (data, username, question) => {

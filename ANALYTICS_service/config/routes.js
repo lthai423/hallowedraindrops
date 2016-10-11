@@ -1,4 +1,5 @@
 // Routes received by the Analytics Server
+
 var parser = require('./parser.js');
 var addtodb = require('./addToDB.js');
 
@@ -41,8 +42,7 @@ module.exports = (app) => {
 			// adds all items into our db
 			addtodb(parsed_results, username, question);
 
-			res.send('Receiving the body');
-			/* Notice that the userId and Problem Id are both on the route */
+			res.send('Analytics Received!');
 		});
 
 }

@@ -1,3 +1,6 @@
+// javascriptKnowledge controller that will add entry into DB.
+// If entry already exists, it will update existing entry to fit new one
+
 var Javascript = require('../../database/models/javascriptKnowledge.js');
 
 module.exports = (data, username, question) => {

@@ -1,3 +1,4 @@
+// Attaches the username and question-id to obj, and adds table into DB
 
 var functionalityDB = require('../resources/analyticsControllers/functionalityController.js');
 var generalDB = require('../resources/analyticsControllers/generalController.js');

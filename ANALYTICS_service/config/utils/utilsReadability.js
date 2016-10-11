@@ -1,4 +1,4 @@
-
+// Utility that is called within parser.js that provides readability scores
 
 module.exports = (code, parser) => {
 
@@ -39,7 +39,6 @@ module.exports = (code, parser) => {
 		}
 
 		// do another round after all '' have been spliced out
-
 		for(var j = 0; j < copyLines.length; j++) {
 			// default set the counter_else to 0 if end of line is reached
 			var counter_else = 0;

@@ -1,3 +1,6 @@
+// functionality controller that will add entry into DB.
+// If entry already exists, it will update existing entry to fit new one
+
 var Functionality = require('../../database/models/functionality.js');
 
 module.exports = (data, username, question) => {

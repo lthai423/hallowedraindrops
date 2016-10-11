@@ -1,4 +1,4 @@
-// going to help parse the file
+// Parser to help parse the files
 
 /* NOTES NOTES NOTES: 
 	- we can parse further if in our "cleanCode" fn we cut out all lines ending in: ')', '}'
@@ -7,16 +7,6 @@
 	- In the future refactor, we need to separate the logic into different files
 	- Need to send the code into utilsFunctionality.js
 */
-
-
-// promises for async database additions
-var Promises = require('bluebird');
-
-// add into database
-var generalController = require('../resources/analyticsControllers/generalController.js');
-
-// use a test file for .js parsing
-// var testFile = require('./testJS.js');
 
 // a file containing all of our parserTables
 var parser = require('./utils/parserTables.js');
@@ -41,13 +31,6 @@ module.exports = (req, username, problem) => {
 	var general = require('./utils/utilsGeneralAndKnowledgeParser.js')(commentsFilteredCode, parser.generalJS, parser.readability); 
 
 	var knowledge = require('./utils/utilsGeneralAndKnowledgeParser.js')(commentsFilteredCode, parser.jsKnowledge);
-
-	// These look good
-	console.log('value for general is: ', general);
-	console.log('value for knowledge is: ', knowledge);
-	console.log('value for readability is: ', readability);
-	console.log('value for functionality is:', functionality);
-
 
 	// return back the parserResults to be put into the db
 	return parserResults = {

@@ -1,7 +1,7 @@
-// Fill in the attributes within the GeneralJS and JSKnowledge Tables
+// Utility that is called within parser.js that provides readability scores
+// for GeneralJS and JSKnowledge Tables
 
 module.exports = (code, parser, readability) => {
-		// generalJS;
 	for(var i = 0; i < code.length; i++) {
 		var codeSplit = code[i].split(' ');
 		for(var key in parser) {
