@@ -14,11 +14,36 @@ class MenuWrap extends React.Component {
     	hidden: false,
     	questions: [],
     	curr: ''
+    	shareCode: 'Copy Pad URL', // text of shareCode
+    	windowLink: '' // link of the window
   	};
   }
 
   componentDidMount() {
   	this.makeRequest();
+  	this.setLink();
+  	this.clipboardSetup();
+  }
+
+  /* @name: setLink:
+   * @input: initial DOM render
+   * @output: Sets the windowLink state to be the window URL to be copied
+  */
+
+  setLink() {
+  	var link = window.location.hostname + ':' + window.location.port + window.location.pathname;
+  	this.setState({
+  		windowLink: link
+  	});
+  }
+
+  /* @name: clipboardSetup:
+   * @input: clipboard.js package
+   * @output: Creates a new Clipboard instance that is focused on the DOM element '.share-code'
+  */
+
+  clipboardSetup() {
+  	new Clipboard('.share-code');
   }
 
 
@@ -30,6 +55,7 @@ class MenuWrap extends React.Component {
 	 * @input: Click
 	 * @output: Desired Question will populate in Editor in comments
 	*/
+	
 	getChallengeQuestion() {
 		// find the className of that particular question
 		// when rendering, we need to attach a question with it.
@@ -40,6 +66,17 @@ class MenuWrap extends React.Component {
 		//SERVER-SIDE
 			// 2. once we get the responses back, then we return only the top 10 back to client
 
+	}
+
+	/* @name: getWindowLink:
+	 * @input: Click
+	 * @output: shareCode state is changed, and UI re-renders text to display 'Link Copied'
+	*/
+
+	getWindowLink() {
+		this.setState({
+			shareCode: 'Link Copied!'
+		});
 	}
 
 	makeRequest(challenge) {
@@ -72,15 +109,14 @@ class MenuWrap extends React.Component {
 			style = { display: 'none'};
 		}
 
-	//<div>
-		//{this.state.questions.map((question) => return <div className="top-question" id={question}>{question}</div>)}
-	//</div>
-
 		return (
 
 			<div>
 				<div id="sidebar-wrapper">
 					<ul className="sidebar-nav">
+						<li className="share-code sidebar-brand" data-clipboard-text={this.state.windowLink} onClick={this.getWindowLink.bind(this)}>
+							<span>{this.state.shareCode}</span>
+						</li>
 						{this.state.questions.map(this.renderQuestion.bind(this))}
 						<li className="sidebar-brand">
 							<a href="/admin/addchallenge">-- add challenge --</a>
