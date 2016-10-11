@@ -18,9 +18,9 @@ class ChallengeForm extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      prompt: '',
+      // prompt: '',
       tests: [],
-      sourceCode: '',
+      // sourceCode: '',
       info: {
         title: '',
         difficulty: '1'
@@ -54,15 +54,15 @@ class ChallengeForm extends React.Component{
   handleSubmit() {
     console.log('state to send', this.state);
     var question = {
-      name: this.state.info.title,
+      name: store.getState().challengeTitle,
       difficulty: this.state.info.difficulty,
       attempts: 0,
       answers: 0,
-      prompt: this.state.prompt,
+      prompt: store.getState().challengePrompt,
     };
 
     var body = {
-      question: store.getState().challengePrompt,
+      question: question,
       varArry: this.state.tests,
       sourceCode: store.getState().challengeSRCCode,
     };
@@ -73,7 +73,7 @@ class ChallengeForm extends React.Component{
   addChallenge(body) {
     $.ajax({
       method: 'POST',
-      url: 'http://localhost:8080/admin/challenge/' + this.state.info.title,
+      url: 'http://localhost:8080/admin/challenge/' + store.getState().challengeTitle,
       data: body,
       success: (data) => {
         console.log('Success!', data);

@@ -1,10 +1,12 @@
 import React from 'react';
+import store from '../store/index';
+import {challengeTitle} from '../actions/index';
 
 class ChallengeInfo extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      title : '',
+      // title : '',
       difficulty: ''
     };
   }
@@ -15,12 +17,13 @@ class ChallengeInfo extends React.Component{
 
   handleChange(e) {
     var title = e.target.value;
-    this.setState({
-      title: title
-    });
-    var obj = this.state;
-    obj.title = title;
-    this.props.handleInfo(obj);
+    store.dispatch(challengeTitle(title));
+    // this.setState({
+    //   title: title
+    // });
+    // var obj = this.state;
+    // obj.title = title;
+    // this.props.handleInfo(obj);
 
   }
 
@@ -42,7 +45,7 @@ class ChallengeInfo extends React.Component{
           <div className="form-group row">
             <label for="challenge-title" className="col-xs-2 col-form-label">Challenge Title</label>
             <div className="col-xs-8">
-              <input className="form-control" type="text" placeholder="Challenge Name" value={this.setState.title} onChange={this.handleChange.bind(this)} ref='title' id="challenge-title"/>
+              <input className="form-control" type="text" placeholder="Challenge Name" value={store.getState().challengeTitle} onChange={this.handleChange.bind(this)} ref='title' id="challenge-title"/>
             </div>
           </div>
           <div className="form-group row">
