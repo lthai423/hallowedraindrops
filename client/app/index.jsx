@@ -18,4 +18,4 @@ render(
   document.getElementById('app')
 )
 
-store.subscribe(render);
+// store.subscribe(render);

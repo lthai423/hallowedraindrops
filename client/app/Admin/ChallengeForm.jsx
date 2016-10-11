@@ -13,31 +13,32 @@ import Row from 'react-bootstrap/lib/Row.js';
 import Col from 'react-bootstrap/lib/Col.js';
 
 import store from '../store/index';
+let state = store.getState;
 
 const ChallengeForm = props => {
 
-  handleSubmit() {
+  let handleSubmit = () => {
     var question = {
-      name: store.getState().challengeTitle,
-      difficulty: store.getState().challengeDifficulty,
+      name: state().newChallenge.challengeTitle,
+      difficulty: state().newChallenge.challengeDifficulty,
       attempts: 0,
       answers: 0,
-      prompt: store.getState().challengePrompt,
+      prompt: state().newChallenge.challengePrompt,
     };
 
     var body = {
       question: question,
-      varArry: store.getState().challengeTests,
-      sourceCode: store.getState().challengeSRCCode,
+      varArry: state().newChallenge.challengeTests,
+      sourceCode: state().newChallenge.challengeSRCCode,
     };
     console.log('sending this body of info to test server', body);
-    this.addChallenge(body);
+    addChallenge(body);
   }
 
-  addChallenge(body) {
+  let addChallenge = body => {
     $.ajax({
       method: 'POST',
-      url: 'http://localhost:8080/admin/challenge/' + store.getState().challengeTitle,
+      url: 'http://localhost:8080/admin/challenge/' + state().newChallenge.challengeTitle,
       data: body,
       success: (data) => {
         console.log('Success!', data);

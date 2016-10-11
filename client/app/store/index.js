@@ -1,9 +1,9 @@
 import { createStore } from 'redux'
-import * as newChallenge from '../reducers'
+import codeDropApp from '../reducers/index'
 
-let store = createStore(newChallenge);
+let store = createStore(codeDropApp);
 
-//Following is test for the store
+// Following is test for the store
 // import {challengePrompt, challengeSRCCode, challengeTitle, challengeAddTest, challengeTests } from '../actions/index';
 
 // console.log(store.getState());

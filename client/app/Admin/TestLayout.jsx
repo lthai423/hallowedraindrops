@@ -23,7 +23,7 @@ class TestingLayout extends React.Component{
   }
 
   handleNewTest() {
-    var length = store.getState().challengeTests.length;
+    var length = store.getState().newChallenge.challengeTests.length;
 
     var test = <TestEntry key={length} num={length} />;
 
