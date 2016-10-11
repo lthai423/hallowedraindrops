@@ -69,6 +69,7 @@ class ChallengeForm extends React.Component{
       varArry: this.state.tests,
       sourceCode: this.state.sourceCode
     };
+    console.log(body);
     this.addChallenge(body);
   }
 

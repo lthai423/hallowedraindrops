@@ -6,8 +6,80 @@ class TestEntry extends React.Component{
     this.state = {
       snippet: '',
       method: '',
-      answer: ''
+      answer: '',
     };
+    this.option = [ 
+        'shouldExist',
+        'shouldNotExist',
+        'shouldThrowError',
+        'shouldNotThrowError',
+        'shouldEqual',
+        'shouldNotEqual',
+        'deepEqual',
+        'isAString',
+        'isAnArray',
+        'isAnObject',
+        'isANull',
+        'isAUndefined',
+        'isAnError',
+        'isAPromise',
+        'isTruthy',
+        'isNotTruthy',
+        'isTrue',
+        'isNotTrue',
+        'isFalse',
+        'isNotFalse',
+        'isUndefined',
+        'isNotUndefined',
+        'isNull',
+        'isNotNull',
+        'isNaN',
+        'isNotNaN',
+        'isExist',
+        'isEmpty',
+        'isEql',
+        'isNotEql',
+        'isArguments',
+        'isDeeplyEqual',
+        'isNotDeeplyEqual',
+        'isAbove',
+        'isBelow',
+        'isAtLeast',
+        'isAtMost',
+        'isWithin',
+        'isInstanceof',
+        'isProperty',
+        'isDeepProperty',
+        'isOwnProperty',
+        'isOwnPropertyDescriptor',
+        'isWithinLength',
+        'isBelowLength',
+        'isAboveLength',
+        'isNotLengthOf',
+        'isLengthOf',
+        'willNotMatchRegex',
+        'willMatchRegex',
+        'doesNotHaveString',
+        'doesHaveString',
+        'doesNotContainAllKeys',
+        'doesNotContainAnyKeys',
+        'doesContainAllKeys',
+        'doesContainAnyKeys',
+        'isNotResponding',
+        'isResponding',
+        'isNotRespondingToItself',
+        'isRespondingToItself',
+        'isSatisfying',
+        'isNotSatisfying',
+        'isNotCloseTo',
+        'isCloseTo',
+        'isNotMembers',
+        'isMembers',
+        'isNotExtensible',
+        'isExtensible',
+        'isSealed',
+        'isFrozen'
+      ];
   }
 
   handleMethod (e) {
@@ -40,6 +112,12 @@ class TestEntry extends React.Component{
     this.props.info(this, obj);
   }
 
+  renderOption(option) {
+    return (
+      <option>{option}</option>
+    );
+  }
+
   render() {
     return (
       <div className="form-group">
@@ -52,11 +130,7 @@ class TestEntry extends React.Component{
           <div className='col-xs-4'>
             <select onChange={this.handleMethod.bind(this)}className="form-control" id="method">
               <option></option>
-              <option>should.exist</option>
-              <option>should.not.exist</option>
-              <option>should.Throw</option>
-              <option>should.not.Throw</option>
-              <option>should.equal</option>
+              {this.option.map(this.renderOption.bind(this))}
             </select>
           </div>
         </div>
