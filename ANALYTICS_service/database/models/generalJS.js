@@ -3,11 +3,11 @@ var Sequelize = require('sequelize');
 
 var General = sequelize.define('general', {
 	U_ID: Sequelize.STRING, // not sure
-	Q_ID: Sequelize.INTEGER, // not sure
-	for_loop: Sequelize.INTEGER,
-	while_loop: Sequelize.INTEGER,
+	Q_ID: Sequelize.STRING, // not sure
+	for: Sequelize.INTEGER,
+	while: Sequelize.INTEGER,
 	function: Sequelize.INTEGER,
-	variables: Sequelize.INTEGER,
+	var: Sequelize.INTEGER,
 	if: Sequelize.INTEGER,
 	else: Sequelize.INTEGER,
 });

@@ -3,10 +3,9 @@ var Sequelize = require('sequelize');
 
 var Functionality = sequelize.define('functionality', {
 	U_ID: Sequelize.STRING, // not sure
-	Q_ID: Sequelize.INTEGER, // not sure
+	Q_ID: Sequelize.STRING, // not sure
 	speed: Sequelize.DOUBLE,
 	space: Sequelize.DOUBLE,
-	time_complexity: Sequelize.DOUBLE,
 });
 
 module.exports = Functionality;

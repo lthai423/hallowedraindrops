@@ -3,7 +3,7 @@ var Sequelize = require('sequelize');
 
 var Javascript = sequelize.define('javascript', {
 	U_ID: Sequelize.STRING, // not sure
-	Q_ID: Sequelize.INTEGER, // not sure
+	Q_ID: Sequelize.STRING, // not sure
 	forEach: Sequelize.INTEGER,
 	map: Sequelize.INTEGER,
 	filter: Sequelize.INTEGER,
