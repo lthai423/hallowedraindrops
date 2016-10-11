@@ -55,7 +55,7 @@ class MenuWrap extends React.Component {
 	 * @input: Click
 	 * @output: Desired Question will populate in Editor in comments
 	*/
-	
+
 	getChallengeQuestion() {
 		// find the className of that particular question
 		// when rendering, we need to attach a question with it.

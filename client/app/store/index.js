@@ -6,9 +6,9 @@ let store = createStore(newChallenge);
 //Following is test for the store
 // import {challengePrompt, challengeSRCCode, challengeTitle, challengeAddTest } from '../actions/index';
 
-console.log(store.getState());
-let unsubscribe = store.subscribe(() =>
-  console.log(store.getState()));
+// console.log(store.getState());
+// let unsubscribe = store.subscribe(() =>
+//   console.log(store.getState()));
 
 // store.dispatch(challengePrompt('this is the prompt'));
 // store.dispatch(challengeSRCCode('this is the code'));
@@ -20,5 +20,5 @@ let unsubscribe = store.subscribe(() =>
 // }));
 // store.dispatch(challengePrompt('this is the prompt 2'));
 
-unsubscribe();
+// unsubscribe();
 export default store;

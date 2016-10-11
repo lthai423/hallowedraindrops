@@ -27,15 +27,11 @@ class ChallengeForm extends React.Component{
       },
     };
   }
-
-  componentDidMount() {
-  }
-
-  handlePrompt(code) {
-    this.setState({
-      prompt: code
-    });
-  }
+  // handlePrompt(code) {
+  //   this.setState({
+  //     prompt: code
+  //   });
+  // }
 
   handleTests(tests) {
     this.setState({
@@ -43,11 +39,11 @@ class ChallengeForm extends React.Component{
     });
   }
 
-  handleSourceCode(code) {
-    this.setState({
-      sourceCode: code
-    });
-  }
+  // handleSourceCode(code) {
+  //   this.setState({
+  //     sourceCode: code
+  //   });
+  // }
 
   handleChallengeInfo(info) {
     this.setState({
@@ -66,7 +62,7 @@ class ChallengeForm extends React.Component{
     };
 
     var body = {
-      question: question,
+      question: store.getState().challengePrompt,
       varArry: this.state.tests,
       sourceCode: store.getState().challengeSRCCode,
     };
@@ -101,12 +97,12 @@ class ChallengeForm extends React.Component{
               <Col sm={6} md={6}>
                 <Row>
                   <Col sm={6} md={12}>
-                    <ChallengePrompt handlePrompt={this.handlePrompt.bind(this)} />
+                    <ChallengePrompt />
                   </Col>
                 </Row>
                 <Row>
                   <Col sm={6} md={12}>
-                    <ChallengeAnswer handleSourceCode={this.handleSourceCode.bind(this)}/>
+                    <ChallengeAnswer />
                   </Col>
                 </Row>
               </Col>

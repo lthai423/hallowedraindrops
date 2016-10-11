@@ -9,7 +9,7 @@ class ChallengeAnswer extends React.Component{
     this.state = {
       mode: 'edit',
       textform: true,
-      code: ''
+      // code: ''
     };
 
     let unsubscribe = store.subscribe(() =>
@@ -42,12 +42,12 @@ class ChallengeAnswer extends React.Component{
     // let code to be pasted
     setTimeout(function () {
       var text = this.refs.textarea.value;
+      store.dispatch(challengeSRCCode(text));
       // this.setState({
       //   code:text
       // });
-      store.dispatch(challengeSRCCode(text));
 
-      this.props.handleSourceCode(text);
+      // this.props.handleSourceCode(text);
       this.setState({
         textform: false,
       });
