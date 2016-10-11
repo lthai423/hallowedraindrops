@@ -6,11 +6,21 @@
 
 import {combineReducers } from 'redux'
 import { CHALLENGE_PROMPT, CHALLENGE_SRC_CODE,
-          CHALLENGE_TITLE, CHALLENGE_ADD_TEST} from '../actions/index'
+          CHALLENGE_TITLE, CHALLENGE_ADD_TEST,
+          CHALLENGE_DIFFICULTY} from '../actions/index'
 
 function challengePrompt(state = '', action) {
   switch(action.type) {
     case CHALLENGE_PROMPT:
+      return action.text;
+    default:
+      return state;
+  }
+}
+
+function challengeDifficulty(state = '', action) {
+  switch(action.type) {
+    case CHALLENGE_DIFFICULTY:
       return action.text;
     default:
       return state;

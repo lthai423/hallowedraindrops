@@ -15,6 +15,7 @@ export const CHALLENGE_PROMPT = 'CHALLENGE_PROMPT'
 export const CHALLENGE_SRC_CODE = 'CHALLENGE_SRC_CODE'
 export const CHALLENGE_TITLE = 'CHALLENGE_TITLE'
 export const CHALLENGE_ADD_TEST = 'CHALLENGE_ADD_TEST'
+export const CHALLENGE_DIFFICULTY = 'CHALLENGE_DIFFICULTY'
 
 
 /*
@@ -36,4 +37,8 @@ export function challengeTitle (text) {
 
 export function challengeAddTest (obj) {
   return { type: CHALLENGE_ADD_TEST, obj};
+}
+
+export function challengeDifficulty (text) {
+  return { type: CHALLENGE_DIFFICULTY, text};
 }
