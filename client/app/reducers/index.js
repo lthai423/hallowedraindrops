@@ -39,9 +39,9 @@ function challengeAddTest(state = {} , action) {
   switch(action.type) {
     case CHALLENGE_ADD_TEST:
       return {
-        snippet: action.snippet,
-        method: action.method,
-        answer: action.answer
+        snippet: action.obj.snippet,
+        method: action.obj.method,
+        answer: action.obj.answer
       };
     default:
       return state;

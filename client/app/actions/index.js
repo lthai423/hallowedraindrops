@@ -34,6 +34,6 @@ export function challengeTitle (text) {
   return { type: CHALLENGE_TITLE, text};
 }
 
-export function challengeAddTest (text) {
-  return { type: CHALLENGE_TITLE, text};
+export function challengeAddTest (obj) {
+  return { type: CHALLENGE_ADD_TEST, obj};
 }
