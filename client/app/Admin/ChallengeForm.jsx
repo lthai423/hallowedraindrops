@@ -52,7 +52,6 @@ class ChallengeForm extends React.Component{
   }
 
   handleSubmit() {
-    console.log('state to send', this.state);
     var question = {
       name: store.getState().challengeTitle,
       difficulty: store.getState().challengeDifficulty,
@@ -63,10 +62,10 @@ class ChallengeForm extends React.Component{
 
     var body = {
       question: question,
-      varArry: this.state.tests,
+      varArry: store.getState().challengeTests,
       sourceCode: store.getState().challengeSRCCode,
     };
-    console.log(body);
+    console.log('sending this body of info to test server', body);
     this.addChallenge(body);
   }
 

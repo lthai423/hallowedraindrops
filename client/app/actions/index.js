@@ -51,7 +51,6 @@ export function challengeAddTest (obj) {
 
 export function challengeTests (obj) {
   return { type: CHALLENGE_ADD_TEST,
-           // id: nextTestId++,
            obj};
 }
 
