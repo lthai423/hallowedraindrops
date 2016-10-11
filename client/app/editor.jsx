@@ -49,7 +49,6 @@ class Editor extends React.Component {
     // reset the container to 0
     $('.container').css("margin", 0);
 
-    console.log('state-bar', this.state.sidebar);
   }
 
   getText() {
@@ -124,8 +123,6 @@ class Editor extends React.Component {
     });
 
     socket.on('alter result', (msg) => {
-      console.log('going to append this: ', msg);
-      console.log('typeof msg is: ', typeof msg);
       //2 and 3
       var finalMsg = msg.slice(2, msg.length);
       var finalMsg = finalMsg.substring(0, finalMsg.length - 3);
@@ -167,7 +164,6 @@ class Editor extends React.Component {
   }
 
   handleKeyPress (e) {
-    console.log('keypress is called');
     var text = this.editor.getValue();
     this.setState({
       text: text
@@ -181,12 +177,10 @@ class Editor extends React.Component {
 	  this.setState({
 	    sidebar: !this.state.sidebar
 	  });
-  	console.log('menutoggled has been triggered');
   	$("#wrapper").toggleClass("toggled");
 
     if(!this.state.sidebar) { // if it's not clicked
       // adjust the div=container
-      console.log('adjusting css...?');
       $('.container').css("margin", 0);
       // $('.container').css("margin-right", "0px");
     }
@@ -219,7 +213,6 @@ class Editor extends React.Component {
   }
 
   pasteCode(question) {
-    console.log('question', question);
     this.editor.setValue(question.prompt);
     this.setState({current_question: question.name});
   }

@@ -3,6 +3,13 @@
 import React from 'react';
 import { render } from 'react-dom';
 
+//Redux
+
+import store from './store/index';
+import {questionsList} from './actions/index';
+import {connect} from 'react-redux'
+
+let state = store.getState;
 /* React-Bootstrap Components */
 
 class MenuWrap extends React.Component {
@@ -12,7 +19,6 @@ class MenuWrap extends React.Component {
     super(props);
     this.state = {
     	hidden: false,
-    	questions: [],
     	curr: '',
     	shareCode: 'Copy Pad URL', // text of shareCode
     	windowLink: '' // link of the window
@@ -55,7 +61,7 @@ class MenuWrap extends React.Component {
 	 * @input: Click
 	 * @output: Desired Question will populate in Editor in comments
 	*/
-	
+
 	getChallengeQuestion() {
 		// find the className of that particular question
 		// when rendering, we need to attach a question with it.
@@ -85,9 +91,8 @@ class MenuWrap extends React.Component {
 		  url: 'http://localhost:8080/admin/challenge',
 		  success: (data) => {
 		    console.log('data value isdddd: ', data);
-		    this.setState({
-		    	questions: data
-		    });
+
+        store.dispatch(questionsList(data));
 		  },
 		  error: (jqXHR, textStatus, errorThrown) => {
 		    console.log(textStatus, errorThrown, jqXHR);
@@ -117,7 +122,7 @@ class MenuWrap extends React.Component {
 						<li className="share-code sidebar-brand" data-clipboard-text={this.state.windowLink} onClick={this.getWindowLink.bind(this)}>
 							<span>{this.state.shareCode}</span>
 						</li>
-						{this.state.questions.map(this.renderQuestion.bind(this))}
+						{this.props.questions.map(this.renderQuestion.bind(this))}
 						<li className="sidebar-brand">
 							<a href="/admin/addchallenge">-- add challenge --</a>
 						</li>
@@ -128,4 +133,12 @@ class MenuWrap extends React.Component {
 	}
 }
 
-module.exports = MenuWrap;
+const mapStateToProps = (state) => {
+    return {
+        questions: state.sideBar.questionsList
+    }
+}
+
+
+//wrap App in connect and pass in mapStateToProps
+export default connect(mapStateToProps)(MenuWrap)
