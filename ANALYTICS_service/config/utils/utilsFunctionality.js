@@ -19,16 +19,7 @@ module.exports = function (code, parser) {
 
 		// below is a better way, but not sure how to pull value out of 
 		// console.time and console.timeEnd()
-
-		// way to calculate speed: http://stackoverflow.com/questions/10617070/how-to-measure-execution-time-of-javascript-code-with-callbacks
-		// console.time('test');
-		// var test = () => {
-		// 	for(var i = 0; i < 1000; i++) {
-		// 		fn();
-		// 	}
-		// }
-		// var x = console.timeEnd('test');
-
+		// http://stackoverflow.com/questions/10617070/how-to-measure-execution-time-of-javascript-code-with-callbacks
 	};
 
 	var getSpace = (code) => {

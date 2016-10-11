@@ -36,7 +36,6 @@ module.exports = (req, username, problem) => {
 	// commentsFilteredCode is an array of arrays with comments all filtered out
 	var commentsFilteredCode = readability.code;
 
-	// require in the utilsFunctionality.js
 	var functionality = require('./utils/utilsFunctionality.js')(code.code, parser.functionality);
 
 	var general = require('./utils/utilsGeneralAndKnowledgeParser.js')(commentsFilteredCode, parser.generalJS, parser.readability); 
@@ -48,7 +47,15 @@ module.exports = (req, username, problem) => {
 	console.log('value for knowledge is: ', knowledge);
 	console.log('value for readability is: ', readability);
 	console.log('value for functionality is:', functionality);
-	
+
+
+	// return back the parserResults to be put into the db
+	return parserResults = {
+		general: general,
+		knowledge: knowledge,
+		readability: readability,
+		functionality: functionality,
+	};
 };
 
 

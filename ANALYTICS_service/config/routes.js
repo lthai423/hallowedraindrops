@@ -1,5 +1,6 @@
 // Routes received by the Analytics Server
 var parser = require('./parser.js');
+var addtodb = require('./addToDB.js');
 
 module.exports = (app) => {
 
@@ -16,22 +17,29 @@ module.exports = (app) => {
 
 	*/
 	app.route('/api/analytics/:userId/:problemId')
-		.get((req, res) => { /* route hits */
-			// go into db and get that user's code and problem id
-			// also goes in to get their analytic information
+		.get((req, res) => { 
+			// not in use right now
 			res.send(200);
 		}) 
 		.post((req, res) => { 
 
-			var url = req.url;
 			// ex is: /api/analytics/brian/1234
-			var urlSplit = url.split('/');
+			var url = req.url;
+
 			// 3 and 4 are respectively 'brian' and '1234'
+			var urlSplit = url.split('/');
 
+			// the user
 			var username = urlSplit[3];
-			var problem = urlSplit[4];
 
-			parser(req.body, username, problem);
+			// the problem_ID that the user solved
+			var question = urlSplit[4];
+
+			// parsed-results is an object with 4 keys
+			var parsed_results = parser(req.body);
+
+			// adds all items into our db
+			addtodb(parsed_results, username, question);
 
 			res.send('Receiving the body');
 			/* Notice that the userId and Problem Id are both on the route */

@@ -1,6 +1,4 @@
-/* notes on the regex obj 
- * run the forEach after the for
-*/
+// Fill in the attributes within the GeneralJS and JSKnowledge Tables
 
 module.exports = (code, parser, readability) => {
 		// generalJS;
@@ -22,6 +20,4 @@ module.exports = (code, parser, readability) => {
 	}
 
 	return parser;
-		// aim for this is to parse for: 'for, while, var, if/else'
-		// var splitCode = code2.split(' ');
 }
