@@ -1,14 +1,14 @@
 import React from 'react';
 
+//Redux
+import store from '../store/index';
+import {challengeAddTest, challengeTests, challengeModTest} from '../actions/index';
+
 class TestEntry extends React.Component{
   constructor(props) {
     super(props);
-    this.state = {
-      snippet: '',
-      method: '',
-      answer: '',
-    };
-    this.option = [ 
+
+    this.option = [
         'shouldExist',
         'shouldNotExist',
         'shouldThrowError',
@@ -82,34 +82,39 @@ class TestEntry extends React.Component{
       ];
   }
 
+  componentDidMount() {
+    store.dispatch(challengeTests({
+      id: this.props.num,
+      snippet: '',
+      method: '',
+      answer: ''
+    }));
+  }
+
   handleMethod (e) {
     var method = e.target.value;
-    this.setState({
+    store.dispatch(challengeModTest({
+      id: this.props.num,
       method: method
-    });
-    var obj = this.state;
-    obj.method = method;
-    this.props.info(this, obj);
+    }));
   }
 
   handleSnippet(e) {
     var snippet = e.target.value;
-    this.setState({
+    store.dispatch(challengeModTest({
+      id: this.props.num,
       snippet: snippet
-    });
-    var obj = this.state;
-    obj.snippet = snippet;
-    this.props.info(this, obj);
+    }));
+
   }
 
   handleAnswer(e) {
     var answer = e.target.value;
-    this.setState({
+
+    store.dispatch(challengeModTest({
+      id: this.props.num,
       answer: answer
-    });
-    var obj = this.state;
-    obj.answer = answer;
-    this.props.info(this, obj);
+    }));
   }
 
   renderOption(option) {
@@ -123,7 +128,7 @@ class TestEntry extends React.Component{
       <div className="form-group">
         <div className="form-group">
           <div className="col-xs-4">
-            <input className="form-control" onChange={this.handleSnippet.bind(this)} value={this.setState.snippet} type="text" placeholder="fn(arguments)" id="snippet"/>
+            <input className="form-control" onChange={this.handleSnippet.bind(this)} type="text" placeholder="fn(arguments)" id="snippet"/>
           </div>
         </div>
         <div className="form-group">
