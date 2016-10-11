@@ -8,7 +8,6 @@ const ChallengeInfo = props => {
     store.dispatch(challengeTitle(title));
   }
 
-
   handleSelect(e) {
     var difficulty = e.target.value.slice(0, 1);
     store.dispatch(challengeDifficulty(difficulty));

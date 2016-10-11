@@ -31,6 +31,10 @@ export const CHALLENGE_DIFFICULTY = 'CHALLENGE_DIFFICULTY'
 */
 
 
+/************************
+* ACTIONS FOR CREATING CHALLENGES
+************************/
+
 export function challengePrompt (text) {
   return { type: CHALLENGE_PROMPT, text};
 }

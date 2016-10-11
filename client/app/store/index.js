@@ -1,5 +1,5 @@
 import { createStore } from 'redux'
-import newChallenge from '../reducers/index'
+import * as newChallenge from '../reducers'
 
 let store = createStore(newChallenge);
 
