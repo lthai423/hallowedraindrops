@@ -1,4 +1,6 @@
 // Routes received by the Analytics Server
+var parser = require('./parser.js');
+
 module.exports = (app) => {
 
 	/*
@@ -16,11 +18,16 @@ module.exports = (app) => {
 	app.route('/api/analytics/:userId/:problemId')
 		.get((req, res) => { /* route hits */
 			// go into db and get that user's code and problem id
+			// also goes in to get their analytic information
 			res.send(200);
 		}) 
 		.post((req, res) => { /* route hits */
-			console.log('value for req.body is: ', req.body);
+			// sends the file into our parser fn
+			parser(req.body);
+
 			res.send('Receiving the body');
+			/*
+			 * Notice that the userId and Problem Id are both on the route */
 		});
 
 }
