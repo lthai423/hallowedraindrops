@@ -6,22 +6,14 @@ class ChallengePrompt extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      mode: 'edit',
       textform: true,
-      // code: ''
     };
-
-    let unsubscribe = store.subscribe(() =>
-      console.log(store.getState()));
   }
 
   handleSave() {
     var text = this.refs.textarea.value;
     store.dispatch(challengePrompt(text));
-    // this.setState({
-    //   code: text
-    // });
-    // this.props.handlePrompt(text);
+
     this.setState({
       textform: false
     });
@@ -35,7 +27,6 @@ class ChallengePrompt extends React.Component{
       textform: true
     });
     document.getElementById('comment').html(this.state.code);
-    // this.textarea.value = this.state.code;
   }
 
   handlePaste(e) {
@@ -44,10 +35,6 @@ class ChallengePrompt extends React.Component{
       var code = this.refs.textarea.value;
       store.dispatch(challengePrompt(code));
 
-      // this.setState({
-      //   code: code
-      // });
-      // this.props.handlePrompt(code);
       this.setState({
         textform: false,
       });
@@ -59,10 +46,6 @@ class ChallengePrompt extends React.Component{
   handleChange(e) {
     var text = e.target.value;
     store.dispatch(challengePrompt(text));
-
-    // this.setState({
-    //   code: e.target.value
-    // });
   }
 
   render() {

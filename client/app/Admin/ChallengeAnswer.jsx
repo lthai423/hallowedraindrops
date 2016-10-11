@@ -7,22 +7,15 @@ class ChallengeAnswer extends React.Component{
     super(props);
 
     this.state = {
-      mode: 'edit',
       textform: true,
-      // code: ''
     };
 
-    let unsubscribe = store.subscribe(() =>
-      console.log(store.getState()));
   }
 
   handleSave() {
     var text = this.refs.textarea.value;
-    // this.setState({
-    //   code: text
-    // });
+
     store.dispatch(challengeSRCCode(text));
-    // this.props.handleSourceCode(text);
     this.setState({
       textform: false
     });
@@ -34,8 +27,7 @@ class ChallengeAnswer extends React.Component{
     this.setState({
       textform: true
     });
-    // document.getElementById('comment').html(this.state.code);
-    // this.textarea.value = this.state.code;
+
   }
 
   handlePaste(e) {
@@ -43,11 +35,7 @@ class ChallengeAnswer extends React.Component{
     setTimeout(function () {
       var text = this.refs.textarea.value;
       store.dispatch(challengeSRCCode(text));
-      // this.setState({
-      //   code:text
-      // });
 
-      // this.props.handleSourceCode(text);
       this.setState({
         textform: false,
       });
@@ -56,10 +44,6 @@ class ChallengeAnswer extends React.Component{
   }
 
   handleChange(e) {
-    // this.setState({
-    //   code: e.target.value
-    // });
-
     store.dispatch(challengeSRCCode(e.target.value));
   }
 

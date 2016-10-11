@@ -25,7 +25,7 @@ class TestingLayout extends React.Component{
   handleNewTest() {
     var length = store.getState().challengeTests.length;
 
-    var test = <TestEntry key={length} num={length} info={this.getInfo.bind(this)}/>;
+    var test = <TestEntry key={length} num={length} />;
 
     var tests = this.state.tests.slice();
     tests.push(test);
@@ -34,22 +34,12 @@ class TestingLayout extends React.Component{
     });
   }
 
-  getInfo(el, state) {
-    var tests = this.state.testinfo;
-    tests[el.props.num] = el.state;
-
-    this.setState({
-      testinfo: tests
-    })
-    this.props.handleTests(tests);
-  }
-
   render() {
     return (
       <div>
         <Row>
           <Col sm={6} md={12}>
-            <ChallengeInfo handleInfo={this.props.handleInfo} />
+            <ChallengeInfo />
           </Col>
         </Row>
         <Row>

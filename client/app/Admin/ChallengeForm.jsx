@@ -17,38 +17,6 @@ import store from '../store/index';
 class ChallengeForm extends React.Component{
   constructor(props) {
     super(props);
-    this.state = {
-      // prompt: '',
-      tests: [],
-      // sourceCode: '',
-      info: {
-        title: '',
-        difficulty: '1'
-      },
-    };
-  }
-  // handlePrompt(code) {
-  //   this.setState({
-  //     prompt: code
-  //   });
-  // }
-
-  handleTests(tests) {
-    this.setState({
-      tests: tests
-    });
-  }
-
-  // handleSourceCode(code) {
-  //   this.setState({
-  //     sourceCode: code
-  //   });
-  // }
-
-  handleChallengeInfo(info) {
-    this.setState({
-      info: info
-    });
   }
 
   handleSubmit() {
@@ -91,7 +59,7 @@ class ChallengeForm extends React.Component{
            <div id="page-content-wrapper">
             <Grid>
               <Col sm={6} md={6}>
-                <TestLayout handleInfo={this.handleChallengeInfo.bind(this)} handleTests={this.handleTests.bind(this)}/ >
+                <TestLayout />
               </Col>
               <Col sm={6} md={6}>
                 <Row>

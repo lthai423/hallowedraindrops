@@ -5,38 +5,17 @@ import {challengeTitle, challengeDifficulty} from '../actions/index';
 class ChallengeInfo extends React.Component{
   constructor(props) {
     super(props);
-    this.state = {
-      // title : '',
-      // difficulty: ''
-    };
   }
-
-  // sendInfo() {
-  //  this.props.handleInfo(this.state);
-  // }
 
   handleChange(e) {
     var title = e.target.value;
     store.dispatch(challengeTitle(title));
-    // this.setState({
-    //   title: title
-    // });
-    // var obj = this.state;
-    // obj.title = title;
-    // this.props.handleInfo(obj);
-
   }
 
 
   handleSelect(e) {
     var difficulty = e.target.value.slice(0, 1);
     store.dispatch(challengeDifficulty(difficulty));
-    // this.setState({
-    //   difficulty: difficulty
-    // });
-    // var obj = this.state;
-    // obj.difficulty = difficulty;
-    // this.props.handleInfo(obj);
   }
 
   render() {

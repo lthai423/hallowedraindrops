@@ -7,14 +7,7 @@ import {challengeAddTest, challengeTests, challengeModTest} from '../actions/ind
 class TestEntry extends React.Component{
   constructor(props) {
     super(props);
-    // this.state = {
-    //   snippet: '',
-    //   method: '',
-    //   answer: '',
-    // };
 
-    // let unsubscribe = store.subscribe(() =>
-    //   console.log(store.getState()));
     this.option = [
         'shouldExist',
         'shouldNotExist',
@@ -104,12 +97,6 @@ class TestEntry extends React.Component{
       id: this.props.num,
       method: method
     }));
-    // this.setState({
-    //   method: method
-    // });
-    // var obj = this.state;
-    // obj.method = method;
-    // this.props.info(this, obj);
   }
 
   handleSnippet(e) {
@@ -118,29 +105,16 @@ class TestEntry extends React.Component{
       id: this.props.num,
       snippet: snippet
     }));
-    // this.setState({
-    //   snippet: snippet
-    // });
-    // var obj = this.state;
-    // obj.snippet = snippet;
-    // this.props.info(this, obj);
+
   }
 
   handleAnswer(e) {
     var answer = e.target.value;
-    // this.setState({
-    //   answer: answer
-    // });
-    // var obj = Object.assign({}, store.getStore().challengeTests, {
-    //   completed: !todo.completed
-    // });
+
     store.dispatch(challengeModTest({
       id: this.props.num,
       answer: answer
     }));
-    // var obj = this.state;
-    // obj.answer = answer;
-    // this.props.info(this, obj);
   }
 
   renderOption(option) {
