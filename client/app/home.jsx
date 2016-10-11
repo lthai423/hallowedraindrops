@@ -32,7 +32,7 @@ class Home extends React.Component {
 	componentDidMount() {
 		// uncommented for testing
 		console.log('entered inside of the home.jsx file');
-		this.setPad();
+		// this.setPad();
 		console.log('this props children', this.props.children);
 	}
 
@@ -45,13 +45,13 @@ class Home extends React.Component {
 			console.log('the ukey pulled in from the front-end is: ', data);
 			//** try redirecting wtih browserHistory
 
-			this.setState({
-				pad_link: '/editor' + data
-			});
+			// this.setState({
+			// 	pad_link: '/editor' + data
+			// });
 
-			console.log('editor is: ', this.state.pad_link);
+			// console.log('editor is: ', this.state.pad_link);
 
-			// window.location = 'editor' + data; // does this do a redirect?
+			window.location = 'editor' + data; // does this do a redirect?
 			// do the redirect here to the appropriate page.
 		})
 	}
@@ -98,7 +98,7 @@ class Home extends React.Component {
 							</Col>
 							<Col md={1} mdPush={5} className="vcenter">
 								<div className="home-selection">
-									 <span className="home-terminal"><Link to={this.state.pad_link}>      >_</Link></span>
+									 <span className="home-terminal" onClick={this.setPad}><Link>      >_</Link></span>
 								</div>
 								{this.props.children}
 							</Col>
