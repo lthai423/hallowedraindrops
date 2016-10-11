@@ -8,6 +8,10 @@ import Grid from 'react-bootstrap/lib/Grid.js';
 import Row from 'react-bootstrap/lib/Row.js';
 import Col from 'react-bootstrap/lib/Col.js';
 
+//Redux
+import store from '../store/index';
+import {challengeTests} from '../actions/index';
+
 class TestingLayout extends React.Component{
   constructor(props) {
     super(props);
@@ -18,12 +22,14 @@ class TestingLayout extends React.Component{
   }
 
   handleNewTest() {
-    var length = this.state.tests.length;
+    // var length = this.state.tests.length;
+    console.log(store.getState().challengeTests);
+    var length = store.getState().challengeTests.length;
 
-    var test = <TestEntry num={length} info={this.getInfo.bind(this)}/>;
+    var test = <TestEntry key={length} num={length} info={this.getInfo.bind(this)}/>;
     var tests = this.state.tests.slice();
     tests.push(test);
-    console.log('add new test');
+    console.log('add new test to ', this.state.tests);
     this.setState({
       tests: tests
     });

@@ -8,6 +8,12 @@
 // State is read-only, to change state, need to dispatch action ( network request, user action)
 
 /*
+* action constants
+*/
+
+let nextTestId = 0;
+
+/*
 * action types
 */
 
@@ -15,7 +21,9 @@ export const CHALLENGE_PROMPT = 'CHALLENGE_PROMPT'
 export const CHALLENGE_SRC_CODE = 'CHALLENGE_SRC_CODE'
 export const CHALLENGE_TITLE = 'CHALLENGE_TITLE'
 export const CHALLENGE_ADD_TEST = 'CHALLENGE_ADD_TEST'
+export const CHALLENGE_MOD_TEST = 'CHALLENGE_MOD_TEST'
 export const CHALLENGE_DIFFICULTY = 'CHALLENGE_DIFFICULTY'
+// export const CHALLENGE_TESTS = 'CHALLENGE_TESTS'
 
 
 /*
@@ -36,7 +44,20 @@ export function challengeTitle (text) {
 }
 
 export function challengeAddTest (obj) {
-  return { type: CHALLENGE_ADD_TEST, obj};
+  return { type: CHALLENGE_ADD_TEST,
+           id: nextTestId++,
+           obj};
+}
+
+export function challengeTests (obj) {
+  return { type: CHALLENGE_ADD_TEST,
+           // id: nextTestId++,
+           obj};
+}
+
+export function challengeModTest (obj) {
+  return {type: CHALLENGE_MOD_TEST,
+          obj};
 }
 
 export function challengeDifficulty (text) {
