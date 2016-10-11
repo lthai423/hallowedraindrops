@@ -1,19 +1,19 @@
 import React from 'react';
 import store from '../store/index';
-import {challengeTitle} from '../actions/index';
+import {challengeTitle, challengeDifficulty} from '../actions/index';
 
 class ChallengeInfo extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
       // title : '',
-      difficulty: ''
+      // difficulty: ''
     };
   }
 
-  sendInfo() {
-   this.props.handleInfo(this.state);
-  }
+  // sendInfo() {
+  //  this.props.handleInfo(this.state);
+  // }
 
   handleChange(e) {
     var title = e.target.value;
@@ -30,12 +30,13 @@ class ChallengeInfo extends React.Component{
 
   handleSelect(e) {
     var difficulty = e.target.value.slice(0, 1);
-    this.setState({
-      difficulty: difficulty
-    });
-    var obj = this.state;
-    obj.difficulty = difficulty;
-    this.props.handleInfo(obj);
+    store.dispatch(challengeDifficulty(difficulty));
+    // this.setState({
+    //   difficulty: difficulty
+    // });
+    // var obj = this.state;
+    // obj.difficulty = difficulty;
+    // this.props.handleInfo(obj);
   }
 
   render() {

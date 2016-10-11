@@ -55,7 +55,7 @@ class ChallengeForm extends React.Component{
     console.log('state to send', this.state);
     var question = {
       name: store.getState().challengeTitle,
-      difficulty: this.state.info.difficulty,
+      difficulty: store.getState().challengeDifficulty,
       attempts: 0,
       answers: 0,
       prompt: store.getState().challengePrompt,

@@ -18,7 +18,7 @@ function challengePrompt(state = '', action) {
   }
 }
 
-function challengeDifficulty(state = '', action) {
+function challengeDifficulty(state = '1', action) {
   switch(action.type) {
     case CHALLENGE_DIFFICULTY:
       return action.text;
@@ -62,7 +62,8 @@ const newChallenge = combineReducers({
   challengePrompt,
   challengeSRCCode,
   challengeTitle,
-  challengeAddTest
-})
+  challengeAddTest,
+  challengeDifficulty
+});
 
 export default newChallenge
