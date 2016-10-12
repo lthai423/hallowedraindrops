@@ -25,14 +25,14 @@ class ChallengeSplash extends React.Component {
 				<br/>
 				<div className="challenge-splash-supporting row">
 					<div className="col-md-4 col-md-offset-4">
-						<p> Build a challenge by entering the logistics of your problem, selecting unique test cases, then releasing to the public for testing! </p>
+						<p> Build a challenge by entering the logistics of your problem, selecting unique test cases, then releasing for testing! </p>
 					</div>
 				</div>
 				<br/>
 				<br/>
 				<div className="challenge-splash-supporting row">
 					<div className="col-md-4 col-md-offset-4">
-						<a href="#"><div className="challenge-footer challenge-start">Start</div></a>
+						<a href="#" className="challenge-start"><div className="challenge-footer">Start</div></a>
 					</div>
 				</div>
 			</div>
