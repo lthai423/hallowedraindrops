@@ -34,3 +34,5 @@ class HowItWorks extends React.Component {
 		)
 	}
 }
+
+export default HowItWorks;
