@@ -20,9 +20,6 @@ class Home extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {
-			pad_link: ''
-		}
 	}
 
 	componentWillMount() {
@@ -30,8 +27,7 @@ class Home extends React.Component {
 	}
 
 	componentDidMount() {
-		// uncommented for testing
-		this.setPad();
+		console.log('entered inside of the home.jsx file');
 	}
 
 	githubAuth () {
@@ -40,16 +36,7 @@ class Home extends React.Component {
 
 	setPad() {
 		$.get('/pad/create', (data) => {
-			//** try redirecting wtih browserHistory
-
-			this.setState({
-				pad_link: '/editor' + data
-			});
-
-			console.log('editor is: ', this.state.pad_link);
-
-			// window.location = 'editor' + data; // does this do a redirect?
-			// do the redirect here to the appropriate page.
+			window.location = 'editor' + data;
 		})
 	}
 
@@ -61,12 +48,6 @@ class Home extends React.Component {
 	// 3. with that unique pad_ID key, we move them to that page
 	// 4. on our server side, we catch that route and then send them the pad.html using res.render
 	// 5. then for that specific route, we will serve
-
-// removing from the home-terminal onClick: onClick={this.setPad.bind(this)}
-// <Link to={`/user/${user.id}`}>{user.name}</Link>
-// <span className="home-terminal"><Link to={this.state.pad_link}>      >_</Link></span>
-//	<span className="home-terminal"><a href= {this.state.pad_link}>      >_</a></span>
-
 
 /* Note: the blog will only be temporarily here..*/
 	render() {
@@ -95,7 +76,7 @@ class Home extends React.Component {
 							</Col>
 							<Col md={1} mdPush={5} className="vcenter">
 								<div className="home-selection">
-									 <span className="home-terminal"><Link to={this.state.pad_link}>      >_</Link></span>
+									 <span className="home-terminal" onClick={this.setPad}><Link>      >_</Link></span>
 								</div>
 								{this.props.children}
 							</Col>
