@@ -382,6 +382,38 @@ div.blogger-footer {
     font-weight: 100px;
 }
 
+/* splash page styles */
+.challenge-splash-jumbo {  
+    /*nothing yet*/
+}
+
+div.challenge-footer {
+    background-color: #de7c00;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    font-family: SourceSansPro;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    font-weight: 100px;
+
+}
+
+.challenge-splash-supporting {
+    font-family: SourceSansPro;
+    font-weight: 100px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.challenge-sub {
+    font-style: italic;
+}
+
+a.challenge-start:hover {
+    color: black;
+    text-decoration: none;
+}
 
 
 
