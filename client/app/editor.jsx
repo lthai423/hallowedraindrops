@@ -223,8 +223,8 @@ class Editor extends React.Component {
 	render () {
 
     return (
-    	<div>
-    	<Navigation sidebar={this.sidebar} sendcode={this.sendCode} testcode={this.testCode} pairme={this.pairMe} ></Navigation>
+    	<div className="container-fluid">
+      	<Navigation sidebar={this.sidebar} sendcode={this.sendCode} testcode={this.testCode} pairme={this.pairMe} ></Navigation>
 	    	<div id="wrapper">
 	    		<Sidebar pasteCode={this.pasteCode.bind(this)}></Sidebar>
 	        <div id="page-content-wrapper">
