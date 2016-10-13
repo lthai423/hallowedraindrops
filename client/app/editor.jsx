@@ -227,20 +227,47 @@ class Editor extends React.Component {
       	<Navigation sidebar={this.sidebar} sendcode={this.sendCode} testcode={this.testCode} pairme={this.pairMe} ></Navigation>
 	    	<div id="wrapper">
 	    		<Sidebar pasteCode={this.pasteCode.bind(this)}></Sidebar>
-	        <div id="page-content-wrapper">
-	        	<Grid>
-		        	<Row className="home-editor">
-		        			<div id="editor" className="home-editor" onKeyUp={this.handleKeyPress.bind(this)}></div>
-		        	</Row>
-		        	<Row className="home-console">
-		        			<Output output={this.state.outputText} console={this.state.console}></Output>
-		      		</Row>
-	      		</Grid>
-		      </div>
-		    </div>
-	    </div>
+          <div className="container" id="editor-container">
+            <div className="col-sm-12 col-md-6">
+              <div className="panel">
+                <div className="panel-heading">
+                  <h3 className="panel-title">Editor</h3>
+                </div>
+                <div className="panel-body">
+                  <div id="editor" className="-editor"> </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-12 col-md-6">
+              <div className="panel">
+                <div className="panel-heading">
+                  <h3 className="panel-title">Editor</h3>
+                </div>
+
+                <div className="panel-body">
+                  <div className="home-editor">
+                    <Output output={this.state.outputText} console={this.state.console}></Output>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     )
   }
 }
 
 export default Editor;
+
+
+// <div id="page-content-wrapper">
+// 	<Grid>
+//   	<div className="home-editor">
+//   			<div id="editor" className="home-editor" onKeyUp={this.handleKeyPress.bind(this)}></div>
+//   	</Row>
+//   	<Row className="home-console">
+//   			<Output output={this.state.outputText} console={this.state.console}></Output>
+// 		</Row>
+// 	</Grid>
+// </div>

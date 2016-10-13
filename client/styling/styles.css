@@ -77,7 +77,7 @@ div#console.home-console {
 }
 
 div.home-editor #editor {
-    padding-left: 0;
+    height:400px;
 }
 
 div.container {
@@ -401,4 +401,8 @@ pre {
 
 .hide {
     display: none;
+}
+
+#editor-container {
+    width: 100%;
 }
