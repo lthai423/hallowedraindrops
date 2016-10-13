@@ -161,6 +161,7 @@ class Editor extends React.Component {
     editor.setHighlightActiveLine(false); // sets line highlighting
     document.getElementById('editor').style.fontSize='13px'; // sets the font-size
     editor.getSession().setUseWrapMode(true);
+    editor.setShowPrintMargin(false);
     editor.resize();
 
     return editor;
