@@ -52,6 +52,34 @@ body {
   }
 }
 
+/* Styles for the home page */
+div.banner-bottom#home-bottom{
+    background-color: rgb(35, 170, 253);
+    padding-top: 100px;
+}
+
+.home-desc {
+    font-family: SourceSansPro;
+    font-weight: 100;
+    font-size: 30px;
+    color: white;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+div.home-works {
+    font-family: SourceSansPro;
+    font-weight: 900;
+    font-style: bold;
+    font-size: 30px;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    margin-top: 100px;
+    background-color: #de7c00;
+    color: white;
+}
+
 /* Styles for the Editor */
 #editor {
     /*padding-top: 30px;*/
@@ -222,8 +250,45 @@ div.jumbotron {
 
 .home-terminal {
 	font-size: 50px;
+    /*background-color: black;*/
+    /*color: #fff;*/
+    margin-bottom: 100px;
 	/*padding-top: 10px;*/
 }
+
+.a-home:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.home-selection:hover {
+    cursor: pointer;
+    cursor: hand;
+}
+
+.home-terminal-space {
+    background-color: #fff;
+}
+
+.blink-terminal {
+    width: 27.5px;
+    height: 59px;
+    background-color: black;
+    float: right;
+}
+.brown-terminal {
+    width: 27.5px;
+    height: 59px;
+    background-color: brown;
+    float: left;
+    /*overflow: hidden;*/
+}
+
+.terminal-wrapper {
+    overflow: hidden;
+    width: 55px;
+}
+
 /* vertically-align the github and terminal icons on the home-page*/
 .vcenter {
     display: inline-block;
@@ -236,8 +301,6 @@ div.jumbotron {
     z-index: -999;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 /** BLOG STYLES **/
 
